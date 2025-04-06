@@ -17,8 +17,8 @@ public class Enmey_NightBone_AnimationTrigger : MonoBehaviour
         {
             if (hit.GetComponent<Player>() != null)
             {
-                hit.GetComponent<Player>().Damage();
-                hit.GetComponent<CharacterStats>().TakeDamage(enemy.stats.damage);
+                PlayerStats _target = hit.GetComponent<PlayerStats>();
+                enemy.stats.DoDamage(_target);
             }
         }
     }
@@ -26,4 +26,9 @@ public class Enmey_NightBone_AnimationTrigger : MonoBehaviour
     private void OpenCounterWindow() => enemy.OpenCounterAttackWindow();
 
     private void CloseCounterWindow() => enemy.CloseCounterAttackWindow();
+
+    private void onDeathAnimationFinished()
+    {
+        enemy.gameObject.SetActive(false);
+    }
 }

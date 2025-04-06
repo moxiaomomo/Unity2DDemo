@@ -5,29 +5,39 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-    public int damage;
-    public int maxHP;
+    [Header ("Major stats")]
+    public Stat strength;
+
+
+    public Stat damage;
+    public Stat maxHP;
 
     [SerializeField] private int currentHP;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        currentHP = maxHP;
+        currentHP = maxHP.GetValue();
+    }
+
+
+    public virtual void DoDamage(CharacterStats _targetStats)
+    {
+        int totalDamage = strength.GetValue() + damage.GetValue();
+        _targetStats.TakeDamage(totalDamage);
     }
 
     // Update is called once per frame
-    public void TakeDamage(int _damage)
+    public virtual void TakeDamage(int _damage)
     {
         currentHP -= _damage;
-        if (currentHP < 0)
+        if (currentHP <= 0)
         {
             Die();
         }
     }
 
-    private void Die()
+    protected virtual void Die()
     {
-        throw new NotImplementedException();
     }
 }

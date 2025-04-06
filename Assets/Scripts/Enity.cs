@@ -27,6 +27,7 @@ public class Entity : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public EntityFX fx { get; private set; }
     public CharacterStats stats { get; private set; }
+    public CapsuleCollider2D capsulecd { get; private set; }
     #endregion
 
     protected virtual void Awake()
@@ -40,9 +41,10 @@ public class Entity : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<CharacterStats>();
+        capsulecd = GetComponent<CapsuleCollider2D>();
     }
 
-    public virtual void Damage()
+    public virtual void DamageEffect()
     {
         fx.StartCoroutine("FlashFX");
         StartCoroutine("HitKnockback");
@@ -55,6 +57,11 @@ public class Entity : MonoBehaviour
         rb.velocity = new Vector2(knockbackDirection.x * -facingDirection, knockbackDirection.y);
         yield return new WaitForSeconds(knockbackDuration);
         isKnocked = false;
+    }
+
+    public virtual void Die()
+    {
+
     }
 
     protected virtual void Update()

@@ -34,8 +34,9 @@ public class Player : Entity
     public PlayerAirState airState { get; private set; }
     public PlayerWallJumpState wallJumpState { get; private set; }
     public PlayerPrimaryAttackState primaryAttackState { get; private set; }
-
     public PlayerCounterAttackState counterAttackState { get; private set; }
+
+    public PlayerDeadState deadState { get; private set; }
     #endregion
 
     // Start is called before the first frame update
@@ -52,7 +53,7 @@ public class Player : Entity
         wallJumpState = new PlayerWallJumpState(this, stateMachine, "Jump");
         primaryAttackState = new PlayerPrimaryAttackState(this, stateMachine, "Attack");
         counterAttackState = new PlayerCounterAttackState(this, stateMachine, "CounterAttack");
-
+        deadState = new PlayerDeadState(this, stateMachine, "Die");
     }
 
     protected override void Start()
@@ -79,6 +80,11 @@ public class Player : Entity
 
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
 
+    public override void Die()
+    {
+        base.Die();
+        stateMachine.ChangeState(deadState);
+    }
     private void CheckDashInput()
     {
 

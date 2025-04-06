@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enmey_NightBone_StunnedState : EnemyState
+public class Enemy_NightBone_StunnedState : EnemyState
 {
     private Enemy_NightBone enemy;
 
-    public Enmey_NightBone_StunnedState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _stateName, Enemy_NightBone _enemy) : base(_enemyBase, _stateMachine, _stateName)
+    public Enemy_NightBone_StunnedState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _stateName, Enemy_NightBone _enemy) : base(_enemyBase, _stateMachine, _stateName)
     {
         enemy = _enemy;
     }

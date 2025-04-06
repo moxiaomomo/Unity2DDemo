@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Enemy_NightBone : Enemy
@@ -9,7 +10,8 @@ public class Enemy_NightBone : Enemy
     public Enemy_NightBone_MoveState moveState { get; private set; }
     public Enemy_NightBone_BattleState battleState { get; private set; }
     public Enemy_NightBone_AttackState attackState { get; private set; }
-    public Enmey_NightBone_StunnedState stunnedState { get; private set; }
+    public Enemy_NightBone_StunnedState stunnedState { get; private set; }
+    public Enemy_NightBone_DeadState deadState { get; private set; }
     #endregion
 
     protected override void Awake()
@@ -19,7 +21,8 @@ public class Enemy_NightBone : Enemy
         moveState = new Enemy_NightBone_MoveState(this, stateMachine, "Move", this);
         battleState = new Enemy_NightBone_BattleState(this, stateMachine, "Move", this);
         attackState = new Enemy_NightBone_AttackState(this, stateMachine, "Attack", this);
-        stunnedState = new Enmey_NightBone_StunnedState(this, stateMachine, "Stunned", this);
+        stunnedState = new Enemy_NightBone_StunnedState(this, stateMachine, "Stunned", this);
+        deadState = new Enemy_NightBone_DeadState(this, stateMachine, "Die", this);
     }
 
     protected override void Start()
@@ -65,5 +68,11 @@ public class Enemy_NightBone : Enemy
         }
 
         return new RaycastHit2D(); // 返回一个空的结构体
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        stateMachine.ChangeState(deadState);
     }
 }

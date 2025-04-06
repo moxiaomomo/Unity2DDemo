@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : Entity
 {
     public EnemyStateMachine stateMachine { get; private set; }
+    public string lastStateName { get; private set; }
 
     [SerializeField] protected LayerMask whatisPlayer;
 
@@ -35,6 +36,11 @@ public class Enemy : Entity
     protected override void Start()
     {
         base.Start();
+    }
+
+    public virtual void AssignLastAnimName(string _stateName)
+    {
+        lastStateName = _stateName;
     }
 
     //双向检测玩家方法

@@ -568,7 +568,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 504
-        y: 176
+        y: 177
         width: 64
         height: 64
       alignment: 0
@@ -778,7 +778,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 80
+        y: 81
         width: 64
         height: 64
       alignment: 0
@@ -858,27 +858,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NightBorne_55
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 16
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 76cc61983698e3640bbe9e0a097da9c8
-      internalID: 1093944802
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: NightBorne_56
       rect:
         serializedVersion: 2
@@ -904,7 +883,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 16
+        y: 13
         width: 64
         height: 64
       alignment: 0
@@ -924,8 +903,8 @@ TextureImporter:
       name: NightBorne_58
       rect:
         serializedVersion: 2
-        x: 320
-        y: 16
+        x: 336
+        y: 13
         width: 64
         height: 64
       alignment: 0
@@ -945,8 +924,8 @@ TextureImporter:
       name: NightBorne_59
       rect:
         serializedVersion: 2
-        x: 384
-        y: 16
+        x: 416
+        y: 14
         width: 64
         height: 64
       alignment: 0
@@ -966,8 +945,8 @@ TextureImporter:
       name: NightBorne_60
       rect:
         serializedVersion: 2
-        x: 448
-        y: 16
+        x: 496
+        y: 15
         width: 64
         height: 64
       alignment: 0
@@ -979,27 +958,6 @@ TextureImporter:
       bones: []
       spriteID: 6bdd7896baf857c498b9322cf0b1cc81
       internalID: 617498807
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NightBorne_61
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 16
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e27f4cb66f5a90b42820cbb763ad4a18
-      internalID: 1914458636
       vertices: []
       indices: 
       edges: []
@@ -1029,8 +987,8 @@ TextureImporter:
       name: NightBorne_63
       rect:
         serializedVersion: 2
-        x: 640
-        y: 16
+        x: 656
+        y: 15
         width: 64
         height: 64
       alignment: 0
@@ -1050,8 +1008,8 @@ TextureImporter:
       name: NightBorne_64
       rect:
         serializedVersion: 2
-        x: 704
-        y: 16
+        x: 739
+        y: 9
         width: 64
         height: 64
       alignment: 0
@@ -1071,8 +1029,8 @@ TextureImporter:
       name: NightBorne_65
       rect:
         serializedVersion: 2
-        x: 768
-        y: 16
+        x: 818
+        y: 8
         width: 64
         height: 64
       alignment: 0
@@ -1089,32 +1047,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NightBorne_66
-      rect:
-        serializedVersion: 2
-        x: 832
-        y: 16
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 146e4041397949e4faf1ee36079d69d1
-      internalID: 999641765
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: NightBorne_67
       rect:
         serializedVersion: 2
-        x: 896
-        y: 16
+        x: 898
+        y: 9
         width: 64
         height: 64
       alignment: 0
@@ -1134,8 +1071,8 @@ TextureImporter:
       name: NightBorne_68
       rect:
         serializedVersion: 2
-        x: 960
-        y: 16
+        x: 968
+        y: 2
         width: 64
         height: 64
       alignment: 0
@@ -1155,8 +1092,8 @@ TextureImporter:
       name: NightBorne_69
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 16
+        x: 1047
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -1176,8 +1113,8 @@ TextureImporter:
       name: NightBorne_70
       rect:
         serializedVersion: 2
-        x: 1088
-        y: 16
+        x: 1128
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -1194,32 +1131,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NightBorne_71
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 16
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 456064863bbea3c48a44fa0daabb11be
-      internalID: 531813741
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: NightBorne_72
       rect:
         serializedVersion: 2
-        x: 1216
-        y: 16
+        x: 1206
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -1239,8 +1155,8 @@ TextureImporter:
       name: NightBorne_73
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 16
+        x: 1286
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -1260,8 +1176,8 @@ TextureImporter:
       name: NightBorne_74
       rect:
         serializedVersion: 2
-        x: 1344
-        y: 16
+        x: 1366
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -1281,8 +1197,8 @@ TextureImporter:
       name: NightBorne_75
       rect:
         serializedVersion: 2
-        x: 1408
-        y: 16
+        x: 1447
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -1299,32 +1215,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NightBorne_76
-      rect:
-        serializedVersion: 2
-        x: 1472
-        y: 16
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c6545afa4e381644eb8b03a45ff818ae
-      internalID: 113331387
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: NightBorne_77
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 16
+        x: 1526
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -1344,8 +1239,8 @@ TextureImporter:
       name: NightBorne_78
       rect:
         serializedVersion: 2
-        x: 1600
-        y: 16
+        x: 1605
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -1365,8 +1260,8 @@ TextureImporter:
       name: NightBorne_79
       rect:
         serializedVersion: 2
-        x: 1664
-        y: 16
+        x: 1684
+        y: 1
         width: 64
         height: 64
       alignment: 0
@@ -1378,6 +1273,27 @@ TextureImporter:
       bones: []
       spriteID: 8d50a2dfb3636a4438645e7098c21282
       internalID: 2108136989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NightBorne_3
+      rect:
+        serializedVersion: 2
+        x: 1763
+        y: 1
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 254b7efba34bfc2449717ad72dfc8d69
+      internalID: 493060467
       vertices: []
       indices: 
       edges: []
