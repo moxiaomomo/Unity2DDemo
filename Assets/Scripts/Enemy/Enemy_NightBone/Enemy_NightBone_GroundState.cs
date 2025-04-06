@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_NightBone_GroundState : EnemyState
+public class Enmey_NightBone_GroundState : EnemyState
 {
-
-    protected Enemy_NightBone enemy;
-    public Enemy_NightBone_GroundState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _stateName, Enemy_NightBone _enemy) : base(_enemyBase, _stateMachine, _stateName)
+    protected Enemy_NightBone enmey;
+    public Enmey_NightBone_GroundState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _stateName, Enemy_NightBone _enmey) : base(_enemyBase, _stateMachine, _stateName)
     {
-        enemy = _enemy;
+        enmey = _enmey;
     }
 
     public override void Enter()
@@ -24,9 +23,9 @@ public class Enemy_NightBone_GroundState : EnemyState
     public override void Update()
     {
         base.Update();
-        if (enemy.IsPlayerDetected())
+        if (enmey.IsPlayerDetected())
         {
-            stateMachine.ChangeState(enemy.battleState);
+            stateMachine.ChangeState(enmey.battleState);
         }
     }
 }

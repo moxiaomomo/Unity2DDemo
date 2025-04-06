@@ -20,9 +20,13 @@ public class PlayerGroundState : PlayerState
     public override void Update()
     {
         base.Update();
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             stateMachine.ChangeState(player.primaryAttackState);
+        }
+        else if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            stateMachine.ChangeState(player.counterAttackState);
         }
 
         //Ó°ÏìÌøµÍÅÀÇ½

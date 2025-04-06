@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Enemy_NightBone_AttackState : EnemyState
 {
-    private Enemy_NightBone enmey;
-    public Enemy_NightBone_AttackState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _stateName, Enemy_NightBone _enmey) : base(_enemyBase, _stateMachine, _stateName)
+    private Enemy_NightBone enemy;
+    public Enemy_NightBone_AttackState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _stateName, Enemy_NightBone _enemy) : base(_enemyBase, _stateMachine, _stateName)
     {
-        enmey = _enmey;
+        enemy = _enemy;
     }
 
     public override void Enter()
@@ -18,14 +18,16 @@ public class Enemy_NightBone_AttackState : EnemyState
     public override void Exit()
     {
         base.Exit();
-        enmey.lastTimeAttacked = Time.time;
+        enemy.lastTimeAttacked = Time.time;
     }
 
     public override void Update()
     {
         base.Update();
-        enmey.SetZeroVelocity();
+        enemy.SetZeroVelocity(isAttack: true);
         if (triggeredCalled)
-            stateMachine.ChangeState(enmey.battleState);
+        {
+            enemy.stateMachine.ChangeState(enemy.battleState);
+        }
     }
 }

@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Enity
+public class Player : Entity
 {
     public bool isBusy { get; private set; }
 
 
     [Header("Attack Info")]
-    public Vector2[] attackMovement; 
+    public Vector2[] attackMovement;
+    public float counterAttackDuration;
+
 
     [Header("Move Info")]
     public float moveSpeed = 5f;
@@ -32,6 +34,8 @@ public class Player : Enity
     public PlayerAirState airState { get; private set; }
     public PlayerWallJumpState wallJumpState { get; private set; }
     public PlayerPrimaryAttackState primaryAttackState { get; private set; }
+
+    public PlayerCounterAttackState counterAttackState { get; private set; }
     #endregion
 
     // Start is called before the first frame update
@@ -47,6 +51,7 @@ public class Player : Enity
         wallState = new PlayerWallState(this, stateMachine, "WallSlide");
         wallJumpState = new PlayerWallJumpState(this, stateMachine, "Jump");
         primaryAttackState = new PlayerPrimaryAttackState(this, stateMachine, "Attack");
+        counterAttackState = new PlayerCounterAttackState(this, stateMachine, "CounterAttack");
 
     }
 
@@ -72,19 +77,19 @@ public class Player : Enity
         isBusy = false;
     }
 
-    public void AnimationTrigger()=>stateMachine.currentState.AnimationFinishTrigger();
+    public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
 
     private void CheckDashInput()
     {
 
         dashCoolTimeCounter -= Time.deltaTime;
 
-        if(IsWallDetected())
+        if (IsWallDetected())
         {
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCoolTimeCounter<0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCoolTimeCounter < 0)
         {
             dashCoolTimeCounter = dashCoolTime;
             dashDiretion = Input.GetAxisRaw("Horizontal");

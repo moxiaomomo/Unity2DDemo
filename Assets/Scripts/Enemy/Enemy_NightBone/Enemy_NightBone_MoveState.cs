@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_NightBone_MoveState : Enemy_NightBone_GroundState
+public class Enemy_NightBone_MoveState : Enmey_NightBone_GroundState
 {
     public Enemy_NightBone_MoveState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _stateName, Enemy_NightBone _enmey) : base(_enemyBase, _stateMachine, _stateName, _enmey)
     {
@@ -11,7 +11,7 @@ public class Enemy_NightBone_MoveState : Enemy_NightBone_GroundState
     public override void Enter()
     {
         base.Enter();
-        stateTimer = enemy.moveTime;
+        stateTimer = enmey.moveTime;
     }
 
     public override void Exit()
@@ -22,14 +22,14 @@ public class Enemy_NightBone_MoveState : Enemy_NightBone_GroundState
     public override void Update()
     {
         base.Update();
-        enemy.SetVelocity(enemy.moveSpeed * enemy.facingDirection, rb.velocity.y);
-        if(enemy.IsWallDetected() || !enemy.IsGroundDetected())
+        enmey.SetVelocity(enmey.moveSpeed * enmey.facingDirection, rb.velocity.y);
+        if (enmey.IsWallDetected() || !enmey.IsGroundDetected())
         {
-            enemy.Flip();
+            enmey.Flip();
         }
         if (stateTimer <= 0)
         {
-            stateMachine.ChangeState(enemy.idleState);
+            stateMachine.ChangeState(enmey.idleState);
         }
     }
 }

@@ -16,31 +16,29 @@ public class EnemyState
         enemyBase = _enemyBase;
         stateName = _stateName;
     }
-    public virtual void Enter() 
+    public virtual void Enter()
     {
         triggeredCalled = false;
-        enemyBase.animator.SetBool(stateName, true);
         rb = enemyBase.rb;
+        enemyBase.animator.SetBool(stateName, true);
     }
-    public virtual void Exit() 
+    public virtual void Exit()
     {
         enemyBase.animator.SetBool(stateName, false);
     }
-    public virtual void Update() 
+    public virtual void Update()
     {
         stateTimer -= Time.deltaTime;
     }
 
-    public virtual void AnimationFinishTrigger() 
+    public virtual void AnimationFinishTrigger()
     {
-        triggeredCalled = true;    
+        triggeredCalled = true;
     }
-
     public virtual bool CanAttack()
     {
-        if (Time.time >= enemyBase.lastTimeAttacked + enemyBase.attackCoolDown)
+        if (Time.time >= enemyBase.lastTimeAttacked + enemyBase.attackCooldown)
         {
-            enemyBase.lastTimeAttacked = Time.time;
             return true;
         }
         return false;

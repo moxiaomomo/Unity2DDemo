@@ -20,6 +20,7 @@ public class PlayerPrimaryAttackState : PlayerState
             comboCounter = 0;
         player.animator.SetInteger("ComboCounter", comboCounter);
 
+        xInput = 0;
         // 攻击不能移动，但可以换攻击方向
         float attackDirection = player.facingDirection;
         if (xInput != 0)

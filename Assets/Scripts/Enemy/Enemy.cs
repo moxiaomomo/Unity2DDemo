@@ -2,22 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Enity
+public class Enemy : Entity
 {
     public EnemyStateMachine stateMachine { get; private set; }
 
-    [SerializeField]protected LayerMask whatisPlayer;
+    [SerializeField] protected LayerMask whatisPlayer;
+
+    [Header("Stunned info")]
+    public float stunDuration;
+    public Vector2 stunDirection;
+    protected bool canBeStunned;
+    [SerializeField] protected GameObject counterImage;
 
     [Header("Attack info")]
     public float playerCheckDistance;
     public float attackDistance;
-    public float attackCoolDown;
-    [HideInInspector]public float lastTimeAttacked;
+    public float attackCooldown;
+    [HideInInspector] public float lastTimeAttacked;
 
     [Header("Move info")]
-    [SerializeField] public float moveSpeed;
-    [SerializeField] public float moveTime;
-    [SerializeField] public float idleTime;
+    public float moveSpeed;
+    public float moveTime;
+    public float idleTime;
+    public float battleTime;
 
     protected override void Awake()
     {
@@ -29,20 +36,48 @@ public class Enemy : Enity
     {
         base.Start();
     }
-    public virtual RaycastHit2D IsPlayerDetected()=>Physics2D.Raycast(wallCheck.position, Vector2.right * facingDirection, playerCheckDistance, whatisPlayer);
 
-    public virtual void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
+    //双向检测玩家方法
+    public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right, playerCheckDistance, whatisPlayer);
+
     protected override void Update()
     {
         base.Update();
+
         stateMachine.currentState.Update();
+    }
+
+    public virtual void OpenCounterAttackWindow()
+    {
+        // 使敌人可以被反击
+        canBeStunned = true;
+        counterImage.SetActive(true);
+    }
+
+    public virtual void CloseCounterAttackWindow()
+    {
+        // 使敌人不能被反击
+        canBeStunned = false;
+        counterImage.SetActive(false);
+    }
+
+    public virtual bool CanbeStunned()
+    {
+        // 检测敌人是否可以被反击
+        if (canBeStunned)
+        {
+            return true;
+        }
+        return false;
     }
 
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + attackDistance * facingDirection, transform.position.y));
     }
 
+    public virtual void AnimationFinishTrigger() =>
+        stateMachine.currentState.AnimationFinishTrigger();
 }
