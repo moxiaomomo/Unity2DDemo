@@ -12,7 +12,9 @@ public class CharacterStats : MonoBehaviour
     public Stat damage;
     public Stat maxHP;
 
-    [SerializeField] private int currentHP;
+    public int currentHP;
+
+    public System.Action onHealthChanged;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -31,6 +33,7 @@ public class CharacterStats : MonoBehaviour
     public virtual void TakeDamage(int _damage)
     {
         currentHP -= _damage;
+        onHealthChanged?.Invoke();
         if (currentHP <= 0)
         {
             Die();

@@ -6,6 +6,8 @@ public class Player : Entity
 {
     public bool isBusy { get; private set; }
 
+    public GameObject menuCanvas; // ÄãµÄ²Ëµ¥Canvas
+    private bool isPaused = false;
 
     [Header("Attack Info")]
     public Vector2[] attackMovement;
@@ -65,6 +67,10 @@ public class Player : Entity
     // Update is called once per frame
     protected override void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
         base.Update();
         stateMachine.currentState.Update();
         CheckDashInput();
@@ -104,6 +110,22 @@ public class Player : Entity
                 dashDiretion = facingDirection;
             }
             stateMachine.ChangeState(dashState);
+        }
+    }
+
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            Time.timeScale = 0f; // ÔÝÍ£ÓÎÏ·
+            menuCanvas.SetActive(true); // ÏÔÊ¾²Ëµ¥
+        }
+        else
+        {
+            Time.timeScale = 1f; // »Ö¸´ÓÎÏ·
+            menuCanvas.SetActive(false); // Òþ²Ø²Ëµ¥
         }
     }
 

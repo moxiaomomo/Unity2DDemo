@@ -18,6 +18,7 @@ public class Entity : MonoBehaviour
     public Transform attackCheck;
     public float attackCheckRadius;
 
+    public System.Action onFlipped; //用来调整血条UI的方向
 
     public int facingDirection { get; private set; } = 1;
     protected bool facingRight = true;
@@ -85,6 +86,8 @@ public class Entity : MonoBehaviour
         facingDirection = facingDirection * -1;
         facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
+
+        onFlipped?.Invoke(); // Notify all listeners that the entity has flipped
     }
 
     public virtual void FlipController(float _x)
