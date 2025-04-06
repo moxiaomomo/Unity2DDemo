@@ -18,6 +18,7 @@ public class Enmey_NightBone_AnimationTrigger : MonoBehaviour
             if (hit.GetComponent<Player>() != null)
             {
                 hit.GetComponent<Player>().Damage();
+                hit.GetComponent<CharacterStats>().TakeDamage(enemy.stats.damage);
             }
         }
     }

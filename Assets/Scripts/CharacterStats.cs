@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,5 +20,14 @@ public class CharacterStats : MonoBehaviour
     public void TakeDamage(int _damage)
     {
         currentHP -= _damage;
+        if (currentHP < 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        throw new NotImplementedException();
     }
 }
