@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimationTriggers : MonoBehaviour
 {
+    [SerializeField]private UI_MainScene_Menu ui_main_scene_menu;
     private Player player => GetComponentInParent<Player>();
     private void AnimationTrigger()
     {
@@ -20,5 +21,10 @@ public class PlayerAnimationTriggers : MonoBehaviour
                 player.stats.DoDamage(_target);
             }
         }
+    }
+    private void DieTrigger()
+    {
+        player.AnimationTrigger();
+        ui_main_scene_menu.YouDie.SetActive(true);
     }
 }
