@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Enmey_NightBone_GroundState : EnemyState
 {
-    protected Enemy_NightBone enmey;
-    public Enmey_NightBone_GroundState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _stateName, Enemy_NightBone _enmey) : base(_enemyBase, _stateMachine, _stateName)
+    protected Enemy_NightBone enemy;
+    public Enmey_NightBone_GroundState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _stateName, Enemy_NightBone _enemy) : base(_enemyBase, _stateMachine, _stateName)
     {
-        enmey = _enmey;
+        enemy = _enemy;
     }
 
     public override void Enter()
@@ -23,9 +23,10 @@ public class Enmey_NightBone_GroundState : EnemyState
     public override void Update()
     {
         base.Update();
-        if (enmey.IsPlayerDetected())
+        RaycastHit2D hit = enemy.IsPlayerDetected();
+        if (hit.collider!=null)
         {
-            stateMachine.ChangeState(enmey.battleState);
+            stateMachine.ChangeState(enemy.battleState);
         }
     }
 }

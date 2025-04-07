@@ -51,12 +51,7 @@ public class Enemy_NightBone : Enemy
         // 射线检测左右两个方向，返回较近的命中对象
         RaycastHit2D hitRight = Physics2D.Raycast(wallCheck.position, Vector2.right, playerCheckDistance, whatisPlayer);
         RaycastHit2D hitLeft = Physics2D.Raycast(wallCheck.position, Vector2.left, playerCheckDistance, whatisPlayer);
-
-        if (hitRight.collider != null && hitLeft.collider != null)
-        {
-            return hitRight.distance < hitLeft.distance ? hitRight : hitLeft;
-        }
-        else if (hitRight.collider != null)
+        if (hitRight.collider != null)
         {
             return hitRight;
         }

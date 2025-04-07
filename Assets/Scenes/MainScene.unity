@@ -237,7 +237,7 @@ Transform:
   m_GameObject: {fileID: 55546620}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.949247, y: -2.01, z: 0}
+  m_LocalPosition: {x: 12.99, y: -2.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -271,7 +271,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackCheck: {fileID: 534271728}
-  attackCheckRadius: 1.59
+  attackCheckRadius: 1.31
   whatisPlayer:
     serializedVersion: 2
     m_Bits: 128
@@ -285,7 +285,7 @@ MonoBehaviour:
   moveSpeed: 5
   moveTime: 3
   idleTime: 1
-  battleTime: 0
+  battleTime: 4
 --- !u!50 &55546623
 Rigidbody2D:
   serializedVersion: 4
@@ -381,8 +381,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.077554226, y: 0.016055703}
-  m_Size: {x: 1.7206907, y: 1.9911501}
+  m_Offset: {x: -0.026168585, y: 0}
+  m_Size: {x: 1.6683536, y: 1.9911501}
   m_Direction: 0
 --- !u!114 &55546628
 MonoBehaviour:
@@ -1561,7 +1561,7 @@ Transform:
   m_GameObject: {fileID: 534271727}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.26, y: 0.51, z: 0}
+  m_LocalPosition: {x: 0.55, y: 0.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1607,7 +1607,7 @@ Transform:
   m_GameObject: {fileID: 551877433}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6129493, y: -0.7286903, z: -0.031760804}
+  m_LocalPosition: {x: 2.58, y: -1.41, z: -0.031760804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43143,7 +43143,7 @@ MonoBehaviour:
   - {x: 3, y: 5}
   counterAttackDuration: 0.3
   moveSpeed: 7
-  jumpForce: 20
+  jumpForce: 15
   dashCoolTime: 1
   dashCoolTimeCounter: 0
   dashSpeed: 15
@@ -43207,8 +43207,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.10876453, y: -0.3352245}
-  m_Size: {x: 0.9681194, y: 1.9532135}
+  m_Offset: {x: -0.0983696, y: -0.33447444}
+  m_Size: {x: 0.9272218, y: 1.9744198}
   m_Direction: 0
 --- !u!114 &801717136
 MonoBehaviour:
@@ -48821,6 +48821,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1753817433}
   - component: {fileID: 1753817434}
+  - component: {fileID: 1753817436}
+  - component: {fileID: 1753817435}
   m_Layer: 6
   m_Name: DamageWall
   m_TagString: Untagged
@@ -48895,6 +48897,64 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1753817435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753817432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2498223c50bac4493e2cd654987b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDeathZone: 0
+--- !u!61 &1753817436
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753817432}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.41562498}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.15}
+    oldSize: {x: 1, y: 1.1875}
+    newSize: {x: 1, y: 1.1875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.1875}
+  m_EdgeRadius: 0
 --- !u!1 &1754897903
 GameObject:
   m_ObjectHideFlags: 0

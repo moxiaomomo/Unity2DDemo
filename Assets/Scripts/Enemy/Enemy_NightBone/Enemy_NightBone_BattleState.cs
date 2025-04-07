@@ -15,7 +15,7 @@ public class Enemy_NightBone_BattleState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        player = PlayerManager.instance.transform;
+        player = PlayerManager.instance.player.transform;
     }
 
     public override void Exit()
@@ -32,7 +32,6 @@ public class Enemy_NightBone_BattleState : EnemyState
         if (hit.collider != null)
         {
             stateTimer = enemy.battleTime;
-
             if (hit.distance < enemy.attackDistance)
             {
                 if (CanAttack())
@@ -42,13 +41,13 @@ public class Enemy_NightBone_BattleState : EnemyState
                 }
                 else
                 {
-                    enemy.SetZeroVelocity(); //保证敌人不会与玩家重合造成抽搐
                     enemy.stateMachine.ChangeState(enemy.idleState);
                     return;
                 }
             }
         }
-        moveDirection = (player.transform.position.x > enemy.transform.position.x) ? 1 : -1;
+        moveDirection = (player.position.x >= enemy.transform.position.x) ? 1 : -1;
+        Debug.Log("player postition: "+ player.position.x + "enemy position "+ enemy.transform.position.x);
         enemy.SetVelocity(moveDirection * enemy.moveSpeed, rb.velocity.y);
 
         if (stateTimer < 0 || Vector2.Distance(player.position, enemy.transform.position) > 20)

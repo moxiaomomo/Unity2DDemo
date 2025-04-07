@@ -11,7 +11,7 @@ public class Enemy_NightBone_MoveState : Enmey_NightBone_GroundState
     public override void Enter()
     {
         base.Enter();
-        stateTimer = enmey.moveTime;
+        stateTimer = enemy.moveTime;
     }
 
     public override void Exit()
@@ -22,14 +22,14 @@ public class Enemy_NightBone_MoveState : Enmey_NightBone_GroundState
     public override void Update()
     {
         base.Update();
-        enmey.SetVelocity(enmey.moveSpeed * enmey.facingDirection, rb.velocity.y);
-        if (enmey.IsWallDetected() || !enmey.IsGroundDetected())
+        enemy.SetVelocity(enemy.moveSpeed * enemy.facingDirection, rb.velocity.y);
+        if (enemy.IsWallDetected() || !enemy.IsGroundDetected())
         {
-            enmey.Flip();
+            enemy.Flip();
         }
         if (stateTimer <= 0)
         {
-            stateMachine.ChangeState(enmey.idleState);
+            stateMachine.ChangeState(enemy.idleState);
         }
     }
 }
