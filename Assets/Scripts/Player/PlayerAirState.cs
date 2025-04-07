@@ -24,7 +24,7 @@ public class PlayerAirState : PlayerState
 
         player.SetVelocity(xInput * player.moveSpeed * .8f, rb.velocity.y);
 
-        if (player.IsWallDetected() && rb.velocity.y < 0)
+        if (player.IsWallDetected())
         {
             stateMachine.ChangeState(player.wallState);
         }

@@ -6,7 +6,7 @@ public class UI_MainScene_Menu : MonoBehaviour
 {
     [SerializeField] private string sceneName = "MainMenu";
     [SerializeField] private GameObject Character;
-    [SerializeField] public GameObject YouDie; 
+    [SerializeField] public GameObject YouDie;
     private bool isPaused = false;
     // Start is called before the first frame update
     private void Start()
@@ -51,5 +51,8 @@ public class UI_MainScene_Menu : MonoBehaviour
     }
 
 
-    public void RestartGameButton() => GameManager.instance.RestartScene();
+    public void RestartGameButton()
+    {
+        GameManager.instance.RestartScene();
+     }
 }
