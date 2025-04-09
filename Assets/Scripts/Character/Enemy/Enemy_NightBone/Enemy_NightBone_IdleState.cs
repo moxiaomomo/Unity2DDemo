@@ -2,19 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_NightBone_IdleState : EnemyState
+public class Enemy_NightBone_IdleState : Enmey_NightBone_GroundState
 {
-    private Enemy_NightBone enmey;
-    public Enemy_NightBone_IdleState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _stateName, Enemy_NightBone _enemy) : base(_enemyBase, _stateMachine, _stateName)
+    public Enemy_NightBone_IdleState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _stateName, Enemy_NightBone _enemy) : base(_enemyBase, _stateMachine, _stateName, _enemy)
     {
-        enmey = _enemy;
     }
 
     public override void Enter()
     {
         base.Enter();
-        enmey.SetZeroVelocity();
-        stateTimer = enmey.idleTime;
+        enemy.SetZeroVelocity();
+        stateTimer = enemy.idleTime;
     }
 
     public override void Exit()
@@ -27,7 +25,7 @@ public class Enemy_NightBone_IdleState : EnemyState
         base.Update();
         if (stateTimer <= 0)
         {
-            stateMachine.ChangeState(enmey.moveState);
+            stateMachine.ChangeState(enemy.moveState);
         }
     }
 }

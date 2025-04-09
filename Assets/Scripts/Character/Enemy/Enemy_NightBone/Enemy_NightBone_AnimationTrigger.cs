@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enmey_NightBone_AnimationTrigger : MonoBehaviour
+public class Enemy_NightBone_AnimationTrigger : MonoBehaviour
 {
     private Enemy_NightBone enemy => GetComponentInParent<Enemy_NightBone>();
 
