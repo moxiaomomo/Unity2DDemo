@@ -23,59 +23,59 @@ github仓库中放了release包，里面有我打包好的运行程序，**下�
 
 ## 一、完成功能介绍
 
-![](.\images\game_start.gif)
+![](images/game_start.gif)
 
 通过unity自带的打包工具构建exe游玩程序，并通过动画状态机实现简单的界面淡入淡出效果。
 
-![](.\images\enter_game.gif)
+![](images/enter_game.gif)
 
 点击开始游戏，切换到主场景，进入游戏。目前测试场景共两个角色，可操控的玩家和不可操控的敌人。
 
-![](.\images\base_move.gif)
+![](images/base_move.gif)
 
 玩家可通过wasd进行基本移动操作，后面的背景会随着玩家移动进行移动切换，以实现人物真的在移动的效果。
 
-![](.\images\base_jump.gif)
+![](images/base_jump.gif)
 
 玩家可通过space键进行基本跳跃功能
 
-![](.\images\fall_die.gif)
+![](images/fall_die.gif)
 
 没踩在ground标记的可碰撞物体时，会下坠，下面绑定了一个标记了trigger的盒子，玩家越过就死了。弹出死亡菜单，点击重新游戏。
 
-![](.\images\enemy_alert.gif)
+![](images/enemy_alert.gif)
 
 当进入敌人视野时，敌人进行警戒状态，会超玩家所在位置进行移动。当判定攻击距离大于检测射线时，发动攻击。（这里是用双射线检测，避免跟在敌人身后又不察觉的问题）。同时使用携程设置了一个被攻击时变白色的效果。
 
-![](.\images\jump_avoid_attack.gif)
+![](images/jump_avoid_attack.gif)
 
 玩家可以通过跳上高台躲避敌人的视野，当检测射线距离过长或敌人警戒时间结束，敌人重新恢复巡逻状态，解除敌意。
 
-![](.\images\avoid_attack.gif)
+![](images/avoid_attack.gif)
 
 玩家可以通过躲避闪开攻击，敌人的攻击范围和动画显示绑定契合，当攻击未触碰到玩家碰撞器时，不会触发伤害。
 
-![](.\images\combo_attack.gif)
+![](images/combo_attack.gif)
 
 玩家拥有三段连续攻击，第三段连续攻击会发生轻微位移，以增强打击效果。
 
-![](.\images\counter_attack.gif)
+![](images/counter_attack.gif)
 
 玩家可以通过把握敌人攻击帧进行反击。我为敌人设置了一个可被反击的窗口，当窗口出现，敌人会出现红色圆块代表可被反击，此时按下鼠标右键进行反击状态，检测到敌人攻击自动反击，并触发敌人僵直效果。
 
-![](.\images\enemy_die.gif)
+![](images/enemy_die.gif)
 
 敌人血条见0，敌人触发死亡状态，同时把敌人丢进对象池，不销毁，以便后续继续使用。
 
-![](.\images\wall_slide.gif)
+![](images/wall_slide.gif)
 
 当玩家跳跃靠近墙体，进行爬墙动画，保留y轴速度，以实现下滑效果。按住s键，可以加快下滑速度。
 
-![](.\images\multi_jump.gif)
+![](images/multi_jump.gif)
 
 实现了基本的蹬墙跳，并优化了手感。
 
-![](.\images\exit_game.gif)
+![](images/exit_game.gif)
 
 点击esc弹出玩家菜单，点击返回按钮返回主界面，点击退出退出游戏，并保存用户存档。
 
