@@ -82,6 +82,7 @@ github仓库中放了release包，里面有我打包好的运行程序，**下�
 
 ## 二、使用行为树进行BOSS的设计
 
+<p>   <img src="images/boss_fight.png" width="95%" style="margin-right:2%;"></p>
 待施工🚧
 
 ## 三、未来功能设计

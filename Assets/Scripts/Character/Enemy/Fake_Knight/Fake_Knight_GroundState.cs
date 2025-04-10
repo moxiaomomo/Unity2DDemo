@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fake_Knight_GroundState : EnemyState
+public class Fake_Knight_GroundState : Fake_Knight_State
 {
-    private Fake_Knight boss;
-
-    public Fake_Knight_GroundState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _stateName, Fake_Knight _boss) : base(_enemyBase, _stateMachine, _stateName)
+    public Fake_Knight_GroundState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _stateName, Fake_Knight _boss) : base(_enemyBase, _stateMachine, _stateName, _boss)
     {
-        boss = _boss;
     }
 
     public override void Enter()
