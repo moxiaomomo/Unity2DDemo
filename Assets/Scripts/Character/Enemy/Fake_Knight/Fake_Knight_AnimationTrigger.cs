@@ -29,6 +29,7 @@ public class Fake_Knight_AnimationTrigger : MonoBehaviour
 
     private void EnemyDie()
     {
+        Fake_Knight_WallEvent.OnBossDefeated?.Invoke();
         EnemyPoolManager.instance.ReturnEnemy(boss.poolTag, boss);
     }
 }

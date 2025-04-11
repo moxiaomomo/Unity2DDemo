@@ -80,7 +80,7 @@ public class Enemy : Entity
     {
         base.OnDrawGizmos();
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + attackDistance * facingDirection, transform.position.y));
+        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + attackDistance * facingDirection, wallCheck.position.y));
     }
 
     public virtual void AnimationFinishTrigger() =>

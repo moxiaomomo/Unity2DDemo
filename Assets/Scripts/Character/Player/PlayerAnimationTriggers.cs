@@ -25,6 +25,7 @@ public class PlayerAnimationTriggers : MonoBehaviour
     private void DieTrigger()
     {
         player.AnimationTrigger();
+        player.gameObject.SetActive(false);
         ui_main_scene_menu.YouDie.SetActive(true);
     }
 }
