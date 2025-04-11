@@ -11,7 +11,6 @@ public class WallComponets : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("test");
         if(collision.CompareTag("Player")&& isDeathZone)
         {
             Debug.Log("Player is dead");

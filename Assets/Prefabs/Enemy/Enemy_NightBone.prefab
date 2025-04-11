@@ -644,12 +644,13 @@ MonoBehaviour:
   counterImage: {fileID: 4230017139334070026}
   playerCheckDistance: 5
   attackDistance: 1.5
-  attackCooldown: 0.5
+  attackCooldown: 1
   lastTimeAttacked: 0
   moveSpeed: 5
   moveTime: 3
   idleTime: 1
   battleTime: 4
+  poolTag: NightBone
 --- !u!50 &6546804551356837437
 Rigidbody2D:
   serializedVersion: 4
@@ -707,10 +708,10 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   damage:
-    baseValue: 30
+    baseValue: 10
     modifiers: 
   maxHP:
-    baseValue: 100
+    baseValue: 50
     modifiers: 
   currentHP: 0
 --- !u!70 &321269968688763933

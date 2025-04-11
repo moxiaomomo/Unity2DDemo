@@ -27,8 +27,8 @@ public class Fake_Knight_AnimationTrigger : MonoBehaviour
 
     private void CloseCounterWindow() => boss.CloseCounterAttackWindow();
 
-    private void onDeathAnimationFinished()
+    private void EnemyDie()
     {
-        boss.gameObject.SetActive(false);
+        EnemyPoolManager.instance.ReturnEnemy(boss.poolTag, boss);
     }
 }

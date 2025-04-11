@@ -27,8 +27,8 @@ public class Enemy_NightBone_AnimationTrigger : MonoBehaviour
 
     private void CloseCounterWindow() => enemy.CloseCounterAttackWindow();
 
-    private void onDeathAnimationFinished()
+    private void EnemyDie()
     {
-        enemy.gameObject.SetActive(false);
+        EnemyPoolManager.instance.ReturnEnemy(enemy.poolTag, enemy);
     }
 }

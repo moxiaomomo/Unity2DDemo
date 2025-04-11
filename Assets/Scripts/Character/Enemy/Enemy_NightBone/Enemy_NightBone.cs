@@ -1,8 +1,12 @@
 
+using System.Collections;
 using UnityEngine;
 
 public class Enemy_NightBone : Enemy
 {
+    [Header("Pool Tag")]
+    public string poolTag = "NightBone";
+
     #region State
     public Enemy_NightBone_IdleState idleState { get; private set; }
     public Enemy_NightBone_MoveState moveState { get; private set; }
@@ -26,13 +30,11 @@ public class Enemy_NightBone : Enemy
     protected override void Start()
     {
         base.Start();
-        stateMachine.Initialize(idleState);
     }
 
     protected override void Update()
     {
         base.Update();
-
     }
 
     public override bool CanbeStunned()
@@ -67,5 +69,15 @@ public class Enemy_NightBone : Enemy
     {
         base.Die();
         stateMachine.ChangeState(deadState);
+    }
+
+    public override void OnSpawnedFromPool()
+    {
+        stateMachine.Initialize(idleState);
+    }
+
+    public override void OnReturnedToPool()
+    {
+        StopAllCoroutines(); // ·ÀÖ¹Ð­³ÌÐ¹Â¶
     }
 }

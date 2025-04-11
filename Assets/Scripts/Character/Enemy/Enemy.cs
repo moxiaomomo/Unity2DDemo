@@ -49,7 +49,6 @@ public class Enemy : Entity
     protected override void Update()
     {
         base.Update();
-
         stateMachine.currentState.Update();
     }
 
@@ -86,4 +85,12 @@ public class Enemy : Entity
 
     public virtual void AnimationFinishTrigger() =>
         stateMachine.currentState.AnimationFinishTrigger();
+
+    public virtual void OnSpawnedFromPool()
+    {
+    }
+
+    public virtual void OnReturnedToPool()
+    {
+    }  
 }

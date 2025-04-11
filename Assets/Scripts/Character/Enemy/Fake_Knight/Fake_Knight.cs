@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Fake_Knight : Enemy
 {
+    [Header("Pool Tag")]
+    public string poolTag = "FakeKnight";
+
     #region State
     public Fake_Knight_IdleState idleState { get; private set; }
     public Fake_Knight_JumpState fallState { get; private set; }
@@ -20,7 +23,6 @@ public class Fake_Knight : Enemy
     protected override void Start()
     {
         base.Start();
-        stateMachine.Initialize(fallState);
     }
 
     protected override void Update()
@@ -28,5 +30,13 @@ public class Fake_Knight : Enemy
         base.Update();
     }
 
+    public override void OnSpawnedFromPool()
+    {
+        stateMachine.Initialize(fallState);
+    }
 
+    public override void OnReturnedToPool()
+    {
+        StopAllCoroutines(); // ·ÀÖ¹Ð­³ÌÐ¹Â¶
+    }
 }
