@@ -86,11 +86,5 @@ public class Enemy : Entity
     public virtual void AnimationFinishTrigger() =>
         stateMachine.currentState.AnimationFinishTrigger();
 
-    public virtual void OnSpawnedFromPool()
-    {
-    }
 
-    public virtual void OnReturnedToPool()
-    {
-    }  
 }

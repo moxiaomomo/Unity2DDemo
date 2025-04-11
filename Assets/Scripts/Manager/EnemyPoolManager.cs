@@ -75,10 +75,8 @@ public class EnemyPoolManager : MonoBehaviour
                 },
                 actionOnGet: enemy => {
                     enemy.gameObject.SetActive(true);
-                    enemy.OnSpawnedFromPool();
                 },
                 actionOnRelease: enemy => {
-                    enemy.OnReturnedToPool();
                     enemy.gameObject.SetActive(false);
                 },
                 actionOnDestroy: enemy => {

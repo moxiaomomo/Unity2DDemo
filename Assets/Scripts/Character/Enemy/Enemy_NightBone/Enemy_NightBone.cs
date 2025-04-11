@@ -30,6 +30,7 @@ public class Enemy_NightBone : Enemy
     protected override void Start()
     {
         base.Start();
+        stateMachine.Initialize(idleState);
     }
 
     protected override void Update()
@@ -71,13 +72,4 @@ public class Enemy_NightBone : Enemy
         stateMachine.ChangeState(deadState);
     }
 
-    public override void OnSpawnedFromPool()
-    {
-        stateMachine.Initialize(idleState);
-    }
-
-    public override void OnReturnedToPool()
-    {
-        StopAllCoroutines(); // ·ÀÖ¹Ð­³ÌÐ¹Â¶
-    }
 }

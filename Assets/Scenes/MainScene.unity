@@ -47401,6 +47401,7 @@ MonoBehaviour:
   - enemyTag: NightBone
     spawnPoints:
     - {fileID: 434966266}
+    - {fileID: 536936647}
   - enemyTag: FakeKnight
     spawnPoints:
     - {fileID: 320192807}
