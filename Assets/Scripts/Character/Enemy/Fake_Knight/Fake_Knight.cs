@@ -8,36 +8,38 @@ public class Fake_Knight : Enemy
     [Header("Pool Tag")]
     public string poolTag = "FakeKnight";
 
+    public bool stateTrigger = false;
+
     #region State
     public Fake_Knight_IdleState idleState { get; private set; }
-    public Fake_Knight_JumpState fallState { get; private set; }
+    public Fake_Knight_JumpState jumpState { get; private set; }
     public Fake_Knight_LandState landState { get; private set; }
     public Fake_Knight_MoveState moveState { get; private set; }
     public Fake_Knight_State attackState { get; private set; }
     public Fake_Knight_StunnedState stunnedState { get; private set; }
     public Fake_Knight_DeadState deadState { get; private set; }
+    public Fake_Knight_JumpAnticipateState jumpAnticipateState { get; private set; }
     #endregion
     protected override void Awake()
     {
         base.Awake();
         idleState = new Fake_Knight_IdleState(this, stateMachine, "idle", this);
-        fallState = new Fake_Knight_JumpState(this, stateMachine, "jump", this);
+        jumpState = new Fake_Knight_JumpState(this, stateMachine, "jump", this);
         landState = new Fake_Knight_LandState(this, stateMachine, "land", this);
         moveState = new Fake_Knight_MoveState(this, stateMachine, "move", this);
         attackState = new Fake_Knight_AttackState(this, stateMachine, "attack", this);
         stunnedState = new Fake_Knight_StunnedState(this, stateMachine, "stunned", this);
         deadState = new Fake_Knight_DeadState(this, stateMachine, "dead", this);
+        jumpAnticipateState = new Fake_Knight_JumpAnticipateState(this, stateMachine, "jumpAnticipate", this);
     }
 
     protected override void Start()
     {
         base.Start();
-        stateMachine.Initialize(fallState);
     }
 
     protected override void Update()
     {
-        base.Update();
     }
 
     public override bool CanbeStunned()

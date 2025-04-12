@@ -1178,7 +1178,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0.00000004377216, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.327051, y: 16.05869, z: -9.968239}
+  m_LocalPosition: {x: 26.327051, y: 15.97869, z: -9.968239}
   m_LocalScale: {x: 1.1375, y: 0.9625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42388,7 +42388,7 @@ Transform:
   m_GameObject: {fileID: 605196634}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.999278, y: 1.8012365, z: -10}
+  m_LocalPosition: {x: -13.999278, y: 1.7396686, z: -10}
   m_LocalScale: {x: 1.1932551, y: 0.34204662, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43029,7 +43029,7 @@ Transform:
   m_GameObject: {fileID: 801717131}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.94, y: 10.53, z: 0}
+  m_LocalPosition: {x: 27.94, y: 10.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -47619,6 +47619,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1490356430 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9191070352710130005, guid: a110782dea31b7440969a86f00e19463, type: 3}
+  m_PrefabInstance: {fileID: 2480410238090694157}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1494255087
 GameObject:
   m_ObjectHideFlags: 0
@@ -48642,7 +48647,7 @@ Transform:
   m_GameObject: {fileID: 1805202400}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.327051, y: 16.05869, z: -9.968239}
+  m_LocalPosition: {x: 26.327051, y: 15.97869, z: -9.968239}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49064,12 +49069,52 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7031892542964349192, guid: a110782dea31b7440969a86f00e19463, type: 3}
   m_PrefabInstance: {fileID: 2480410238090694157}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1490356430}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b06df373600df9f4f861f0c9bddc34fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &682043660728774257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490356430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  asynchronousLoad: 0
+  pauseWhenDisabled: 0
+  restartWhenComplete: 0
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 0}
+  mBehaviorSource:
+    behaviorName: Behavior
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(386,-37)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(-4,133)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-97,121.795921)"},"ID":2,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Jump","NodeData":{"Offset":"(-86.65314,122.387749)"},"ID":3,"Name":"Jump","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(75,117)"},"ID":4,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":2},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}}]}]}}'
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects: []
+        byteData: 
+        byteDataArray: 
+      Version: 1.7.12
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!1001 &2480410238090694157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49078,6 +49123,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 649749361490229813, guid: a110782dea31b7440969a86f00e19463, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 649749361490229813, guid: a110782dea31b7440969a86f00e19463, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.31
+      objectReference: {fileID: 0}
     - target: {fileID: 717230275014021525, guid: a110782dea31b7440969a86f00e19463, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -49092,11 +49145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6177152665478387715, guid: a110782dea31b7440969a86f00e19463, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.31
+      value: 76.53
       objectReference: {fileID: 0}
     - target: {fileID: 6177152665478387715, guid: a110782dea31b7440969a86f00e19463, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.55
+      value: 23.94
       objectReference: {fileID: 0}
     - target: {fileID: 6177152665478387715, guid: a110782dea31b7440969a86f00e19463, type: 3}
       propertyPath: m_LocalPosition.z
@@ -49134,9 +49187,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1.981
       objectReference: {fileID: 0}
+    - target: {fileID: 6855979368524086606, guid: a110782dea31b7440969a86f00e19463, type: 3}
+      propertyPath: m_Size.y
+      value: 4.0070796
+      objectReference: {fileID: 0}
+    - target: {fileID: 6855979368524086606, guid: a110782dea31b7440969a86f00e19463, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.12203711
+      objectReference: {fileID: 0}
     - target: {fileID: 7031892542964349192, guid: a110782dea31b7440969a86f00e19463, type: 3}
       propertyPath: poolTag
       value: FakeKnight
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031892542964349192, guid: a110782dea31b7440969a86f00e19463, type: 3}
+      propertyPath: idleTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031892542964349192, guid: a110782dea31b7440969a86f00e19463, type: 3}
+      propertyPath: jumpForce
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7031892542964349192, guid: a110782dea31b7440969a86f00e19463, type: 3}
       propertyPath: moveSpeed
@@ -49152,23 +49221,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7031892542964349192, guid: a110782dea31b7440969a86f00e19463, type: 3}
       propertyPath: attackDistance
-      value: 4.76
+      value: 3.55
       objectReference: {fileID: 0}
     - target: {fileID: 7031892542964349192, guid: a110782dea31b7440969a86f00e19463, type: 3}
       propertyPath: stunDirection.x
-      value: 70
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7031892542964349192, guid: a110782dea31b7440969a86f00e19463, type: 3}
       propertyPath: stunDirection.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7031892542964349192, guid: a110782dea31b7440969a86f00e19463, type: 3}
+      propertyPath: attackCheckRadius
+      value: 2.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031892542964349192, guid: a110782dea31b7440969a86f00e19463, type: 3}
       propertyPath: wallCheckDistance
-      value: 4.22
+      value: 3.45
       objectReference: {fileID: 0}
     - target: {fileID: 7031892542964349192, guid: a110782dea31b7440969a86f00e19463, type: 3}
       propertyPath: playerCheckDistance
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787480955570671370, guid: a110782dea31b7440969a86f00e19463, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.09
       objectReference: {fileID: 0}
     - target: {fileID: 9191070352710130005, guid: a110782dea31b7440969a86f00e19463, type: 3}
       propertyPath: m_Name
@@ -49181,7 +49258,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9191070352710130005, guid: a110782dea31b7440969a86f00e19463, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 682043660728774257}
   m_SourcePrefab: {fileID: 100100000, guid: a110782dea31b7440969a86f00e19463, type: 3}
 --- !u!1001 &5851604261381434311
 PrefabInstance:

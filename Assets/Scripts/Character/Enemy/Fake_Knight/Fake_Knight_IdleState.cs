@@ -11,7 +11,6 @@ public class Fake_Knight_IdleState : Fake_Knight_GroundState
     public override void Enter()
     {
         base.Enter();
-        stateTimer = boss.idleTime;
     }
 
     public override void Exit()
@@ -22,9 +21,5 @@ public class Fake_Knight_IdleState : Fake_Knight_GroundState
     public override void Update()
     {
         base.Update();
-        if(stateTimer<0)
-        {
-            stateMachine.ChangeState(boss.moveState);
-        }
     }
 }

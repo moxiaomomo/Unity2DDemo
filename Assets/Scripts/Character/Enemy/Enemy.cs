@@ -26,6 +26,7 @@ public class Enemy : Entity
     public float moveTime;
     public float idleTime;
     public float battleTime;
+    public float jumpForce = 0f;
 
     protected override void Awake()
     {
