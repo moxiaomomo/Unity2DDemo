@@ -13,7 +13,6 @@ public class Fake_Knight_AttackState : Fake_Knight_State
         base.Enter();
         stateTimer = .5f;
         boss.animator.SetBool("attackAnticipate", true);
-
     }
 
     public override void Exit()
@@ -28,9 +27,9 @@ public class Fake_Knight_AttackState : Fake_Knight_State
         if (stateTimer < 0)
         {
             boss.animator.SetBool("attackAnticipate", false);
-            boss.SetZeroVelocity(isAttack: true);
             if (triggeredCalled)
             {
+                boss.stateTrigger = true;
                 boss.stateMachine.ChangeState(boss.idleState);
             }
         }

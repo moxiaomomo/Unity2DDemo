@@ -11,6 +11,7 @@ public class Fake_Knight_IdleState : Fake_Knight_GroundState
     public override void Enter()
     {
         base.Enter();
+        boss.SetZeroVelocity();
     }
 
     public override void Exit()

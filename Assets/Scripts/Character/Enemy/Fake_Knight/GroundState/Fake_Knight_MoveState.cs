@@ -11,6 +11,7 @@ public class Fake_Knight_MoveState : Fake_Knight_GroundState
     public override void Enter()
     {
         base.Enter();
+        stateTimer = boss.moveTime;
     }
 
     public override void Exit()
@@ -23,24 +24,20 @@ public class Fake_Knight_MoveState : Fake_Knight_GroundState
         base.Update();
         RaycastHit2D hit = boss.IsPlayerDetected();
 
+        boss.SetVelocity(boss.moveSpeed * boss.facingDirection, rb.velocity.y);
         if (hit.collider != null)
         {
             if (hit.distance < boss.attackDistance)
             {
-                if (CanAttack())
-                {
-                    boss.stateMachine.ChangeState(boss.attackState);
-                    return;
-                }
-                else
-                {
-                    boss.stateMachine.ChangeState(boss.idleState);
-                    return;
-                }
+                boss.SetZeroVelocity(isAttack: true);
+                boss.stateMachine.ChangeState(boss.attackState);
             }
         }
-        boss.SetVelocity(boss.moveSpeed * boss.facingDirection, rb.velocity.y);
-
+        if(stateTimer<0)
+        {
+            boss.SetZeroVelocity(isAttack: true);
+            boss.stateMachine.ChangeState(boss.attackState);
+        }
     }
 
 }

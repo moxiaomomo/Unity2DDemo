@@ -26,13 +26,4 @@ public class Fake_Knight_State : EnemyState
     {
         base.Update();
     }
-
-    public override bool CanAttack()
-    {
-        if (Time.time >= boss.lastTimeAttacked + boss.attackCooldown)
-        {
-            return true;
-        }
-        return false;
-    }
 }
