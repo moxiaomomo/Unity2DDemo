@@ -23,6 +23,5 @@ public class SpawnMaggot : Fake_Knight_Action
     public override void OnEnd()
     {
         maggot.stateTrigger = false;
-        maggot.stats.Rebirth();
     }
 }

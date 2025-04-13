@@ -57,4 +57,10 @@ public class Fake_Knight : Enemy
         return false;
     }
 
+    public new void Die()
+    {
+        Fake_Knight_WallEvent.OnBossDefeated?.Invoke();
+        EnemyPoolManager.instance.ReturnEnemy(poolTag, this);
+    }
+
 }

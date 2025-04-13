@@ -5,6 +5,7 @@ using UnityEngine;
 public class Maggot : Enemy
 {
     private Fake_Knight boss;
+    private bool flipOnce = false;
     public bool stateTrigger = false;
     protected override void Start()
     {
@@ -12,14 +13,31 @@ public class Maggot : Enemy
         boss = GetComponentInParent<Fake_Knight>();
     }
 
+
     protected override void Update()
     {
-        if (stats.currentHP <= 0)
+        FlipUI();
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        boss.stats.Rebirth();
+        boss.stateTrigger = false;
+
+        stateTrigger = true;
+        flipOnce = false;
+        stats.Rebirth();
+        gameObject.SetActive(false);
+    }
+
+    private void FlipUI()
+    {
+        if (flipOnce) return;
+        if (boss.facingDirection != 1 && !flipOnce)
         {
-            stateTrigger = true;   
-            boss.stats.Rebirth();
-            boss.stateTrigger = false;
-            gameObject.SetActive(false);
+            flipOnce = true;
+            onFlipped?.Invoke();
         }
     }
 

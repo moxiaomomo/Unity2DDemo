@@ -47,6 +47,7 @@ public class Entity : MonoBehaviour
 
     public virtual void DamageEffect()
     {
+        if (!gameObject.activeInHierarchy) return;
         fx.StartCoroutine("FlashFX");
         StartCoroutine("HitKnockback");
     }

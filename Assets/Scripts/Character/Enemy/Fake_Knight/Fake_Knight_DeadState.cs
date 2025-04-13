@@ -12,6 +12,7 @@ public class Fake_Knight_DeadState : Fake_Knight_State
     public override void Enter()
     {
         base.Enter();
+        stateTimer = .8f;
     }
 
     public override void Exit()
@@ -22,7 +23,10 @@ public class Fake_Knight_DeadState : Fake_Knight_State
     public override void Update()
     {
         base.Update();
-        rb.velocity = new Vector2(0, rb.velocity.y);
+        if(stateTimer<0)
+        {
+            boss.stateTrigger = true;
+        }
     }
 
 }
