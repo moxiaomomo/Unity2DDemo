@@ -18,7 +18,7 @@ public class ObjectManager : MonoBehaviour
     }
 
     [Header("Object config")]
-    [SerializeField] private List<ObjectPoolConfig> poolConfigs;
+    public List<ObjectPoolConfig> poolConfigs;
 
     private Dictionary<string, ObjectPool<GameObject>> poolDict;
 

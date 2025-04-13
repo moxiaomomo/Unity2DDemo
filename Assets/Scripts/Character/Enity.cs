@@ -26,7 +26,7 @@ public class Entity : MonoBehaviour
     #region Components
     public Animator animator { get; private set; }
     public Rigidbody2D rb { get; private set; }
-    public EntityFX fx { get; private set; }
+    public EntityFX fx;
     public CharacterStats stats { get; private set; }
     public CapsuleCollider2D capsulecd { get; private set; }
     #endregion

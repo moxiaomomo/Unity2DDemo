@@ -40,6 +40,17 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
+    public virtual void Rebirth()
+    {
+        currentHP = maxHP.GetValue();
+        onHealthChanged?.Invoke();
+    }
+
+    public virtual int GetCurrentHP()
+    {
+        return currentHP;
+    }
+
     protected virtual void Die()
     {
     }

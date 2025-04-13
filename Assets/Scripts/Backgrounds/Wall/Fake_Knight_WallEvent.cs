@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BehaviorDesigner.Runtime;
 
 public class Fake_Knight_WallEvent : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class Fake_Knight_WallEvent : MonoBehaviour
 
         // Éú³É Boss
         Enemy boss = EnemyPoolManager.instance.GetEnemy(bossTag);
+
         boss.transform.position = bossSpawnPoint.position;
 
         // ËøÃÅ

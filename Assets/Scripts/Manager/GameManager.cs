@@ -25,5 +25,16 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(currentScene.name);
     }
 
+    public void FreezeTime(float duration)
+    {
+        StartCoroutine(FreezeCoroutine(duration));
+    }
+
+    private IEnumerator FreezeCoroutine(float duration)
+    {
+        Time.timeScale = 0f;                      // 暂停游戏时间
+        yield return new WaitForSecondsRealtime(duration);  // 等待真实世界时间（不受 Time.timeScale 影响）
+        Time.timeScale = 1f;                      // 恢复游戏时间
+    }
 
 }

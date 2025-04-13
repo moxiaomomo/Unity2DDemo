@@ -24,7 +24,7 @@ public class PlayerJumpState : PlayerGroundState
         base.Update();
         //if (rb.velocity.y < 0)
         //{
-        //    stateMachine.ChangeState(player.airState);
+        //    stateMachine.ChangeStage(player.airState);
         //}
     }
 }
