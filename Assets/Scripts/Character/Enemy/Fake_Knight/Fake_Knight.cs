@@ -20,6 +20,7 @@ public class Fake_Knight : Enemy
     public Fake_Knight_DeadState deadState { get; private set; }
     public Fake_Knight_JumpAnticipateState jumpAnticipateState { get; private set; }
     public Fake_Knight_ChangeStageState changeStageState { get; private set; }
+    public Fake_Knight_AttackAnticipateState attackAnticipateState { get; private set; }
     #endregion
     protected override void Awake()
     {
@@ -33,6 +34,7 @@ public class Fake_Knight : Enemy
         deadState = new Fake_Knight_DeadState(this, stateMachine, "dead", this);
         jumpAnticipateState = new Fake_Knight_JumpAnticipateState(this, stateMachine, "jumpAnticipate", this);
         changeStageState = new Fake_Knight_ChangeStageState(this, stateMachine, "changeStage", this);
+        attackAnticipateState = new Fake_Knight_AttackAnticipateState(this, stateMachine, "attackAnticipate", this);
     }
 
     protected override void Start()

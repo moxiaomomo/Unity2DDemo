@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
-public class Attack : Fake_Knight_Action
+public class AttackAnticipate : Fake_Knight_Action
 {
     // Start is called before the first frame update
     public override void OnStart()
@@ -12,7 +12,7 @@ public class Attack : Fake_Knight_Action
 
     private void StartAttack()
     {
-        boss.stateMachine.ChangeState(boss.attackState);
+        boss.stateMachine.ChangeState(boss.moveState);
     }
 
     public override TaskStatus OnUpdate()
