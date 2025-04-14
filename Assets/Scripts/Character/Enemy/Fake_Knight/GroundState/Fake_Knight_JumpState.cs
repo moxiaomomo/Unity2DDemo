@@ -23,6 +23,7 @@ public class Fake_Knight_JumpState : Fake_Knight_GroundState
 
     public override void Exit()
     {
+        boss.bt.enabled = true;
         base.Exit();
     }
 

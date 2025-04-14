@@ -1,25 +1,12 @@
-using BehaviorDesigner.Runtime.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Jump : Fake_Knight_Action
+using BehaviorDesigner.Runtime.Tasks;
+public class Stunned : Fake_Knight_Action
 {
     public override void OnStart()
     {
-        StartJump();
-    }
-
-    private void StartJump()
-    {
-        if (boss.stateMachine.currentState == null)
-        {
-            boss.stateMachine.Initialize(boss.jumpState); //初始化boss掉下来
-        }
-        else
-        {
-            boss.stateMachine.ChangeState(boss.jumpState);
-        }
+        boss.stateMachine.ChangeState(boss.stunnedState);
     }
 
     public override TaskStatus OnUpdate()
@@ -31,5 +18,6 @@ public class Jump : Fake_Knight_Action
     public override void OnEnd()
     {
         boss.stateTrigger = false;
+        boss.ChangeStunned();
     }
 }

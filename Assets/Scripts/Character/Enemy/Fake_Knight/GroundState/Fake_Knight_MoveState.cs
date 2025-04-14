@@ -29,13 +29,13 @@ public class Fake_Knight_MoveState : Fake_Knight_GroundState
         {
             if (hit.distance < boss.attackDistance)
             {
-                boss.SetZeroVelocity(isAttack: true);
+                boss.SetZeroVelocity();
                 boss.stateMachine.ChangeState(boss.attackAnticipateState);
             }
         }
         if(stateTimer<0)
         {
-            boss.SetZeroVelocity(isAttack: true);
+            boss.SetZeroVelocity();
             boss.stateMachine.ChangeState(boss.attackAnticipateState);
         }
     }

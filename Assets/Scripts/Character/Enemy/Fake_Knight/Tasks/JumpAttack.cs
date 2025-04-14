@@ -3,24 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Jump : Fake_Knight_Action
+public class JumpAttack : Fake_Knight_Action
 {
     public override void OnStart()
     {
-        StartJump();
+        boss.stateMachine.ChangeState(boss.jumpAttackState);
     }
 
-    private void StartJump()
-    {
-        if (boss.stateMachine.currentState == null)
-        {
-            boss.stateMachine.Initialize(boss.jumpState); //初始化boss掉下来
-        }
-        else
-        {
-            boss.stateMachine.ChangeState(boss.jumpState);
-        }
-    }
 
     public override TaskStatus OnUpdate()
     {

@@ -1,3 +1,4 @@
+using BehaviorDesigner.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
@@ -10,6 +11,8 @@ public class Fake_Knight : Enemy
 
     public bool stateTrigger = false;
 
+    public BehaviorTree bt;
+
     #region State
     public Fake_Knight_IdleState idleState { get; private set; }
     public Fake_Knight_JumpState jumpState { get; private set; }
@@ -21,6 +24,7 @@ public class Fake_Knight : Enemy
     public Fake_Knight_JumpAnticipateState jumpAnticipateState { get; private set; }
     public Fake_Knight_ChangeStageState changeStageState { get; private set; }
     public Fake_Knight_AttackAnticipateState attackAnticipateState { get; private set; }
+    public Fake_Knight_JumpAttackState jumpAttackState { get; private set; }
     #endregion
     protected override void Awake()
     {
@@ -35,27 +39,19 @@ public class Fake_Knight : Enemy
         jumpAnticipateState = new Fake_Knight_JumpAnticipateState(this, stateMachine, "jumpAnticipate", this);
         changeStageState = new Fake_Knight_ChangeStageState(this, stateMachine, "changeStage", this);
         attackAnticipateState = new Fake_Knight_AttackAnticipateState(this, stateMachine, "attackAnticipate", this);
+        jumpAttackState = new Fake_Knight_JumpAttackState(this, stateMachine, "jumpAttack", this);
     }
 
     protected override void Start()
     {
         base.Start();
+        bt = GetComponent<BehaviorTree>();
     }
 
     protected override void Update()
     {
     }
 
-    public override bool CanbeStunned()
-    {
-        if (base.CanbeStunned())
-        {
-            Debug.Log("Stunned");
-            stateMachine.ChangeState(stunnedState);
-            return true;
-        }
-        return false;
-    }
 
     public new void Die()
     {

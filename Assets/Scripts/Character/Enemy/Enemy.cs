@@ -14,6 +14,7 @@ public class Enemy : Entity
     public Vector2 stunDirection;
     protected bool canBeStunned;
     [SerializeField] protected GameObject counterImage;
+    public bool isStunned = false;
 
     [Header("Attack info")]
     public float playerCheckDistance;
@@ -57,14 +58,20 @@ public class Enemy : Entity
     {
         // 使敌人可以被反击
         canBeStunned = true;
-        counterImage.SetActive(true);
+        if (counterImage != null)
+        {
+            counterImage.SetActive(true);
+        }
     }
 
     public virtual void CloseCounterAttackWindow()
     {
         // 使敌人不能被反击
         canBeStunned = false;
-        counterImage.SetActive(false);
+        if (counterImage != null)
+        {
+            counterImage.SetActive(false);
+        }
     }
 
     public virtual bool CanbeStunned()
@@ -75,6 +82,12 @@ public class Enemy : Entity
             return true;
         }
         return false;
+    }
+
+    // for behavior tree
+    public virtual void ChangeStunned()
+    {
+        isStunned = !isStunned;
     }
 
     protected override void OnDrawGizmos()

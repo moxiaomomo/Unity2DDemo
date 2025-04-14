@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    [Header("Knockback info")]
-    [SerializeField] protected Vector2 knockbackDirection;
-    [SerializeField] protected float knockbackDuration;
-    protected bool isKnocked;
 
     [Header("Collison info")]
     [SerializeField] protected Transform groundCheck;
@@ -49,16 +45,8 @@ public class Entity : MonoBehaviour
     {
         if (!gameObject.activeInHierarchy) return;
         fx.StartCoroutine("FlashFX");
-        StartCoroutine("HitKnockback");
     }
 
-    protected virtual IEnumerator HitKnockback()
-    {
-        isKnocked = true;
-        rb.velocity = new Vector2(knockbackDirection.x * -facingDirection, knockbackDirection.y);
-        yield return new WaitForSeconds(knockbackDuration);
-        isKnocked = false;
-    }
 
     public virtual void Die()
     {
@@ -104,21 +92,13 @@ public class Entity : MonoBehaviour
     #endregion
 
     #region Velocity
-    public virtual void SetZeroVelocity(bool isAttack = false)
+    public virtual void SetZeroVelocity()
     {
-        if (isKnocked && !isAttack)
-        {
-            return;
-        }
         rb.velocity = new Vector2(0, 0);
     }
 
     public virtual void SetVelocity(float _xVelocity, float _yVelocity)
     {
-        if (isKnocked)
-        {
-            return;
-        }
         rb.velocity = new Vector2(_xVelocity, _yVelocity);
         FlipController(_xVelocity);
     }

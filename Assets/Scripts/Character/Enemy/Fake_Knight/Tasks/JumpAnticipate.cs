@@ -1,26 +1,15 @@
-using BehaviorDesigner.Runtime.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Jump : Fake_Knight_Action
+using BehaviorDesigner.Runtime.Tasks;
+public class JumpAnticipate : Fake_Knight_Action
 {
+    // Start is called before the first frame update
     public override void OnStart()
     {
-        StartJump();
+        boss.stateMachine.ChangeState(boss.jumpAnticipateState);
     }
 
-    private void StartJump()
-    {
-        if (boss.stateMachine.currentState == null)
-        {
-            boss.stateMachine.Initialize(boss.jumpState); //初始化boss掉下来
-        }
-        else
-        {
-            boss.stateMachine.ChangeState(boss.jumpState);
-        }
-    }
 
     public override TaskStatus OnUpdate()
     {

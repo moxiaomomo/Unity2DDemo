@@ -11,7 +11,6 @@ public class Fake_Knight_AttackAnticipateState : Fake_Knight_State
     public override void Enter()
     {
         base.Enter();
-        stateTimer = 1f;
     }
 
     public override void Exit()
@@ -22,7 +21,7 @@ public class Fake_Knight_AttackAnticipateState : Fake_Knight_State
     public override void Update()
     {
         base.Update();
-        if(stateTimer <= 0)
+        if(triggeredCalled)
         {
             boss.stateTrigger = true;
         }

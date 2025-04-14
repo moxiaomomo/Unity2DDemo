@@ -24,7 +24,7 @@ public class Enemy_NightBone_AttackState : EnemyState
     public override void Update()
     {
         base.Update();
-        enemy.SetZeroVelocity(isAttack: true);
+        enemy.SetZeroVelocity();
         if (triggeredCalled)
         {
             enemy.stateMachine.ChangeState(enemy.battleState);

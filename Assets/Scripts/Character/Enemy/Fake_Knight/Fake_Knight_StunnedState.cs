@@ -25,8 +25,10 @@ public class Fake_Knight_StunnedState : Fake_Knight_State
     public override void Update()
     {
         base.Update();
+        Debug.Log(stateTimer);
         if (stateTimer < 0)
         {
+            boss.stateTrigger = true;
             stateMachine.ChangeState(boss.idleState);
         }
     }

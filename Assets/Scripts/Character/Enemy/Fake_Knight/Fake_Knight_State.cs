@@ -25,5 +25,6 @@ public class Fake_Knight_State : EnemyState
     public override void Update()
     {
         base.Update();
+        boss.animator.SetFloat("yVelocity", rb.velocity.y);
     }
 }
