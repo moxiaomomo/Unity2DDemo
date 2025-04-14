@@ -27,6 +27,7 @@ public class Enmey_NightBone_GroundState : EnemyState
         if (hit.collider!=null)
         {
             stateMachine.ChangeState(enemy.battleState);
+            return;
         }
     }
 }

@@ -12,6 +12,7 @@ public class Fake_Knight_AnimationTrigger : MonoBehaviour
     }
     private void AttackTrigger()
     {
+        AudioManager.instance.PlaySFX(2);
         Collider2D[] colliders = Physics2D.OverlapCircleAll(boss.attackCheck.position, boss.attackCheckRadius);
         foreach (var hit in colliders)
         {

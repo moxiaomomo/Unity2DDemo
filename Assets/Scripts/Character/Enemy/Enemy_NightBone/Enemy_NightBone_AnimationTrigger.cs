@@ -12,6 +12,7 @@ public class Enemy_NightBone_AnimationTrigger : MonoBehaviour
     }
     private void AttackTrigger()
     {
+
         Collider2D[] colliders = Physics2D.OverlapCircleAll(enemy.attackCheck.position, enemy.attackCheckRadius);
         foreach (var hit in colliders)
         {

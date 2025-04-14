@@ -50,9 +50,12 @@ public class SaveManager : MonoBehaviour
         {
             NewGame();
         }
-        foreach (ISaveManager saveManager in saveManagers)
+        else
         {
-            saveManager.LoadData(gameData);
+            foreach (ISaveManager saveManager in saveManagers)
+            {
+                saveManager.LoadData(gameData);
+            }
         }
 
     }

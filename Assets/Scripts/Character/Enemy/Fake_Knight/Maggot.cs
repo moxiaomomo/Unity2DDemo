@@ -7,6 +7,7 @@ public class Maggot : Enemy
     private Fake_Knight boss;
     private bool flipOnce = false;
     public bool stateTrigger = false;
+    private BoxCollider2D boxcollider;
     protected override void Start()
     {
         base.Start();
@@ -17,6 +18,8 @@ public class Maggot : Enemy
     protected override void Update()
     {
         FlipUI();
+        boxcollider = boss.animator.GetComponentInChildren<BoxCollider2D>();
+        boxcollider.enabled = false;
     }
 
     public override void Die()

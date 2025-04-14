@@ -23,10 +23,14 @@ public class PlayerManager : MonoBehaviour, ISaveManager
     public void LoadData(GameData _data)
     {
         this.currency = _data.currency;
+        player.stats.SetCurrentHP(_data.currentHP);
+        player.transform.position = _data.position;
     }
 
     public void SaveData(ref GameData _data)
     {
         _data.currency = this.currency;
+        _data.currentHP = player.stats.GetCurrentHP();
+        _data.position = player.transform.position;
     }
 }

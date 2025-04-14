@@ -13,6 +13,7 @@ public class Enemy_NightBone_DeadState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.instance.PlaySFX(0);
         //enemy.animator.SetBool(enemy.lastStateName, true);
         //stateTimer = .8f;
     }

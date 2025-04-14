@@ -13,6 +13,7 @@ public class Enemy_NightBone_AttackState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.instance.PlaySFX(7);
     }
 
     public override void Exit()

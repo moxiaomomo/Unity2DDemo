@@ -8,7 +8,6 @@ public class CheckIfStunned : Fake_Knight_Conditional
 
     public override TaskStatus OnUpdate()
     {
-        Debug.Log(boss.isStunned);
         return boss.isStunned ? TaskStatus.Success : TaskStatus.Failure;
     }
 

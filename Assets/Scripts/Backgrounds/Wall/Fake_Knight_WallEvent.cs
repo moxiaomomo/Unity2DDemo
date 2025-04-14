@@ -8,6 +8,8 @@ public class Fake_Knight_WallEvent : MonoBehaviour
 {
     public string bossTag = "FakeKnight";
     public Transform bossSpawnPoint;
+    public float bossSpawnDelay = 2f; // 暴露到 Inspector
+    public GameObject saveBtn;
 
     private bool bossDefeated = false;
     public GameObject[] doorsToLock; // 把门设置在这里
@@ -24,11 +26,10 @@ public class Fake_Knight_WallEvent : MonoBehaviour
         if (triggered || !other.CompareTag("Player") || other.transform.position.x < transform.position.x) return;
 
         triggered = true;
+        AudioManager.instance.PlayBGM(1);
+        saveBtn.SetActive(false); // 隐藏存档按钮
 
-        // 生成 Boss
-        Enemy boss = EnemyPoolManager.instance.GetEnemy(bossTag);
-
-        boss.transform.position = bossSpawnPoint.position;
+        StartCoroutine(DelayedSpawnBoss()); // 生成 Boss
 
         // 锁门
         foreach (var door in doorsToLock)
@@ -40,11 +41,23 @@ public class Fake_Knight_WallEvent : MonoBehaviour
         cmBossCamera.Priority = 20;
     }
 
+    private IEnumerator DelayedSpawnBoss()
+    {
+        yield return new WaitForSeconds(bossSpawnDelay);
+
+        // 生成 Boss
+        Enemy boss = EnemyPoolManager.instance.GetEnemy(bossTag);
+        boss.transform.position = bossSpawnPoint.position;
+    }
+
+
     public void EndBossFight()
     {
         if (bossDefeated) return;
 
+        AudioManager.instance.PlayBGM(0);
         bossDefeated = true;
+        saveBtn.SetActive(true); // 隐藏存档按钮
 
         foreach (var door in doorsToLock)
         {

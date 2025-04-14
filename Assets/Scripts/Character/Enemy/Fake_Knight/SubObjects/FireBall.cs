@@ -24,6 +24,10 @@ public class FireBall : MonoBehaviour
         circleCollider = GetComponent<CircleCollider2D>();
     }
 
+    private void OnEnable()
+    {
+        AudioManager.instance.PlaySFX(1);
+    }
     protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));

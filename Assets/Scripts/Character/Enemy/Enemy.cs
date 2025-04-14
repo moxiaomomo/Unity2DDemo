@@ -101,4 +101,16 @@ public class Enemy : Entity
         stateMachine.currentState.AnimationFinishTrigger();
 
 
+    public void LoadData(GameData _data)
+    {
+        Debug.Log(_data);
+        this.stats.SetCurrentHP(_data.currentHP);
+        this.transform.position = _data.position;
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.currentHP = this.stats.GetCurrentHP();
+        _data.position = this.transform.position;
+    }
 }

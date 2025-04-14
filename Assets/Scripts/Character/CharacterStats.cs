@@ -46,9 +46,22 @@ public class CharacterStats : MonoBehaviour
         onHealthChanged?.Invoke();
     }
 
+    public virtual void IncreaseMaxHP(int _amount)
+    {
+        maxHP.AddModifier(_amount);
+        currentHP += _amount;
+        onHealthChanged?.Invoke();
+    }
+
     public virtual int GetCurrentHP()
     {
         return currentHP;
+    }
+
+    public virtual void SetCurrentHP(int _amount)
+    {
+        currentHP = _amount;
+        onHealthChanged?.Invoke();
     }
 
     protected virtual void Die()

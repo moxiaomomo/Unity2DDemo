@@ -22,7 +22,6 @@ public class Enemy_NightBone_MoveState : Enmey_NightBone_GroundState
     public override void Update()
     {
         base.Update();
-        enemy.SetVelocity(enemy.moveSpeed * enemy.facingDirection, rb.velocity.y);
         if (enemy.IsWallDetected() || !enemy.IsGroundDetected())
         {
             enemy.Flip();
@@ -31,5 +30,6 @@ public class Enemy_NightBone_MoveState : Enmey_NightBone_GroundState
         {
             stateMachine.ChangeState(enemy.idleState);
         }
+        enemy.SetVelocity(enemy.moveSpeed * enemy.facingDirection, rb.velocity.y);
     }
 }
