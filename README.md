@@ -1,20 +1,23 @@
 # UnityDemo
-(｡･∀･)ﾉﾞ嗨，你好，这是我的2D类银河恶魔城测试项目。（目前已更新到v0.2.0版本，BOSS已拥有多阶段和变招能力，请在release版中进行下载。）
+(｡･∀･)ﾉﾞ嗨，你好，这是我的2D类银河恶魔城测试项目。
+
+⭐（目前已更新到v0.2.0版本，BOSS已拥有多阶段和变招能力，请在release版中进行下载。）
 
 创建这个仓库的初衷是为了借此熟悉游戏开发流程，找到游戏开发工作，以便加入未来十年内可能发生的AI赋能游戏的大浪潮。
 
-顺便推销一下自己，本人研究方向为计算机视觉领域下的**人体姿态估计**，可以借助pytorch框架设计新模型；
+顺便推销一下自己，本人研究方向为计算机视觉领域下的**人体姿态估计**：
 
-1. 目前熟练掌握mmpose框架，可以独立完成从训练模型到开发部署一整套流程；
-2. 懂得用tensorRT、ONNXRuntime进行模型推理；
-3. 会配置和使用包括jetson orin nx在内的nvidia边缘推理设备；
-4. 熟练mmdeploy部署框架，目标检测也会，mmdetection和mmcv也会，其他关于计算机视觉（图片生成等）的东西也懂一点，可以快速上手！
+1. 能够复现顶会论文，可以借助pytorch框架设计新模型；
+2. 目前熟练掌握mmpose框架，可以独立完成从训练模型到开发部署一整套流程；
+3. 懂得用tensorRT、ONNXRuntime进行模型推理；
+4. 会配置和使用包括jetson orin nx在内的nvidia边缘推理设备；
+5. 熟练mmdeploy部署框架，目标检测也会，mmdetection和mmcv也会，其他关于计算机视觉（图片生成等）的东西也懂一点，可以快速上手！
 
 **切回正题！**
 
 还不太会markdown，所以界面有点粗糙......
 
-github仓库中放了release包，里面有我打包好的运行程序，**下载打开就能进行游玩**。不过目前还没有达到游玩标准，先标记为v0.1.1（测试版），后续我会继续更新的。
+github仓库中放了release包，里面有我打包好的运行程序，**下载打开就能进行游玩**。不过目前还没有达到游玩标准，~~先标记为v0.1.1（测试版）~~，先标记为v0.2.0（测试版），后续我会继续更新的。
 
 目前DEMO的重点如下：**
 
@@ -26,10 +29,11 @@ github仓库中放了release包，里面有我打包好的运行程序，**下�
 
 - [x] **对象池**:使用继承和多态的模式创建Entity类，并由此迭代开发Enemy和Player。使用对象池对敌人进行管理（增删），使用单例模式管理player。
 - [x] **有效状态机**:使用排他有限状态机（即一次只能进入一个状态）设计玩家和敌人。
-- [x] 玩家具备基本移动、跳远、蹬墙、三段战斗和反击等基本功能，支持血条以及简单UI显示。
-- [x] 敌人具备待机、移动、攻击、可被反击等基本功能，支持血条显示实时血量。
-- [x] 基本的地形、背景、菜单UI设置。
 - [x] **行为树**:使用行为树+状态机混合，设计BOSS的初步AI逻辑。（BOSS采用空洞骑士的假骑士BOSS战，使用的精灵表是网上开源的）
+- [x] **镜头控制**：包括主镜头和BOSS战镜头的平滑切换（借用CineCamera插件），BOSS战的镜头摇晃。
+- [x] **系统事件**：包括进入BOSS战的开关门事件，敌人死亡的广播事件等等。
+
+玩家具备基本移动、跳远、蹬墙、三段战斗和反击等基本功能，支持血条以及简单UI显示；敌人具备待机、移动、攻击、可被反击等基本功能，支持血条显示实时血量；基本的地形、背景、菜单UI设置。
 
 所涉及的美术资源和代码参考如链接所示：https://www.udemy.com/course/2d-rpg-alexdev/，
 
@@ -47,7 +51,7 @@ github仓库中放了release包，里面有我打包好的运行程序，**下�
 - [ ] 使用有限状态机/行为树设计一个队友NPC的行为逻辑。👌
 - [ ] 加入BOSS战死亡后进行时间回溯，快速回顾战斗行为并回到初遇BOSS。（因为感觉这个很酷，代码也有点含金量，而且这样可以死了直接重开BOSS战）😋
 
-## 一、完成功能介绍
+## 一、基本功能介绍
 
 <p>   <img src="images/player_animation_state.png" width="32%" style="margin-right:2%;"><img src="images/game_start.gif" width="32%" style="margin-right:2%;"><img src="images/player_statemachine.png" width="32%"></p>
 
@@ -83,14 +87,67 @@ github仓库中放了release包，里面有我打包好的运行程序，**下�
 
 ## 二、使用行为树进行BOSS的设计
 
-<p>   <img src="images/boss_fight.png" width="95%" style="margin-right:2%;"></p>
-待施工🚧
+<p>   <img src="images/boss_fight.png" width="32%" style="margin-right:2%;"><img src="images/toolkit.png" width="32%" style="margin-right:2%;"><img src="images/bossBehaviorTree.png" width="32%"></p>
 
-目前已完成：BOSS动画状态机，BOSS行为树设计与代码构建。
+使用空洞骑士的假骑士资源完成了一场boss战的设计。中间的图是给之前的初始场景增加提示词，简单告知玩家可以进行的操作。右图是boss行为树的构建。
 
-**（release里的v0.1.1里的BOSS是用状态机写的，新的BOSS战代码还有些bug，改完了再打包上来）**
+**全部代码自己完成！**
 
-## 三、未来功能设计
+### 2.1BOSS战三阶段设计介绍
+
+<p>   <img src="images/cameraControl.gif" width="32%" style="margin-right:2%;"><img src="images/bossFall.gif" width="32%" style="margin-right:2%;"><img src="images/bossJump.gif" width="32%"></p>
+
+第一阶段：
+
+​	玩家进行BOSS房间，**触发关门事件**，锁门不让玩家出去，同时进行**镜头调控**，平滑过渡到更小的摄像机尺寸，以便加强boss战斗的细节和临场感；
+
+​	在等待几秒之后，BOSS从天而降入场，砸地产生**镜头抖动**，增强战斗刺激性；boss的一阶段只会跳跃攻击，当砸到玩家身上会扣血，同时砸到地面同样会造成镜头抖动；
+
+<p>   <img src="images/bossMaggot.gif" width="48%" style="margin-right:2%;"><img src="images/bossAttack.gif" width="48%" style="margin-right:2%;"></p>
+
+第二阶段：
+
+​	玩家将第一阶段的BOSS打至残血时，触发**生成假骑士**行为，小虫子会爬出来；当小虫子被打残之后，boss会进入第二阶段；
+
+​	第二阶段的boss在第一阶段的基础上，新增了奔跑攻击的变招。攻击会产生冲击波，当砸到玩家身上会扣血，同时砸地伴随镜头抖动；
+
+​	招式通过Behavior Designer的randomselector进行选择；
+
+<p>   <img src="images/bossMadAttack.gif" width="48%" style="margin-right:2%;"><img src="images/bossJumpAttack.gif" width="48%" style="margin-right:2%;"></p>
+
+第三阶段
+
+​	当BOSS进入第三阶段，会比前面两个阶段多100点血量。同时增加疯狂乱砸变招，伴随镜头抖动和生成火球，火球砸在玩家身上会扣血；
+
+​	同时还增加跳跃攻击变招；
+
+<p>   <img src="images/bossStunned.gif" width="100%" ></p>
+
+创新点🤓
+
+​	我在之前代码的基础上，为boss设计了一个全新行为，即被玩家反击。当被玩家反击，boss会倒退；
+
+### 2.2行为树+状态机实现逻辑
+
+​	因为一开始的BOSS战，我是用状态机来实现的，所以保留了这部分的代码。当我学习Behavior Designer的时候，发现行为树的实现逻辑和状态机有很多不一样。首先行为树的更新是在TaskStatus 的OnUpdate方法。而最初的状态机使用的是方法，两者的调用顺序不一样，会造成错位。
+
+​	**如果用状态机，那么BOSS达不到智能（或者说达到智能的程度要手工增加很多代码），而如果使用行为树那么前面积累的代码都不能用了。**
+
+​	后来我想出了一个折中的办法，因为状态机的更新其实是通过stateMachine.currentState.Update()更新，而这部分代码是通过MonoBehaviour下的Update调用的，也就是说将这个方法转移到TaskStatus 的OnUpdate下也可以实现状态机的更新，那么问题就解决了。代价就是一个或多个状态机配备一个或多个Task脚本进行驱动。
+
+​	而BOSS的分阶段设计，本质上是根据Behavior Tree自带的Random Selector实现的，我参考https://www.youtube.com/watch?v=X7VwAGvAOIw这个博主的方法，重写了Random Selector，在此基础上实现了分阶段选择行为器，即StageBasedSelector。
+
+<font color="red">为避免有人误会，在此注意。我只参考了这个视频博主的BOSS战设计思路和选择器的实现，并未搬运代码。因为这个博主的BOSS战实现是纯靠行为树脚本来实现的，和我的基于状态机的代码完全不一样。可以通过对比动画状态机就能看出来</font>
+
+​	分阶段选择行为器在Random Selector基础上实现，主要是根据Random Selector根据获取下面子节点的索引，再随机执行。那么可以在此基础上设计一个序列，存放子节点索引，通过共享一个CurrentState，为不同阶段设置不同的索引，即可实现分阶段随机选择行为。
+
+### 2.3 总结
+
+​	基于上述代码的实现，我已基本掌握unity游戏开发流程以及代码实现，能够满足unity客户端开发/程序开发的要求。如果您对此感兴趣，欢迎与我进行联络，我很希望能加入一家游戏公司，且我认为我已满足基本条件（因为我是应届生啦😆）进行项目开发。
+
+**求个offer吧！**😭
+
+## 三、队友AI设计
 
 待施工🚧
 
