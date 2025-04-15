@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
+
 public class SpawnShockWave : Fake_Knight_Action
 {
     public string objectTag = "ShockWave";
     public LayerMask whatisGround;
-    private GameObject shockWave;
-    // Start is called before the first frame update
+
     public override void OnStart()
     {
         Generate();
@@ -15,32 +13,35 @@ public class SpawnShockWave : Fake_Knight_Action
 
     private void Generate()
     {
-        shockWave = ObjectManager.instance.GetObjectItem(objectTag);
+        GameObject shockWave = ObjectManager.instance.GetObjectItem(objectTag);
 
-        RaycastHit2D hit = Physics2D.Raycast(boss.attackCheck.position, Vector2.down, 10f, whatisGround);
+        if (shockWave == null)
+        {
+            Debug.LogWarning("[SpawnShockWave] 无法从对象池中获取 ShockWave");
+            return;
+        }
 
+        Vector2 spawnPos = boss.attackCheck.position;
+
+        // 使用 Raycast 精确贴地生成
+        RaycastHit2D hit = Physics2D.Raycast(spawnPos, Vector2.down, 10f, whatisGround);
         if (hit.collider != null)
         {
-            // 设置波的位置：X 使用攻击点，Y 使用地面高度
-            shockWave.transform.position = new Vector2(boss.attackCheck.position.x, hit.point.y);
-        }
-        else
-        {
-            // 如果没检测到地面，保持原位置
-            shockWave.transform.position = boss.attackCheck.position;
+            spawnPos = new Vector2(spawnPos.x, hit.point.y);
         }
 
-        //通过方法注入参数
-        var wave = shockWave.GetComponent<ShockWave>();
-        wave.SetDirection(boss.facingDirection);
+        // 激活 ShockWave
+        ShockWave wave = shockWave.GetComponent<ShockWave>();
+        wave.Activate(spawnPos, boss.facingDirection);
     }
 
     public override TaskStatus OnUpdate()
     {
         return TaskStatus.Success;
     }
+
     public override void OnEnd()
     {
-
+        // 可选：加入结束时清理逻辑
     }
 }

@@ -8,10 +8,12 @@ public class SpawnMaggot : Fake_Knight_Action
 
     public SharedGameObject maggotShared;
     private Maggot maggot;
+    public SharedInt currentStage;
 
     public override void OnStart()
     {
         maggot = maggotShared.Value.GetComponent<Maggot>();
+        maggot.SetCurrentStage(currentStage.Value);
         maggot.gameObject.SetActive(true);
     }
 

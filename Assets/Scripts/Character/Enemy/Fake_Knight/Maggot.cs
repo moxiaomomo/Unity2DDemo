@@ -8,12 +8,17 @@ public class Maggot : Enemy
     private bool flipOnce = false;
     public bool stateTrigger = false;
     private BoxCollider2D boxcollider;
+    private int currentStage = 0;
     protected override void Start()
     {
         base.Start();
         boss = GetComponentInParent<Fake_Knight>();
     }
 
+    public void SetCurrentStage(int _stage)
+    {
+        currentStage = _stage;
+    }
 
     protected override void Update()
     {

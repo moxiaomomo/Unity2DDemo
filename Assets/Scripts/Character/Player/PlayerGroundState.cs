@@ -24,8 +24,9 @@ public class PlayerGroundState : PlayerState
         {
             stateMachine.ChangeState(player.primaryAttackState);
         }
-        else if (Input.GetKeyDown(KeyCode.Mouse1))
+        else if (Input.GetKeyDown(KeyCode.Mouse1) && player.counterAttackCoolTimeCounter<0)
         {
+            player.counterAttackCoolTimeCounter = player.counterAttackCoolTime;
             stateMachine.ChangeState(player.counterAttackState);
         }
 

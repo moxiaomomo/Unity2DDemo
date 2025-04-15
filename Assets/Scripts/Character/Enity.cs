@@ -18,6 +18,7 @@ public class Entity : MonoBehaviour
 
     public int facingDirection { get; private set; } = 1;
     protected bool facingRight = true;
+    protected bool isDead = false;
 
     #region Components
     public Animator animator { get; private set; }
@@ -50,7 +51,8 @@ public class Entity : MonoBehaviour
 
     public virtual void Die()
     {
-
+        isDead = true;
+        stats.SetCurrentHP(0);
     }
 
     protected virtual void Update()

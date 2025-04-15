@@ -10,6 +10,8 @@ public class Player : Entity
     [Header("Attack Info")]
     public Vector2[] attackMovement;
     public float counterAttackDuration;
+    public float counterAttackCoolTime;
+    public float counterAttackCoolTimeCounter;
 
 
     [Header("Move Info")]
@@ -18,12 +20,18 @@ public class Player : Entity
 
 
     [Header("Dash info")]
-    [SerializeField] private float dashCoolTime;
-    [SerializeField] private float dashCoolTimeCounter;
+    public float dashCoolTime;
+    public float dashCoolTimeCounter;
     public float dashSpeed = 10f;
     public float dashDuration;
     public float dashDiretion { get; private set; }
 
+    [Header("Stunned info")]
+    [SerializeField] private float force;
+    [SerializeField] private float stunDuration = .5f;
+    private bool isStunned = false;
+    public bool IsStunned => isStunned;
+    private Coroutine stunCoroutine;
     #region States
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
@@ -89,8 +97,9 @@ public class Player : Entity
     {
 
         dashCoolTimeCounter -= Time.deltaTime;
+        counterAttackCoolTimeCounter -= Time.deltaTime;
 
-        if (IsWallDetected())
+        if (IsWallDetected()||isDead)
         {
             return;
         }
@@ -107,5 +116,32 @@ public class Player : Entity
         }
     }
 
+    public override void DamageEffect()
+    {
+        base.DamageEffect();
+        SetZeroVelocity();
+        Vector2 knockback = new Vector2(-facingDirection, 1);
+        rb.AddForce(knockback.normalized * force, ForceMode2D.Impulse);
+        StartStun();
+    }
+
+    public void StartStun()
+    {
+        if (stunCoroutine != null)
+            StopCoroutine(stunCoroutine);
+
+        stunCoroutine = StartCoroutine(StunRoutine());
+    }
+
+    private IEnumerator StunRoutine()
+    {
+        isStunned = true;
+
+        // 你可以在这里播放受控动画
+        yield return new WaitForSeconds(stunDuration);
+
+        isStunned = false;
+        stunCoroutine = null;
+    }
 
 }

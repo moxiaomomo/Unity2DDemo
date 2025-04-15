@@ -37,5 +37,6 @@ public class Ui_MainMenu : MonoBehaviour
         fadeScreen.FadeOut();
         yield return new WaitForSeconds(_delay);
         SceneManager.LoadScene(sceneName);
+        SaveManager.instance.LoadGame();
     }
 }

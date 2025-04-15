@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShockWave : MonoBehaviour
@@ -7,40 +5,54 @@ public class ShockWave : MonoBehaviour
     [Header("Pool Tag")]
     [SerializeField] private string objectTag = "ShockWave";
 
-    [Header("Object info")]
+    [Header("Object Info")]
     [SerializeField] private float maxTravelDistance = 10f;
     [SerializeField] private float xVelocity;
     [SerializeField] private int damage;
-    
+
     public Rigidbody2D rb { get; private set; }
     public PolygonCollider2D polygonCollider { get; private set; }
+
     private Vector2 startPos;
     private int direction = 1;
+    private bool isActive = false;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         polygonCollider = GetComponent<PolygonCollider2D>();
     }
 
-    public void SetDirection(int dir)
+    public void Activate(Vector2 position, int dir)
     {
         direction = dir;
+        transform.position = position;
+        startPos = position;
+        isActive = true;
+        gameObject.SetActive(true);
+        Debug.Log($"[ShockWave] Activated at {position}, dir: {direction}");
     }
 
     private void OnEnable()
     {
-        startPos = transform.position;
+        if (!isActive)
+        {
+            // 如果没有通过 Activate 激活，自动初始化（保险）
+            startPos = transform.position;
+            direction = 1;
+        }
     }
 
-
-    // Update is called once per frame
     private void Update()
     {
+        if (!isActive) return;
+
         rb.velocity = new Vector2(xVelocity * direction, 0);
 
         if (Vector2.Distance(transform.position, startPos) >= maxTravelDistance)
         {
+            Debug.Log("[ShockWave] Max distance reached, returning to pool.");
+            isActive = false;
             ObjectManager.instance.ReturnObjectItem(objectTag, gameObject);
         }
     }
@@ -49,8 +61,8 @@ public class ShockWave : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerManager.instance.player.stats.TakeDamage(damage); // 造成伤害
+            Debug.Log("[ShockWave] Hit player, dealing damage.");
+            PlayerManager.instance.player.stats.TakeDamage(damage);
         }
     }
-
 }

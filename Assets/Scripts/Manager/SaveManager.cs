@@ -34,9 +34,9 @@ public class SaveManager : MonoBehaviour
 
     private void Start()
     {
+        gameData = new GameData();
         dataHandler = new FileDataHandler(Application.persistentDataPath,fileName, encryptData);
         saveManagers = FindAllISaveManager();
-        LoadGame();
     }
 
     public void NewGame()
