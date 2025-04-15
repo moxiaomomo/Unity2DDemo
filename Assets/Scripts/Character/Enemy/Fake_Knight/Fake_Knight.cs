@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class Fake_Knight : Enemy
 {
-    [Header("Pool Tag")]
-    public string poolTag = "FakeKnight";
 
     public bool stateTrigger = false;
 

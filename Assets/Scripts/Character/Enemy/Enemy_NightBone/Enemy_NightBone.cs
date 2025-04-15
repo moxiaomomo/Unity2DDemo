@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Enemy_NightBone : Enemy
 {
-    [Header("Pool Tag")]
-    public string poolTag = "NightBone";
 
     #region State
     public Enemy_NightBone_IdleState idleState { get; private set; }
@@ -19,6 +17,7 @@ public class Enemy_NightBone : Enemy
     protected override void Awake()
     {
         base.Awake();
+        poolTag = "NightBone";
         idleState = new Enemy_NightBone_IdleState(this, stateMachine, "Idle", this);
         moveState = new Enemy_NightBone_MoveState(this, stateMachine, "Move", this);
         battleState = new Enemy_NightBone_BattleState(this, stateMachine, "Move", this);

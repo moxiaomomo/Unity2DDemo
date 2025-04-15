@@ -29,6 +29,10 @@ public class EnemyPoolManager : MonoBehaviour
 
     private Dictionary<string, ObjectPool<Enemy>> poolDict;
 
+    // 敌人编号
+    private int enemyCounter = 0;
+    private Dictionary<string, Enemy> activeEnemies = new Dictionary<string, Enemy>();
+
     private void Awake()
     {
         if (instance != null)
@@ -43,7 +47,11 @@ public class EnemyPoolManager : MonoBehaviour
     {
         poolDict = new Dictionary<string, ObjectPool<Enemy>>();
         InitAllPools();
-        SpawnAllConfiguredEnemies();
+        // 只有在非读取存档时，才生成默认配置敌人
+        if (!SessionFlags.isLoadingFromSave)
+        {
+            SpawnAllConfiguredEnemies();
+        }
     }
 
     public void SpawnAllConfiguredEnemies()
@@ -70,13 +78,21 @@ public class EnemyPoolManager : MonoBehaviour
             ObjectPool<Enemy> pool = new ObjectPool<Enemy>(
                 createFunc: () => {
                     var enemy = Instantiate(config.prefab);
+                    enemy.poolTag = config.enemyTag; // 对齐类型
                     enemy.gameObject.SetActive(false);
                     return enemy;
                 },
                 actionOnGet: enemy => {
+                    if (string.IsNullOrEmpty(enemy.enemyID))
+                    {
+                        enemy.enemyID = $"{enemy.poolTag}_{enemyCounter++}";
+                    }
+                    activeEnemies[enemy.enemyID] = enemy;
                     enemy.gameObject.SetActive(true);
                 },
                 actionOnRelease: enemy => {
+                    if (activeEnemies.ContainsKey(enemy.enemyID))
+                        activeEnemies.Remove(enemy.enemyID);
                     enemy.gameObject.SetActive(false);
                 },
                 actionOnDestroy: enemy => {
@@ -110,6 +126,11 @@ public class EnemyPoolManager : MonoBehaviour
         }
 
         poolDict[tag].Release(enemy);
+    }
+
+    public List<Enemy> GetAllActiveEnemies()
+    {
+        return new List<Enemy>(activeEnemies.Values);
     }
 
 }

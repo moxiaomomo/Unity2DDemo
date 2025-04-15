@@ -17,7 +17,23 @@ public class Fake_Knight_JumpState : Fake_Knight_GroundState
         // 初始化boss下落不进行加速度
         if (boss.lastStateName != null)
         {
-            boss.SetVelocity(boss.moveSpeed * boss.facingDirection, boss.jumpForce);
+            Transform player = PlayerManager.instance.player.transform;
+            float playerDistance = Mathf.Abs(player.position.x - boss.transform.position.x);
+
+            float jumpTime = boss.jumpForce / Mathf.Abs(Physics2D.gravity.y); // 上升时间
+            float jumpHorizontalDistance = boss.moveSpeed * jumpTime;
+
+            // 如果玩家已经很近，就精准跳跃到玩家位置
+            if (playerDistance < jumpHorizontalDistance)
+            {
+                float horizontalSpeed = (player.position.x - boss.transform.position.x) / jumpTime;
+                boss.SetVelocity(horizontalSpeed, boss.jumpForce);
+            }
+            else
+            {
+                // 使用默认的固定朝向跳跃
+                boss.SetVelocity(boss.moveSpeed * boss.facingDirection, boss.jumpForce);
+            }
         }
     }
 

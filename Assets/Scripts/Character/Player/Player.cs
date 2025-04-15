@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 public class Player : Entity
 {
     public bool isBusy { get; private set; }
@@ -51,6 +51,7 @@ public class Player : Entity
     protected override void Awake()
     {
         base.Awake();
+        poolTag = "Player";
         stateMachine = new PlayerStateMachine();
         idleState = new PlayerIdleState(this, stateMachine, "Idle");
         moveState = new PlayerMoveState(this, stateMachine, "Move");
@@ -73,6 +74,10 @@ public class Player : Entity
     // Update is called once per frame
     protected override void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
         base.Update();
         stateMachine.currentState.Update();
         CheckDashInput();

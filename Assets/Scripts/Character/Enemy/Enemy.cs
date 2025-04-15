@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Entity
+public class Enemy : Entity,IEnemySavable
 {
     public EnemyStateMachine stateMachine { get; private set; }
     public string lastStateName { get; private set; }
+
+    public string enemyID;
 
     [SerializeField] protected LayerMask whatisPlayer;
 
@@ -101,16 +103,30 @@ public class Enemy : Entity
         stateMachine.currentState.AnimationFinishTrigger();
 
 
-    public void LoadData(GameData _data)
+
+    //用于保存数据
+    public GameData.EnemySaveData GetEnemySaveData()
     {
-        Debug.Log(_data);
-        this.stats.SetCurrentHP(_data.currentHP);
-        this.transform.position = _data.position;
+        return new GameData.EnemySaveData
+        {
+            enemyID = this.enemyID,
+            enemyTag = this.poolTag,
+            position = transform.position,
+            currentHP = this.stats.GetCurrentHP(),
+            isDead = this.isDead
+        };
     }
 
-    public void SaveData(ref GameData _data)
+    public void LoadEnemySaveData(GameData.EnemySaveData data)
     {
-        _data.currentHP = this.stats.GetCurrentHP();
-        _data.position = this.transform.position;
+        this.enemyID = data.enemyID;
+        this.poolTag = data.enemyTag;
+        this.stats.SetCurrentHP(data.currentHP);
+        transform.position = data.position;
+
+        if (data.isDead)
+            gameObject.SetActive(false);
+        else
+            gameObject.SetActive(true);
     }
 }

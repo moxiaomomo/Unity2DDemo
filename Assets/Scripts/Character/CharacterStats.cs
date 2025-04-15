@@ -12,7 +12,7 @@ public class CharacterStats : MonoBehaviour
     public Stat damage;
     public Stat maxHP;
 
-    public int currentHP;
+    private int currentHP;
 
     public System.Action onHealthChanged;
 

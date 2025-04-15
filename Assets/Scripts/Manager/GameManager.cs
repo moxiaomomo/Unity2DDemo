@@ -18,9 +18,12 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
     }
+
+
     public void RestartScene()
     {
         // Restart the current scene
+        SaveManager.instance.NewGame();
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }

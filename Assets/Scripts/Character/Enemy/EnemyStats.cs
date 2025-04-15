@@ -15,7 +15,7 @@ public class EnemyStats : CharacterStats
     public override void TakeDamage(int _damage)
     {
         base.TakeDamage(_damage);
-        if (currentHP > 0)
+        if (GetCurrentHP() > 0)
         {
             enemy.DamageEffect();
         }

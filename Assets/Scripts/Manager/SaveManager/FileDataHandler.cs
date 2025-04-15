@@ -84,11 +84,13 @@ public class FileDataHandler
 
     private string EncryptDecrypt(string _data)
     {
-        string modifiedData = "";
+        var builder = new System.Text.StringBuilder();
+
         for (int i = 0; i < _data.Length; i++)
         {
-            modifiedData += (char)(_data[i] ^ codeWord[i % codeWord.Length]);
+            builder.Append((char)(_data[i] ^ codeWord[i % codeWord.Length]));
         }
-        return modifiedData;
+
+        return builder.ToString();
     }
 }

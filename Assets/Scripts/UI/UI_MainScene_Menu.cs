@@ -9,9 +9,15 @@ public class UI_MainScene_Menu : MonoBehaviour
     [SerializeField] public GameObject YouDie;
     private bool isPaused = false;
     // Start is called before the first frame update
+
     private void Start()
     {
+        SessionFlags.isLoadingFromSave = true; //调试用，正式版删掉
+
+        SaveManager.instance.LoadGame();
+        SessionFlags.isLoadingFromSave = false;
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -54,5 +60,5 @@ public class UI_MainScene_Menu : MonoBehaviour
     public void RestartGameButton()
     {
         GameManager.instance.RestartScene();
-     }
+    }
 }

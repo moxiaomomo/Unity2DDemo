@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    [Header("Pool Tag")]
+    public string poolTag;
 
     [Header("Collison info")]
     [SerializeField] protected Transform groundCheck;
@@ -30,16 +32,15 @@ public class Entity : MonoBehaviour
 
     protected virtual void Awake()
     {
-
-    }
-
-    protected virtual void Start()
-    {
         fx = GetComponent<EntityFX>();
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<CharacterStats>();
         capsulecd = GetComponent<CapsuleCollider2D>();
+    }
+
+    protected virtual void Start()
+    {
     }
 
     public virtual void DamageEffect()
