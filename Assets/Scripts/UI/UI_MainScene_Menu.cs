@@ -12,10 +12,13 @@ public class UI_MainScene_Menu : MonoBehaviour
 
     private void Start()
     {
-        SessionFlags.isLoadingFromSave = true; //调试用，正式版删掉
+        StartCoroutine(LoadGameNextFrame());
+    }
 
+    private IEnumerator LoadGameNextFrame()
+    {
+        yield return null;
         SaveManager.instance.LoadGame();
-        SessionFlags.isLoadingFromSave = false;
     }
 
     private void Update()
@@ -25,7 +28,6 @@ public class UI_MainScene_Menu : MonoBehaviour
             TogglePause();
         }
     }
-
 
     public void ReturnMainMenu()
     {

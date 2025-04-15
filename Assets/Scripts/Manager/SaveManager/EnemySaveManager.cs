@@ -5,7 +5,10 @@ public class EnemySaveManager : MonoBehaviour, ISaveManager
 {
     public void SaveData(ref GameData data)
     {
-        data.enemyList.Clear();
+        if (data.enemyList == null)
+            data.enemyList = new List<GameData.EnemySaveData>();
+        else
+            data.enemyList.Clear();
 
         foreach (var enemy in EnemyPoolManager.instance.GetAllActiveEnemies())
         {
@@ -18,15 +21,8 @@ public class EnemySaveManager : MonoBehaviour, ISaveManager
 
     public void LoadData(GameData data)
     {
-        if (data.enemyList == null) return;
+        if (data.enemyList == null || data.enemyList.Count == 0) return;
 
-        foreach (var enemyData in data.enemyList)
-        {
-            Enemy enemy = EnemyPoolManager.instance.GetEnemy(enemyData.enemyTag);
-            if (enemy is IEnemySavable savable)
-            {
-                savable.LoadEnemySaveData(enemyData);
-            }
-        }
+        EnemyPoolManager.instance.SpawnEnemiesFromSave(data.enemyList);
     }
 }

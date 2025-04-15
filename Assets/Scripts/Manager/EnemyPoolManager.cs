@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -10,14 +9,14 @@ public class EnemyPoolManager : MonoBehaviour
     [System.Serializable]
     public class EnemyPoolConfig
     {
-        public string enemyTag;                    // 用于在脚本中调用
-        public Enemy prefab;                       // 预制体
-        public int initialSize = 5;                // 初始大小
-        public int maxSize = 20;                   // 最大容量
+        public string enemyTag;
+        public Enemy prefab;
+        public int initialSize = 5;
+        public int maxSize = 20;
     }
 
     [System.Serializable]
-    public class EnemySpawnConfig  //用来配置敌人生成
+    public class EnemySpawnConfig
     {
         public string enemyTag;
         public List<Transform> spawnPoints = new List<Transform>();
@@ -28,46 +27,31 @@ public class EnemyPoolManager : MonoBehaviour
     [SerializeField] private List<EnemySpawnConfig> spawnConfigs;
 
     private Dictionary<string, ObjectPool<Enemy>> poolDict;
-
-    // 敌人编号
-    private int enemyCounter = 0;
     private Dictionary<string, Enemy> activeEnemies = new Dictionary<string, Enemy>();
+    private int enemyCounter = 0;
 
     private void Awake()
     {
         if (instance != null)
         {
             Destroy(gameObject);
+            return;
         }
-
         instance = this;
+        poolDict = new Dictionary<string, ObjectPool<Enemy>>();
+        InitAllPools();
     }
 
     private void Start()
     {
-        poolDict = new Dictionary<string, ObjectPool<Enemy>>();
-        InitAllPools();
-        // 只有在非读取存档时，才生成默认配置敌人
-        if (!SessionFlags.isLoadingFromSave)
+
+        if (SaveManager.instance.HasEnemyData())
+        {
+            SpawnEnemiesFromSave(SaveManager.instance.GetEnemyData());
+        }
+        else
         {
             SpawnAllConfiguredEnemies();
-        }
-    }
-
-    public void SpawnAllConfiguredEnemies()
-    {
-        foreach (var config in spawnConfigs)
-        {
-            foreach (var point in config.spawnPoints)
-            {
-                var enemy = GetEnemy(config.enemyTag);
-                if (enemy == null)
-                {
-                    Debug.LogError($"GetEnemy 返回 null，Tag: {config.enemyTag}");
-                    continue;
-                }
-                enemy.transform.position = point.position;
-            }
         }
     }
 
@@ -78,21 +62,15 @@ public class EnemyPoolManager : MonoBehaviour
             ObjectPool<Enemy> pool = new ObjectPool<Enemy>(
                 createFunc: () => {
                     var enemy = Instantiate(config.prefab);
-                    enemy.poolTag = config.enemyTag; // 对齐类型
+                    enemy.poolTag = config.enemyTag;
                     enemy.gameObject.SetActive(false);
                     return enemy;
                 },
                 actionOnGet: enemy => {
-                    if (string.IsNullOrEmpty(enemy.enemyID))
-                    {
-                        enemy.enemyID = $"{enemy.poolTag}_{enemyCounter++}";
-                    }
-                    activeEnemies[enemy.enemyID] = enemy;
                     enemy.gameObject.SetActive(true);
                 },
                 actionOnRelease: enemy => {
-                    if (activeEnemies.ContainsKey(enemy.enemyID))
-                        activeEnemies.Remove(enemy.enemyID);
+                    activeEnemies.Remove(enemy.enemyID);
                     enemy.gameObject.SetActive(false);
                 },
                 actionOnDestroy: enemy => {
@@ -107,14 +85,31 @@ public class EnemyPoolManager : MonoBehaviour
         }
     }
 
-    public Enemy GetEnemy(string tag)
+    public Enemy GetEnemy(string tag, string id = null)
     {
         if (!poolDict.ContainsKey(tag))
         {
             Debug.LogError($"敌人类型未注册：{tag}");
             return null;
         }
-        return poolDict[tag].Get();
+
+        // 如果指定 ID，并且已存在，直接返回现有敌人
+        if (!string.IsNullOrEmpty(id) && activeEnemies.ContainsKey(id))
+        {
+            return activeEnemies[id];
+        }
+
+        // 否则从池中取新敌人
+        var enemy = poolDict[tag].Get();
+
+        // 防止重复 ID 的关键点
+        enemy.enemyID = id ?? $"{tag}_{enemyCounter++}";
+
+        // 加入前，检查是否已存在相同 ID
+        if (!activeEnemies.ContainsKey(enemy.enemyID))
+            activeEnemies[enemy.enemyID] = enemy;
+
+        return enemy;
     }
 
     public void ReturnEnemy(string tag, Enemy enemy)
@@ -133,4 +128,29 @@ public class EnemyPoolManager : MonoBehaviour
         return new List<Enemy>(activeEnemies.Values);
     }
 
+    public void SpawnAllConfiguredEnemies()
+    {
+        foreach (var config in spawnConfigs)
+        {
+            foreach (var point in config.spawnPoints)
+            {
+                var enemy = GetEnemy(config.enemyTag);
+                enemy.transform.position = point.position;
+            }
+        }
+    }
+
+    public void SpawnEnemiesFromSave(List<GameData.EnemySaveData> savedEnemies)
+    {
+        foreach (var data in savedEnemies)
+        {
+            if (data.isDead) continue;
+
+            var enemy = GetEnemy(data.enemyTag, data.enemyID);
+            if (enemy is IEnemySavable savable)
+            {
+                savable.LoadEnemySaveData(data);
+            }
+        }
+    }
 }

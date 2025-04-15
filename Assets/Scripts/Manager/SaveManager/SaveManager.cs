@@ -37,7 +37,6 @@ public class SaveManager : MonoBehaviour
         saveManagers = FindAllISaveManager();
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
         gameData = dataHandler.Load();
-
     }
 
     public void NewGame()
@@ -46,7 +45,7 @@ public class SaveManager : MonoBehaviour
     }
     public void LoadGame()
     {
-        if(this.gameData==null)
+        if (this.gameData == null)
         {
             NewGame();
         }
@@ -62,10 +61,6 @@ public class SaveManager : MonoBehaviour
     }
     public void SaveGame()
     {
-        if (gameData == null)
-        {
-            gameData = new GameData();
-        }
         foreach (ISaveManager saveManager in saveManagers)
         {
             saveManager.SaveData(ref gameData);
@@ -86,10 +81,21 @@ public class SaveManager : MonoBehaviour
 
     public bool HasSavedData()
     {
-        if(dataHandler.Load()!=null)
+        if (dataHandler.Load() != null)
         {
             return true;
         }
         return false;
     }
+
+    public bool HasEnemyData()
+    {
+        return gameData != null && gameData.enemyList != null && gameData.enemyList.Count > 0;
+    }
+
+    public List<GameData.EnemySaveData> GetEnemyData()
+    {
+        return gameData.enemyList;
+    }
+
 }

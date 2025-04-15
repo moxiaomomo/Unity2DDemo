@@ -1390,7 +1390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b35c2ec1bafa5df47af4f45b890cfc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui_main_scene_menu: {fileID: 0}
+  ui_main_scene_menu: {fileID: 444239703}
 --- !u!95 &412597066
 Animator:
   serializedVersion: 5

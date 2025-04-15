@@ -26,7 +26,6 @@ public class Ui_MainMenu : MonoBehaviour
 
     public void ContinueGame()
     {
-        SessionFlags.isLoadingFromSave = true;
         StartCoroutine(LoadScreenWithFadeEffect(1.5f));
     }
 
