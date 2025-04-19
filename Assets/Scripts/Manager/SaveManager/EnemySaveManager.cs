@@ -25,4 +25,5 @@ public class EnemySaveManager : MonoBehaviour, ISaveManager
 
         EnemyPoolManager.instance.SpawnEnemiesFromSave(data.enemyList);
     }
+
 }
