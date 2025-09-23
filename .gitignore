@@ -63,6 +63,12 @@ sysinfo.txt
 *.unitypackage.meta
 *.app
 
+# Packages
+
+Packages/*
+!Packages/package-lock.json
+!Packages/manifest.json
+
 # Crashlytics generated file
 crashlytics-build.properties
 

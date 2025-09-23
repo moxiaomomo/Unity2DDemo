@@ -44,17 +44,14 @@ public class EnemyPoolManager : MonoBehaviour
 
     private void Start()
     {
-<<<<<<< HEAD
-
         if (SaveManager.instance.HasEnemyData())
         {
             SpawnEnemiesFromSave(SaveManager.instance.GetEnemyData());
         }
         else
-=======
         // 只有在非读取存档时，才生成默认配置敌人
-        if (!SessionFlags.isLoadingFromSave)
->>>>>>> 1c66aff (update readme)
+        //        if (!SessionFlags.isLoadingFromSave)
+
         {
             SpawnAllConfiguredEnemies();
         }
@@ -133,7 +130,7 @@ public class EnemyPoolManager : MonoBehaviour
         return new List<Enemy>(activeEnemies.Values);
     }
 
-<<<<<<< HEAD
+    // <<<<<<< HEAD
     public void SpawnAllConfiguredEnemies()
     {
         foreach (var config in spawnConfigs)
@@ -156,23 +153,23 @@ public class EnemyPoolManager : MonoBehaviour
             if (enemy is IEnemySavable savable)
             {
                 savable.LoadEnemySaveData(data);
-=======
-    public void SpawnEnemiesFromSave(List<GameData.EnemySaveData> savedEnemies)
-    {
-        foreach (var enemyData in savedEnemies)
-        {
-            var enemy = GetEnemy(enemyData.enemyTag);
-            if (enemy == null)
-            {
-                Debug.LogError($"未能从对象池获取敌人：{enemyData.enemyTag}");
-                continue;
-            }
+                //=======
+                //    public void SpawnEnemiesFromSave(List<GameData.EnemySaveData> savedEnemies)
+                //    {
+                //        foreach (var enemyData in savedEnemies)
+                //        {
+                //            var enemy = GetEnemy(enemyData.enemyTag);
+                //            if (enemy == null)
+                //            {
+                //                Debug.LogError($"未能从对象池获取敌人：{enemyData.enemyTag}");
+                //                continue;
+                //            }
 
-            enemy.enemyID = enemyData.enemyID; // 保留原ID
-            if (enemy is IEnemySavable savable)
-            {
-                savable.LoadEnemySaveData(enemyData);
->>>>>>> 1c66aff (update readme)
+                //            enemy.enemyID = enemyData.enemyID; // 保留原ID
+                //            if (enemy is IEnemySavable savable)
+                //            {
+                //                savable.LoadEnemySaveData(enemyData);
+                //>>>>>>> 1c66aff (update readme)
             }
         }
     }
