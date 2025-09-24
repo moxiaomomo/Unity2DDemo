@@ -20,12 +20,14 @@ public class PlayerState
         this.player = _player;
         this.stateName = _stateName;
     }
+
     public virtual void Enter()
     {
         player.animator.SetBool(stateName, true);
         rb = player.rb;
         triggeredCalled = false;
     }
+
     public virtual void Update()
     {
         stateTimer -= Time.deltaTime;
@@ -33,6 +35,7 @@ public class PlayerState
         yInput = Input.GetAxisRaw("Vertical");
         player.animator.SetFloat("yVelocity", rb.velocity.y);
     }
+
     public virtual void Exit()
     {
         player.animator.SetBool(stateName, false);

@@ -43,6 +43,5 @@ public class PlayerWallState : PlayerState
             rb.velocity = new Vector2(0, rb.velocity.y * 0.7f);
         }
 
-
     }
 }
