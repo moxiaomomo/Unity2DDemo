@@ -40,6 +40,11 @@ public class Ui_MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void AboutMe()
+    {
+        Debug.Log("kokokokokoko");
+    }
+
     IEnumerator LoadScreenWithFadeEffect(float _delay)
     {
         fadeScreen.FadeOut();
