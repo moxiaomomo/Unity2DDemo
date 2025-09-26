@@ -12,7 +12,7 @@ public class CharacterStats : MonoBehaviour
     public Stat damage;
     public Stat maxHP;
 
-    private int currentHP;
+    protected int currentHP;
 
     public System.Action onHealthChanged;
 
@@ -20,6 +20,7 @@ public class CharacterStats : MonoBehaviour
     protected virtual void Start()
     {
         currentHP = maxHP.GetValue();
+        //Debug.Log($"currentHP: {currentHP}");
     }
 
 

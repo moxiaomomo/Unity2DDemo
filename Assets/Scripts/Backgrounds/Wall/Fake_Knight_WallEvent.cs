@@ -37,8 +37,8 @@ public class Fake_Knight_WallEvent : MonoBehaviour
             door.SetActive(true); // ÃÅ¿ªÆô×èµ²
         }
 
-        cmPlayerCamera.Priority = 10;
-        cmBossCamera.Priority = 20;
+            cmPlayerCamera.Priority = 10;
+            cmBossCamera.Priority = 20;
     }
 
     private IEnumerator DelayedSpawnBoss()

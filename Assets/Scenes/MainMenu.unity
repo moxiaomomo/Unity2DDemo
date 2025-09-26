@@ -608,7 +608,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 550004533}
-        m_TargetAssemblyTypeName: Ui_Main, Assembly-CSharp
+        m_TargetAssemblyTypeName: Ui_MainMenu, Assembly-CSharp
         m_MethodName: ContinueGame
         m_Mode: 1
         m_Arguments:
@@ -1581,7 +1581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: MainScene
-  continueBtn: {fileID: 0}
+  continueBtn: {fileID: 493567460}
   fadeScreen: {fileID: 0}
 --- !u!1 &1860933332
 GameObject:

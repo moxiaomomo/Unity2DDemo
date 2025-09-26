@@ -12,6 +12,7 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float groundCheckDistance;
     [SerializeField] protected Transform wallCheck;
     [SerializeField] protected float wallCheckDistance;
+    // 地面图层蒙版，可用于player jump时的判断
     [SerializeField] protected LayerMask whatIsGround;
     public Transform attackCheck;
     public float attackCheckRadius;

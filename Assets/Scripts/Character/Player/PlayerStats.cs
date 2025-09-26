@@ -10,13 +10,15 @@ public class PlayerStats : CharacterStats
     protected override void Start()
     {
         base.Start();
-
+        // Debug.Log($"player currentHP: {currentHP}");
         player = GetComponent<Player>();
     }
 
 
     public override void TakeDamage(int _damage)
     {
+        //Debug.Log($"player currentHP: {currentHP}");
+        //Debug.Log($"player take_damage: {_damage}");
         base.TakeDamage(_damage);
         player.DamageEffect();
     }
