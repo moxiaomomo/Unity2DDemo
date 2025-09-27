@@ -55,6 +55,9 @@ public class PetOfPlayer : Entity
         // //player = GetComponent<Rigidbody2D>();
         stateMachine.Initialize(idleState);
 
+        // Enemy[] enemies = GetComponents<Enemy>();
+        List<Enemy> enemies = EnemyPoolManager.instance.GetAllActiveEnemies();
+        Debug.Log(enemies.Count);
     }
 
     // Update is called once per frame
@@ -90,6 +93,8 @@ public class PetOfPlayer : Entity
      */
     private void onPlayerStateChanged(string stateName)
     {
+        //GameObject[] elist = GameObject.FindGameObjectsWithTag("Enemy");
+        //Debug.Log(elist.Length);
         switch (stateName)
         {
             case "Idle":
