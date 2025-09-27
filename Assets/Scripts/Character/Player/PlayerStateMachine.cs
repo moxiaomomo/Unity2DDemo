@@ -10,6 +10,8 @@ public class PlayerStateMachine
     {
         currentState = _startState;
         currentState.Enter();
+        //// 通知Pet对象Player状态已改变
+        //PetOfPlayer.playerStateChanged.Invoke(currentState.stateName);
     }
 
     public void ChangeState(PlayerState _newState)
@@ -17,6 +19,8 @@ public class PlayerStateMachine
         currentState.Exit();
         currentState = _newState;
         currentState.Enter();
+        // 通知Pet对象Player状态已改变
+        PetOfPlayer.playerStateChanged.Invoke(currentState.stateName);
     }
 
 }

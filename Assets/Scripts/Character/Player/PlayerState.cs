@@ -6,7 +6,7 @@ public class PlayerState
 {
     protected PlayerStateMachine stateMachine;
     protected Player player;
-    private string stateName;
+    public string stateName { get; private set; }
 
     protected Rigidbody2D rb;
     protected float xInput;
