@@ -67,11 +67,11 @@ public class PetOfPlayer : Entity
         petRb.velocity = playerRb.velocity;
         if (playerRb.velocity.x > 0)
         {
-            petRb.position = new Vector2(playerRb.position.x - 2, playerRb.position.y - 0.6f);
+            petRb.position = new Vector2(playerRb.position.x - 1, playerRb.position.y - 0.6f);
         } 
         else if (playerRb.velocity.x < -0.01)
         {
-            petRb.position = new Vector2(playerRb.position.x + 2, playerRb.position.y - 0.6f);
+            petRb.position = new Vector2(playerRb.position.x + 1, playerRb.position.y - 0.6f);
         } 
         FlipController(playerRb.velocity.x);
     }
