@@ -63,13 +63,29 @@ public class Entity : MonoBehaviour
     #region Collison
     protected virtual void OnDrawGizmos()
     {
-        Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
-        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
-        Gizmos.DrawWireSphere(attackCheck.position, attackCheckRadius);
+        if (groundCheck != null)
+        {
+            Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
+        }
+        if (wallCheck != null) 
+        {
+            Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
+        }
+        if (attackCheck != null) 
+        {
+            Gizmos.DrawWireSphere(attackCheck.position, attackCheckRadius);
+        }
     }
 
-    public virtual bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
-    public virtual bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDirection, wallCheckDistance, whatIsGround);
+    public virtual bool IsGroundDetected() {
+        return groundCheck != null && 
+        Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
+    }
+    public virtual bool IsWallDetected() 
+    {
+        return wallCheck != null &&
+        Physics2D.Raycast(wallCheck.position, Vector2.right * facingDirection, wallCheckDistance, whatIsGround);
+    } 
     #endregion
 
     #region Flip
