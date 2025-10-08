@@ -27,7 +27,10 @@ public class CharacterStats : MonoBehaviour
     public virtual void DoDamage(CharacterStats _targetStats)
     {
         int totalDamage = strength.GetValue() + damage.GetValue();
-        _targetStats.TakeDamage(totalDamage);
+        if (_targetStats != null)
+        {
+            _targetStats.TakeDamage(totalDamage);
+        }
     }
 
     // Update is called once per frame

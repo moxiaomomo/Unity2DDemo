@@ -130,7 +130,6 @@ public class EnemyPoolManager : MonoBehaviour
         return new List<Enemy>(activeEnemies.Values);
     }
 
-    // <<<<<<< HEAD
     public void SpawnAllConfiguredEnemies()
     {
         foreach (var config in spawnConfigs)
@@ -150,26 +149,16 @@ public class EnemyPoolManager : MonoBehaviour
             if (data.isDead) continue;
 
             var enemy = GetEnemy(data.enemyTag, data.enemyID);
+            if (enemy == null)
+            {
+                Debug.LogError($"未能从对象池获取敌人：{data.enemyTag}");
+                continue;
+            }
+            enemy.enemyID = data.enemyID; // 保留原ID
+
             if (enemy is IEnemySavable savable)
             {
                 savable.LoadEnemySaveData(data);
-                //=======
-                //    public void SpawnEnemiesFromSave(List<GameData.EnemySaveData> savedEnemies)
-                //    {
-                //        foreach (var enemyData in savedEnemies)
-                //        {
-                //            var enemy = GetEnemy(enemyData.enemyTag);
-                //            if (enemy == null)
-                //            {
-                //                Debug.LogError($"未能从对象池获取敌人：{enemyData.enemyTag}");
-                //                continue;
-                //            }
-
-                //            enemy.enemyID = enemyData.enemyID; // 保留原ID
-                //            if (enemy is IEnemySavable savable)
-                //            {
-                //                savable.LoadEnemySaveData(enemyData);
-                //>>>>>>> 1c66aff (update readme)
             }
         }
     }
