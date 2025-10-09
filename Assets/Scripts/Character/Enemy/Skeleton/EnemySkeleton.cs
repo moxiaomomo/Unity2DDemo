@@ -38,7 +38,8 @@ public class EnemySkeleton : Enemy
         RaycastHit2D playerDetected = IsPlayerDetected();
         if (playerDetected.collider != null)
         {
-            stateMachine.ChangeState(attackState);
+            base.FlipController(playerDetected.point.x - this.animator.transform.position.x);
+            bool changed = stateMachine.ChangeState(attackState);
         } 
         else
         {

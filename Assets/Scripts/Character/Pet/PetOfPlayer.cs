@@ -65,15 +65,19 @@ public class PetOfPlayer : Entity
     {
         base.Update();
         petRb.velocity = playerRb.velocity;
+        FlipController(playerRb.velocity.x);
         if (playerRb.velocity.x > 0)
         {
-            petRb.position = new Vector2(playerRb.position.x - 1, playerRb.position.y - 0.6f);
+            petRb.position = new Vector2(playerRb.position.x - 3, playerRb.position.y - 0.8f);
         } 
         else if (playerRb.velocity.x < -0.01)
         {
-            petRb.position = new Vector2(playerRb.position.x + 1, playerRb.position.y - 0.6f);
-        } 
-        FlipController(playerRb.velocity.x);
+            petRb.position = new Vector2(playerRb.position.x + 3, playerRb.position.y - 0.8f);
+        }
+        else
+        {
+            petRb.position = new Vector2(petRb.position.x, playerRb.position.y - 0.8f);
+        }
     }
 
     public override void FlipController(float _x)

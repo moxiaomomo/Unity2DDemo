@@ -12,15 +12,16 @@ public class EnemyStateMachine
         currentState.Enter();
     }
 
-    public void ChangeState(EnemyState _newState)
+    public bool ChangeState(EnemyState _newState)
     {
         if (currentState == _newState) 
         {
-            return;
+            return false;
         }
         currentState.Exit();
         currentState = _newState;
         currentState.Enter();
+        return true;
     }
 
 }
