@@ -12,6 +12,7 @@ public class EnemySkeleton : Enemy
     public EnemySkeletonAttackState attackState { get; private set; }
     public EnemySkeletonBattleState battleState { get; private set; }
     public EnemySkeletonMoveState moveState { get; private set; }
+    public EnemySkeletonDeadState deadState { get; private set; }
     #endregion
 
     protected override void Awake()
@@ -22,6 +23,7 @@ public class EnemySkeleton : Enemy
         attackState = new EnemySkeletonAttackState(this, stateMachine, "Attack");
         battleState = new EnemySkeletonBattleState(this, stateMachine, "Move");
         moveState = new EnemySkeletonMoveState(this, stateMachine, "Move");
+        deadState = new EnemySkeletonDeadState(this, stateMachine, "Die");
     }
 
     // Start is called before the first frame update
@@ -35,15 +37,18 @@ public class EnemySkeleton : Enemy
     protected override void Update()
     {
         base.Update();
-        RaycastHit2D playerDetected = IsPlayerDetected();
-        if (playerDetected.collider != null)
+        if (!isDead)
         {
-            base.FlipController(playerDetected.point.x - this.animator.transform.position.x);
-            bool changed = stateMachine.ChangeState(attackState);
-        } 
-        else
-        {
-            stateMachine.ChangeState(idleState);
+            RaycastHit2D playerDetected = IsPlayerDetected();
+            if (playerDetected.collider != null)
+            {
+                base.FlipController(playerDetected.point.x - this.animator.transform.position.x);
+                bool changed = stateMachine.ChangeState(attackState);
+            }
+            else
+            {
+                stateMachine.ChangeState(idleState);
+            }
         }
     }
 
@@ -80,7 +85,8 @@ public class EnemySkeleton : Enemy
 
     public override void Die()
     {
+        Debug.Log("Skeleton is dead");
         base.Die();
-        // stateMachine.ChangeState(deadState);
+        stateMachine.ChangeState(deadState);
     }
 }

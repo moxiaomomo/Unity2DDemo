@@ -32,4 +32,10 @@ public class EnemySkeletonAnimationTriggers : MonoBehaviour
     {
         // EnemyPoolManager.instance.ReturnEnemy(enemy.poolTag, enemy);
     }
+
+    // for skeleton enemy
+    private void DieTrigger()
+    {
+        enemy.gameObject.SetActive(false);
+    }
 }

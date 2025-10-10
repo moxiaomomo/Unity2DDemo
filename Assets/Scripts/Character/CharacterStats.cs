@@ -37,6 +37,10 @@ public class CharacterStats : MonoBehaviour
     public virtual void TakeDamage(int _damage)
     {
         currentHP -= _damage;
+        if (currentHP < 0) 
+        {
+            currentHP = 0;
+        }
         onHealthChanged?.Invoke();
         if (currentHP <= 0)
         {

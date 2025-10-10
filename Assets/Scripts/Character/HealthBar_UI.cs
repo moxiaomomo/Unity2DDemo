@@ -10,6 +10,7 @@ public class HealthBar_UI : MonoBehaviour
     private RectTransform rectTransform;
     private Slider slider;
 
+    // 启动之后注册CharacterStats回调监听函数
     private void Start()
     {
         rectTransform = GetComponentInChildren<RectTransform>();
