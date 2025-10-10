@@ -5,11 +5,14 @@ using UnityEngine;
 public class PlayerAnimationTriggers : MonoBehaviour
 {
     [SerializeField]private UI_MainScene_Menu ui_main_scene_menu;
+
     private Player player => GetComponentInParent<Player>();
+
     private void AnimationTrigger()
     {
         player.AnimationTrigger();
     }
+
     private void AttackTrigger()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackCheckRadius);
@@ -23,6 +26,7 @@ public class PlayerAnimationTriggers : MonoBehaviour
             }
         }
     }
+
     private void DieTrigger()
     {
         player.AnimationTrigger();
