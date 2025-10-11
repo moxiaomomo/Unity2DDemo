@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class Player : Entity
 {
     public bool isBusy { get; private set; }
+    public PlayerSkillManager skillManager { get; private set; }
 
     [Header("Attack Info")]
     public Vector2[] attackMovement;
@@ -62,6 +63,8 @@ public class Player : Entity
         primaryAttackState = new PlayerPrimaryAttackState(this, stateMachine, "Attack");
         counterAttackState = new PlayerCounterAttackState(this, stateMachine, "CounterAttack");
         deadState = new PlayerDeadState(this, stateMachine, "Die");
+
+        skillManager = GetComponent<PlayerSkillManager>();
     }
 
     protected override void Start()
@@ -117,6 +120,12 @@ public class Player : Entity
                 dashDiretion = facingDirection;
             }
             stateMachine.ChangeState(dashState);
+        }
+
+        // Test
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            skillManager.fire.CreateFire();
         }
     }
 
