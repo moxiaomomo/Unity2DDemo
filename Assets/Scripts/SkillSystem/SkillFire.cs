@@ -7,10 +7,10 @@ public class SkillFire : SkillBase
     [SerializeField] private GameObject firePrefab;
     [SerializeField] private float detonateTime = 2;
 
-    public void CreateFire()
+    public void CreateFire(bool facingRight)
     {
         GameObject fire = Instantiate(firePrefab, transform.position, Quaternion.identity);
-        fire.GetComponent<SkillObjectFire>().SetupFire(detonateTime);
+        fire.GetComponent<SkillObjectFire>().SetupFire(facingRight, detonateTime);
     }
 
     //public void OnStartEffect()

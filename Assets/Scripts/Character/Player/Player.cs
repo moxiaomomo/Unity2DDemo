@@ -125,7 +125,7 @@ public class Player : Entity
         // Test
         if (Input.GetKeyDown(KeyCode.F))
         {
-            skillManager.fire.CreateFire();
+            skillManager.fire.CreateFire(facingRight);
         }
     }
 

@@ -8,6 +8,9 @@ public class SkillObjectBase : MonoBehaviour
     [SerializeField] protected Transform targetCheck;
     [SerializeField] protected float checkRadius = 1;
 
+    public int facingDirection { get; private set; } = 1;
+    protected bool facingRight = true;
+
     protected void DamageEnemiesInRadius(Transform t, float radius)
     {
         // IDamegable
@@ -26,5 +29,38 @@ public class SkillObjectBase : MonoBehaviour
         }
 
         Gizmos.DrawWireSphere(targetCheck.position, checkRadius);
+    }
+
+    protected virtual void Awake()
+    {
+    }
+
+    protected virtual void Start()
+    {
+    }
+
+    protected virtual void Update()
+    {
+    }
+
+    public virtual void Flip()
+    {
+        facingDirection = facingDirection * -1;
+        facingRight = !facingRight;
+        transform.Rotate(0f, 180f, 0f);
+
+        // onFlipped?.Invoke(); // Notify all listeners that the entity has flipped
+    }
+
+    public virtual void FlipController(float _x)
+    {
+        if (_x > 0 && !facingRight)
+        {
+            Flip();
+        }
+        else if (_x < 0 && facingRight)
+        {
+            Flip();
+        }
     }
 }

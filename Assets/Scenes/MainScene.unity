@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 36668994}
   - component: {fileID: 36668996}
   - component: {fileID: 36668995}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1584,9 +1584,9 @@ GameObject:
   - component: {fileID: 397471544}
   - component: {fileID: 397471545}
   - component: {fileID: 397471546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Animator
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1665,8 +1665,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 141400007
-  m_SortingLayer: 4
+  m_SortingLayerID: -1795395125
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -85727878, guid: 687df074731fbf744b668d2275dbb675, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -44678,7 +44678,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 586939918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44939,7 +44939,7 @@ GameObject:
   - component: {fileID: 626109073}
   - component: {fileID: 626109075}
   - component: {fileID: 626109074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45716,8 +45716,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -558753571
-  m_SortingLayer: 2
+  m_SortingLayerID: -1795395125
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: accff7572841ae643a6ec222d6856407, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -45907,7 +45907,7 @@ GameObject:
   - component: {fileID: 897854015}
   - component: {fileID: 897854014}
   - component: {fileID: 897854013}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Status_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46527,7 +46527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1037514306}
   - component: {fileID: 1037514307}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46691,7 +46691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1066867897}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46885,9 +46885,9 @@ GameObject:
   - component: {fileID: 1116119245}
   - component: {fileID: 1116119246}
   - component: {fileID: 1116119247}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51438,7 +51438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1540132971}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
