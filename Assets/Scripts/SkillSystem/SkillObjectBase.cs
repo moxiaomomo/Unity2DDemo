@@ -7,13 +7,23 @@ public class SkillObjectBase : MonoBehaviour
     [SerializeField] protected LayerMask whatIsEnemy;
     [SerializeField] protected Transform targetCheck;
     [SerializeField] protected float checkRadius = 1;
+    [SerializeField] protected int damage = 50;
+    [SerializeField] protected int velocityX = 5;
 
     public int facingDirection { get; private set; } = 1;
     protected bool facingRight = true;
 
-    protected void DamageEnemiesInRadius(Transform t, float radius)
+    protected void DoDamageEnemies(Collider2D[] enemies)
     {
-        // IDamegable
+        foreach (Collider2D collider in enemies)
+        {
+            Enemy enemy = collider.GetComponent<Enemy>();
+            if (enemy == null || enemy.stats.GetCurrentHP()<=0)
+            {
+                continue;
+            }
+            enemy.stats.TakeDamage(damage);
+        }
     }
 
     protected Collider2D[] EnemiesAround(Transform t, float radius)

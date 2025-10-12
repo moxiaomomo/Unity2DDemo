@@ -5,7 +5,7 @@ using UnityEngine;
 public class SkillFire : SkillBase
 {
     [SerializeField] private GameObject firePrefab;
-    [SerializeField] private float detonateTime = 2;
+    [SerializeField] private float detonateTime = 5;
 
     public void CreateFire(bool facingRight)
     {

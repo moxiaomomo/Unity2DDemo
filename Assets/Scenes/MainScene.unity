@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillType: 1
   firePrefab: {fileID: 1210335785725416995, guid: 5b193f95c683feb4a880fb00658bac26, type: 3}
-  detonateTime: 2
+  detonateTime: 5
 --- !u!1 &36668993
 GameObject:
   m_ObjectHideFlags: 0
@@ -44592,7 +44592,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "WASD\u79FB\u52A8\n\n\u7A7A\u683C\u8DF3\u8DC3\n\nshift\u952E\u8FDB\u884C\u95EA\u51B2,\u56FE\u6807\u4E3A\u5DE6\u8FB9\u7B2C\u4E00\u4E2A\n\n\u9F20\u6807\u5DE6\u952E\u653B\u51FB\n\n\u627E\u51C6\u65F6\u673A\u6309\u4E0B\u9F20\u6807\u53F3\u952E\u53CD\u51FB\uFF0C\u56FE\u6807\u4E3A\u5DE6\u8FB9\u7B2C\u4E8C\u4E2A"
+  m_text: "WASD\u79FB\u52A8\n\n\u7A7A\u683C\u8DF3\u8DC3\n\n\u9F20\u6807\u5DE6\u952E\u653B\u51FB\n\n\u5DE6\u8FB9shift\u952E\u8FDB\u884C\u95EA\u51B2\n\nF\u952E\u89E6\u53D1\u706B\u7130\u6280\u80FD\n\n\u627E\u51C6\u65F6\u673A\u6309\u4E0B\u9F20\u6807\u53F3\u952E\u53CD\u51FB"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 07b19c62fca1b8342844b80dd17ad218, type: 2}
   m_sharedMaterial: {fileID: 7997868507732826322, guid: 07b19c62fca1b8342844b80dd17ad218, type: 2}

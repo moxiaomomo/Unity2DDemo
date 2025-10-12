@@ -50,6 +50,8 @@ MonoBehaviour:
     m_Bits: 256
   targetCheck: {fileID: 2051574844424138616}
   checkRadius: 1
+  damage: 50
+  velocityX: 8
   vfxPrefab: {fileID: 8183110810776732779, guid: 1b86b3c7323028b4abefa99f92126932, type: 3}
 --- !u!1 &5137520432579862297
 GameObject:

@@ -12,23 +12,42 @@ public class SkillObjectFire : SkillObjectBase
     public void SetupFire(bool facingRight, float detinationTime)
     {
         base.FlipController(facingRight ? 1 : -1);
-        _iniVeclociry = new Vector3(3*(facingRight? 1:-1), 0, 0);
+        _iniVeclociry = new Vector3(velocityX * (facingRight? 1:-1), 0, 0);
         Invoke(nameof(Explode), detinationTime);
     }
 
     private void Explode()
     {
-        DamageEnemiesInRadius(transform, checkRadius);
         Destroy(gameObject);
         Instantiate(vfxPrefab, transform.position, Quaternion.identity);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnEnemiesDetected(Collider2D[] colliders)
     {
-        if (collision.GetComponent<Enemy>() == null)
+        if (colliders.Length<=0)
             return;
-
-        Explode();
+        bool hasEnemyAlive = false;
+        foreach (Collider2D collider in colliders)
+        {
+            Enemy enemy = collider.GetComponent<Enemy>();
+            if (enemy == null)
+            {
+                continue;
+            }
+            Debug.Log(enemy.stats.GetCurrentHP());
+            hasEnemyAlive = enemy.stats.GetCurrentHP()>0;
+            if (hasEnemyAlive)
+            {
+                break;
+            }
+        }
+        if (hasEnemyAlive)
+        {
+            // ´¥·¢±¬Õ¨¶¯»­
+            Explode();
+            // ¼ÆËãÉËº¦
+            DoDamageEnemies(colliders);
+        }
     }
 
     protected override void Awake()
@@ -50,10 +69,10 @@ public class SkillObjectFire : SkillObjectBase
         transform.position += _iniVeclociry * Time.deltaTime;
 
         // ¼ì²âÅö×²
-        Collider2D[] collder = EnemiesAround(transform, checkRadius);
-        if (collder.Length > 0)
+        Collider2D[] collders = EnemiesAround(transform, checkRadius);
+        if (collders.Length > 0)
         {
-            OnTriggerEnter2D (collder[0]);
+            OnEnemiesDetected(collders);
         }
     }
 }
