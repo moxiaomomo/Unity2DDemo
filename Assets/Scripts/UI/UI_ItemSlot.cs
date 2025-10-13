@@ -17,7 +17,7 @@ public class UI_ItemSlot : MonoBehaviour
         {
             itemStackSize.text = "";
             // itemIcon.sprite = null;
-            itemIcon.color = Color.clear;
+            // itemIcon.color = Color.clear;
             return;
         }
 
