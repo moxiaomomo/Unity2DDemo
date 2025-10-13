@@ -26,6 +26,7 @@ public class SkillObjectFire : SkillObjectBase
     {
         if (colliders.Length<=0)
             return;
+
         bool hasEnemyAlive = false;
         foreach (Collider2D collider in colliders)
         {
@@ -34,13 +35,13 @@ public class SkillObjectFire : SkillObjectBase
             {
                 continue;
             }
-            Debug.Log(enemy.stats.GetCurrentHP());
             hasEnemyAlive = enemy.stats.GetCurrentHP()>0;
             if (hasEnemyAlive)
             {
                 break;
             }
         }
+
         if (hasEnemyAlive)
         {
             // ´¥·¢±¬Õ¨¶¯»­

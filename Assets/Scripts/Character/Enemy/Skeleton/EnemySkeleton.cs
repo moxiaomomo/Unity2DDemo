@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemySkeleton : Enemy
 {
 
-     #region State
+    #region State
     public EnemySkeletonIdleState idleState { get; private set; }
     public EnemySkeletonAttackState attackState { get; private set; }
     public EnemySkeletonBattleState battleState { get; private set; }
