@@ -30,12 +30,12 @@ public class Maggot : Enemy
     public override void Die()
     {
         base.Die();
-        boss.stats.Rebirth();
+        boss.health.Rebirth();
         boss.stateTrigger = false;
 
         stateTrigger = true;
         flipOnce = false;
-        stats.Rebirth();
+        health.Rebirth();
         gameObject.SetActive(false);
     }
 

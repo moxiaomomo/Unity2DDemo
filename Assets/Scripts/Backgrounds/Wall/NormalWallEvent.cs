@@ -47,7 +47,7 @@ public class NormalWallEvent : MonoBehaviour
     {
         while (true)
         {
-            PlayerManager.instance.player.stats.TakeDamage(damageAmount);
+            PlayerManager.instance.player.health.TakeDamage(damageAmount, transform);
             yield return new WaitForSeconds(damageInterval);
         }
     }

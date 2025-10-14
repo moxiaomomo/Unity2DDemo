@@ -16,11 +16,12 @@ public class Fake_Knight_AnimationTrigger : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(boss.attackCheck.position, boss.attackCheckRadius);
         foreach (var hit in colliders)
         {
-            if (hit.GetComponent<Player>() != null)
+            IDamageable damageable = hit.GetComponent<IDamageable>();
+            if (damageable == null || damageable.Tag() == "Fake_Knight")
             {
-                PlayerStats _target = hit.GetComponent<PlayerStats>();
-                boss.stats.DoDamage(_target);
+                continue;
             }
+            damageable.TakeDamage(boss.stats.offense.damage.GetValue(), boss.transform);
         }
     }
 

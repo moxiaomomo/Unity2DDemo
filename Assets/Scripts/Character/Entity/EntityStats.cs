@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class EntityStats : MonoBehaviour
 {
-    
-
     public StatMajorGroup major;
     public StatOffenseGroup offense;
     public StatDefenseGroup defense;
-    public StatResouceGroup resouces;
+    public StatResouceGroup resources;
 
     public float GetMaxHealth()
     {
-        float baseHp = resouces.maxHp.GetValue();
+        float baseHp = resources.maxHP.GetValue();
         float bonusHp = major.vitality.GetValue() * 5;
         return baseHp + bonusHp;
     }
@@ -22,8 +20,8 @@ public class EntityStats : MonoBehaviour
     {
         switch(type)
         {
-            case StatType.MaxHealth: return resouces.maxHp;
-            case StatType.HealthRegen: return resouces.healthRegen;
+            case StatType.MaxHealth: return resources.maxHP;
+            case StatType.HealthRegen: return resources.healthRegen;
 
             case StatType.Strength: return major.strength;
             case StatType.Agility: return major.agility;

@@ -53007,8 +53007,8 @@ GameObject:
   - component: {fileID: 1116119243}
   - component: {fileID: 1116119244}
   - component: {fileID: 1116119245}
-  - component: {fileID: 1116119246}
   - component: {fileID: 1116119247}
+  - component: {fileID: 1116119246}
   m_Layer: 8
   m_Name: Skeleton
   m_TagString: Enemy
@@ -53160,7 +53160,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1116119239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 550dcaf55889c704792f234295586dc4, type: 3}
+  m_Script: {fileID: 11500000, guid: 55effa8b11ca07e4ea2481e109693797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1116119247
@@ -53172,18 +53172,70 @@ MonoBehaviour:
   m_GameObject: {fileID: 1116119239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd56cf716ed15bd4caac883ab2d0886f, type: 3}
+  m_Script: {fileID: 11500000, guid: 68c2ee795fa7c7746b27849711371c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strength:
-    baseValue: 0
-    modifiers: 
-  damage:
-    baseValue: 300
-    modifiers: 
-  maxHP:
-    baseValue: 100
-    modifiers: 
+  major:
+    strength:
+      baseValue: 30
+      modifiers: []
+    agility:
+      baseValue: 0
+      modifiers: []
+    intelligence:
+      baseValue: 0
+      modifiers: []
+    vitality:
+      baseValue: 0
+      modifiers: []
+  offense:
+    attackSpeed:
+      baseValue: 0
+      modifiers: []
+    damage:
+      baseValue: 30
+      modifiers: []
+    critPower:
+      baseValue: 0
+      modifiers: []
+    critChance:
+      baseValue: 0
+      modifiers: []
+    armorReduction:
+      baseValue: 0
+      modifiers: []
+    fireDamage:
+      baseValue: 0
+      modifiers: []
+    iceDamage:
+      baseValue: 0
+      modifiers: []
+    lightningDamage:
+      baseValue: 0
+      modifiers: []
+  defense:
+    armor:
+      baseValue: 0
+      modifiers: []
+    evasion:
+      baseValue: 0
+      modifiers: []
+    fireRes:
+      baseValue: 0
+      modifiers: []
+    iceRes:
+      baseValue: 0
+      modifiers: []
+    lightningRes:
+      baseValue: 0
+      modifiers: []
+  resources:
+    maxHP:
+      baseValue: 200
+      modifiers: []
+    healthRegen:
+      baseValue: 0
+      modifiers: []
 --- !u!1 &1117919852
 GameObject:
   m_ObjectHideFlags: 0
@@ -53271,11 +53323,11 @@ GameObject:
   - component: {fileID: 1126997336}
   - component: {fileID: 1126997335}
   - component: {fileID: 1126997337}
-  - component: {fileID: 1126997334}
-  - component: {fileID: 1126997333}
-  - component: {fileID: 1126997332}
   - component: {fileID: 1126997339}
   - component: {fileID: 1126997340}
+  - component: {fileID: 1126997334}
+  - component: {fileID: 1126997342}
+  - component: {fileID: 1126997341}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -53283,39 +53335,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1126997332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1126997331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 550dcaf55889c704792f234295586dc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1126997333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1126997331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bce5f276a0a72d4ea64b05ed8a429c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength:
-    baseValue: 0
-    modifiers: 
-  damage:
-    baseValue: 300
-    modifiers: 
-  maxHP:
-    baseValue: 10000
-    modifiers: 
 --- !u!114 &1126997334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53478,6 +53497,91 @@ MonoBehaviour:
   maxInventorySize: 10
   itemList: []
   equipList: []
+--- !u!114 &1126997341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126997331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55effa8b11ca07e4ea2481e109693797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1126997342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126997331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c2ee795fa7c7746b27849711371c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  major:
+    strength:
+      baseValue: 10
+      modifiers: []
+    agility:
+      baseValue: 0
+      modifiers: []
+    intelligence:
+      baseValue: 0
+      modifiers: []
+    vitality:
+      baseValue: 0
+      modifiers: []
+  offense:
+    attackSpeed:
+      baseValue: 0
+      modifiers: []
+    damage:
+      baseValue: 100
+      modifiers: []
+    critPower:
+      baseValue: 0
+      modifiers: []
+    critChance:
+      baseValue: 0
+      modifiers: []
+    armorReduction:
+      baseValue: 0
+      modifiers: []
+    fireDamage:
+      baseValue: 0
+      modifiers: []
+    iceDamage:
+      baseValue: 0
+      modifiers: []
+    lightningDamage:
+      baseValue: 0
+      modifiers: []
+  defense:
+    armor:
+      baseValue: 0
+      modifiers: []
+    evasion:
+      baseValue: 0
+      modifiers: []
+    fireRes:
+      baseValue: 0
+      modifiers: []
+    iceRes:
+      baseValue: 0
+      modifiers: []
+    lightningRes:
+      baseValue: 0
+      modifiers: []
+  resources:
+    maxHP:
+      baseValue: 1000
+      modifiers: []
+    healthRegen:
+      baseValue: 0
+      modifiers: []
 --- !u!1 &1140233548
 GameObject:
   m_ObjectHideFlags: 0

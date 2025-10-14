@@ -48,7 +48,7 @@ public class FireBall : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerManager.instance.player.stats.TakeDamage(damage); // 造成伤害
+            PlayerManager.instance.player.health.TakeDamage(damage, transform); // 造成伤害
         }
     }
 }

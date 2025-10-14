@@ -35,7 +35,7 @@ public class SkillObjectFire : SkillObjectBase
             {
                 continue;
             }
-            hasEnemyAlive = enemy.stats.GetCurrentHP()>0;
+            hasEnemyAlive = enemy.health.GetCurrentHP()>0;
             if (hasEnemyAlive)
             {
                 break;

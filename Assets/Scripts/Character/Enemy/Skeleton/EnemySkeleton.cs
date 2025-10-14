@@ -37,7 +37,7 @@ public class EnemySkeleton : Enemy
     protected override void Update()
     {
         base.Update();
-        if (!isDead)
+        if (!health.isDead)
         {
             RaycastHit2D playerDetected = IsPlayerDetected();
             if (playerDetected.collider != null)

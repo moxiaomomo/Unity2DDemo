@@ -54,14 +54,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strength:
     baseValue: 0
-    modifiers: 
+    modifiers: []
   damage:
     baseValue: 0
-    modifiers: 
+    modifiers: []
   maxHP:
     baseValue: 100
-    modifiers: 
-  currentHP: 0
+    modifiers: []
 --- !u!114 &3896466517209406241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e68b0f7801711d4ab8457259407a3dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolTag: 
   groundCheck: {fileID: 1314360884196086146}
   groundCheckDistance: 0
   wallCheck: {fileID: 4349839589579078691}
@@ -98,6 +98,7 @@ MonoBehaviour:
   attackCheck: {fileID: 2708356979985129571}
   attackCheckRadius: 0
   fx: {fileID: 0}
+  enemyID: 
   whatisPlayer:
     serializedVersion: 2
     m_Bits: 128
@@ -657,11 +658,12 @@ GameObject:
   - component: {fileID: 332699229655874795}
   - component: {fileID: 6669769387794274827}
   - component: {fileID: 9103868352751616845}
-  - component: {fileID: 7907306974696254130}
   - component: {fileID: 4120725613955144286}
   - component: {fileID: 737126904469364300}
   - component: {fileID: 6358968959999237472}
   - component: {fileID: 3671497446189795989}
+  - component: {fileID: 2310617610403502781}
+  - component: {fileID: 7809892526282784791}
   m_Layer: 8
   m_Name: Fake_Knight
   m_TagString: Untagged
@@ -774,6 +776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b06df373600df9f4f861f0c9bddc34fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolTag: FakeKnight
   groundCheck: {fileID: 5931589303428625706}
   groundCheckDistance: 5
   wallCheck: {fileID: 5534062175650011100}
@@ -784,6 +787,7 @@ MonoBehaviour:
   attackCheck: {fileID: 5977858882614040170}
   attackCheckRadius: 2.07
   fx: {fileID: 0}
+  enemyID: 
   whatisPlayer:
     serializedVersion: 2
     m_Bits: 128
@@ -800,31 +804,8 @@ MonoBehaviour:
   idleTime: 1
   battleTime: 0
   jumpForce: 22
-  poolTag: FakeKnight
   stateTrigger: 0
   bt: {fileID: 0}
---- !u!114 &7907306974696254130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7671811394740250361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd56cf716ed15bd4caac883ab2d0886f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength:
-    baseValue: 0
-    modifiers: 
-  damage:
-    baseValue: 15
-    modifiers: 
-  maxHP:
-    baseValue: 200
-    modifiers: 
-  currentHP: 0
 --- !u!114 &4120725613955144286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,6 +949,91 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4364b90708e0604b91bb3603e3bd65a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2310617610403502781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7671811394740250361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c2ee795fa7c7746b27849711371c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  major:
+    strength:
+      baseValue: 100
+      modifiers: []
+    agility:
+      baseValue: 0
+      modifiers: []
+    intelligence:
+      baseValue: 0
+      modifiers: []
+    vitality:
+      baseValue: 0
+      modifiers: []
+  offense:
+    attackSpeed:
+      baseValue: 0
+      modifiers: []
+    damage:
+      baseValue: 100
+      modifiers: []
+    critPower:
+      baseValue: 0
+      modifiers: []
+    critChance:
+      baseValue: 0
+      modifiers: []
+    armorReduction:
+      baseValue: 0
+      modifiers: []
+    fireDamage:
+      baseValue: 0
+      modifiers: []
+    iceDamage:
+      baseValue: 0
+      modifiers: []
+    lightningDamage:
+      baseValue: 0
+      modifiers: []
+  defense:
+    armor:
+      baseValue: 0
+      modifiers: []
+    evasion:
+      baseValue: 0
+      modifiers: []
+    fireRes:
+      baseValue: 0
+      modifiers: []
+    iceRes:
+      baseValue: 0
+      modifiers: []
+    lightningRes:
+      baseValue: 0
+      modifiers: []
+  resources:
+    maxHP:
+      baseValue: 800
+      modifiers: []
+    healthRegen:
+      baseValue: 0
+      modifiers: []
+--- !u!114 &7809892526282784791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7671811394740250361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55effa8b11ca07e4ea2481e109693797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8172335627314003427

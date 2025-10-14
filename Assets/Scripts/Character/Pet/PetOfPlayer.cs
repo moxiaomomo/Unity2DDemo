@@ -56,8 +56,8 @@ public class PetOfPlayer : Entity
         stateMachine.Initialize(idleState);
 
         // Enemy[] enemies = GetComponents<Enemy>();
-        List<Enemy> enemies = EnemyPoolManager.instance.GetAllActiveEnemies();
-        Debug.Log(enemies.Count);
+        //List<Enemy> enemies = EnemyPoolManager.instance.GetAllActiveEnemies();
+        //Debug.Log(enemies.Count);
     }
 
     // Update is called once per frame

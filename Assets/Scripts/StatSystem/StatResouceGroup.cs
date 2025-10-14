@@ -6,6 +6,6 @@ using UnityEngine;
 [Serializable]
 public class StatResouceGroup
 {
-    public Stat maxHp;
+    public Stat maxHP;
     public Stat healthRegen;
 }

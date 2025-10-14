@@ -112,8 +112,8 @@ public class Enemy : Entity,IEnemySavable
             enemyID = this.enemyID,
             enemyTag = this.poolTag,
             position = transform.position,
-            currentHP = this.stats.GetCurrentHP(),
-            isDead = this.isDead
+            currentHP = (int)this.health.GetCurrentHP(),
+            isDead = this.health.isDead
         };
     }
 
@@ -121,7 +121,7 @@ public class Enemy : Entity,IEnemySavable
     {
         this.enemyID = data.enemyID;
         this.poolTag = data.enemyTag;
-        this.stats.SetCurrentHP(data.currentHP);
+        this.health.SetCurrentHP(data.currentHP);
         transform.position = data.position;
 
         if (data.isDead)

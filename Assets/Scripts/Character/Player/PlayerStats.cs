@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class PlayerStats : CharacterStats
+public class PlayerStats1 : CharacterStats
 {
     // Start is called before the first frame update
     private Player player;

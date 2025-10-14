@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class SkillObjectBase : MonoBehaviour
@@ -15,14 +16,14 @@ public class SkillObjectBase : MonoBehaviour
 
     protected void DoDamageEnemies(Collider2D[] enemies)
     {
-        foreach (Collider2D collider in enemies)
+        foreach (Collider2D hit in enemies)
         {
-            Enemy enemy = collider.GetComponent<Enemy>();
-            if (enemy == null || enemy.stats.GetCurrentHP()<=0)
+            IDamageable damageable = hit.GetComponent<IDamageable>();
+            if (damageable == null)
             {
                 continue;
             }
-            enemy.stats.TakeDamage(damage);
+            damageable.TakeDamage(damage, transform);
         }
     }
 

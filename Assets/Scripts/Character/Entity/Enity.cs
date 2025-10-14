@@ -21,14 +21,16 @@ public class Entity : MonoBehaviour
 
     public int facingDirection { get; private set; } = 1;
     protected bool facingRight = true;
-    protected bool isDead = false;
 
     #region Components
     public Animator animator { get; private set; }
     public Rigidbody2D rb { get; private set; }
     public EntityFX fx;
-    public CharacterStats stats { get; private set; }
     public CapsuleCollider2D capsulecd { get; private set; }
+
+    // public CharacterStats stats { get; private set; }
+    public EntityStats stats { get; private set; }
+    public EntityHealth health { get; private set; }
     #endregion
 
     protected virtual void Awake()
@@ -36,8 +38,11 @@ public class Entity : MonoBehaviour
         fx = GetComponent<EntityFX>();
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        stats = GetComponent<CharacterStats>();
+        // stats = GetComponent<CharacterStats>();
         capsulecd = GetComponent<CapsuleCollider2D>();
+
+        stats = GetComponent<EntityStats>();
+        health = GetComponent<EntityHealth>();
     }
 
     protected virtual void Start()
@@ -53,8 +58,7 @@ public class Entity : MonoBehaviour
 
     public virtual void Die()
     {
-        isDead = true;
-        stats.SetCurrentHP(0);
+        health.SetCurrentHP(0);
     }
 
     protected virtual void Update()

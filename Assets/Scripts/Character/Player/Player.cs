@@ -107,7 +107,7 @@ public class Player : Entity
         dashCoolTimeCounter -= Time.deltaTime;
         counterAttackCoolTimeCounter -= Time.deltaTime;
 
-        if (IsWallDetected()||isDead)
+        if (IsWallDetected()||health.isDead)
         {
             return;
         }

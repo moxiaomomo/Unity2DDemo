@@ -9,7 +9,7 @@ public class CheckHealthUnder : Fake_Knight_Conditional
 
     public override TaskStatus OnUpdate()
     {
-        int currentHP = boss.stats.GetCurrentHP();
+        float currentHP = boss.health.GetCurrentHP();
         return currentHP <= HealthTreshold.Value ? TaskStatus.Success : TaskStatus.Failure;
     }
 

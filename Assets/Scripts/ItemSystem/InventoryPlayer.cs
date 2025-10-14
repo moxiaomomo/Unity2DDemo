@@ -23,7 +23,7 @@ public class InventoryPlayer : InventoryBase
             if (slot.HasItem() == false)
                 return;
 
-
+            // TODO
         }
     }
 

@@ -62,7 +62,7 @@ public class ShockWave : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("[ShockWave] Hit player, dealing damage.");
-            PlayerManager.instance.player.stats.TakeDamage(damage);
+            PlayerManager.instance.player.health.TakeDamage(damage, transform);
         }
     }
 }

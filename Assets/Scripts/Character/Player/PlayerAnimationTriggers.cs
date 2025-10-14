@@ -19,11 +19,12 @@ public class PlayerAnimationTriggers : MonoBehaviour
         foreach (var hit in colliders)
         {
             // 计算Player对Enemy造成的伤害
-            if (hit.GetComponent<Enemy>() != null)
+            IDamageable damageable = hit.GetComponent<IDamageable>();
+            if (damageable == null || damageable.Tag() == "Player")
             {
-                EnemyStats _target = hit.GetComponent<EnemyStats>();
-                player.stats.DoDamage(_target);
+                continue;
             }
+            damageable.TakeDamage(player.stats.offense.damage.GetValue(), player.transform);
         }
     }
 

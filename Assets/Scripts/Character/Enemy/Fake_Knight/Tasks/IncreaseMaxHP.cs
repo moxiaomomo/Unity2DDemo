@@ -14,7 +14,7 @@ public class IncreaseMaxHP : Fake_Knight_Action
     {
         if(CurrentStage.Value >= increaseHPStage)
         {
-            boss.stats.IncreaseMaxHP(increaseHP);
+            boss.health.IncreaseMaxHP(increaseHP);
         }
         return TaskStatus.Success;
     }
