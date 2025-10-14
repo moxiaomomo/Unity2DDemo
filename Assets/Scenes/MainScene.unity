@@ -394,6 +394,7 @@ MonoBehaviour:
   skillType: 1
   firePrefab: {fileID: 1210335785725416995, guid: 5b193f95c683feb4a880fb00658bac26, type: 3}
   detonateTime: 5
+  cooldownTime: 0.2
 --- !u!1 &36668993
 GameObject:
   m_ObjectHideFlags: 0

@@ -83,6 +83,7 @@ public class Player : Entity
         base.Update();
         stateMachine.currentState.Update();
         CheckDashInput();
+        CheckSkillInput();
     }
 
     //并流一个程序将人物设为繁忙，等待一定秒数后再释放它
@@ -121,8 +122,10 @@ public class Player : Entity
             }
             stateMachine.ChangeState(dashState);
         }
+    }
 
-        // Test
+    private void CheckSkillInput()
+    {
         if (Input.GetKeyDown(KeyCode.F))
         {
             skillManager.fire.CreateFire(facingRight);
