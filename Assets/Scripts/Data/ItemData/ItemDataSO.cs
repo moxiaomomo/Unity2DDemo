@@ -9,3 +9,4 @@ public class ItemDataSO : ScriptableObject
     // 物品格中可存储该item的最大数量
     public int maxStackSize;
 }
+
