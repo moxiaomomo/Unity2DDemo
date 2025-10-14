@@ -6,4 +6,6 @@ public class ItemDataSO : ScriptableObject
     public string itemName;
     public Sprite itemIcon;
     public ItemType itemType;
+    // 物品格中可存储该item的最大数量
+    public int maxStackSize;
 }

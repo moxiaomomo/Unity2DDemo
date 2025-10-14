@@ -24,7 +24,25 @@ public class InventoryBase : MonoBehaviour
 
     public void AddItem(InventoryItem itemToAdd)
     {
-        itemList.Add(itemToAdd);
+        InventoryItem itemExists = FindItem(itemToAdd.itemData);
+        if (itemExists != null)
+        {
+            itemExists.AddStack();
+        }
+        else
+        {
+            if(!CanAddItem())
+            { 
+                return; // 所有的物品格都已经装满
+            }
+            itemList.Add(itemToAdd);
+        }
+
         OnInventoryChange?.Invoke();
+    }
+
+    public InventoryItem FindItem(ItemDataSO itemSO)
+    {
+        return itemList.Find(item => item.itemData == itemSO && item.CanAddStack());
     }
 }

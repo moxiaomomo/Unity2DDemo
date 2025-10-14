@@ -16,8 +16,8 @@ public class UI_ItemSlot : MonoBehaviour
         if (itemInSlot == null )
         {
             itemStackSize.text = "";
-            // itemIcon.sprite = null;
-            // itemIcon.color = Color.clear;
+            itemIcon.sprite = null;
+            itemIcon.color = Color.clear;
             return;
         }
 
@@ -25,6 +25,6 @@ public class UI_ItemSlot : MonoBehaviour
         color.a = .9f;
         itemIcon.color = color;
         itemIcon.sprite = itemInSlot.itemData.itemIcon;
-        itemStackSize.text = itemInSlot.itemData.itemName;
+        itemStackSize.text = itemInSlot.stackSize+"";
     }
 }

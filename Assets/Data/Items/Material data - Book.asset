@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: Books
   itemIcon: {fileID: -153325730, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
   itemType: 0
+  maxStackSize: 99
