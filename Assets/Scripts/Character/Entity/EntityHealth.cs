@@ -37,7 +37,7 @@ public class EntityHealth : MonoBehaviour, IDamgable
     {
         if (healthBar == null)
             return;
-        healthBar.value = currentHp / stats.maxHp;
+        healthBar.value = currentHp / stats.GetMaxHealth();
     }
 
     private void Die()

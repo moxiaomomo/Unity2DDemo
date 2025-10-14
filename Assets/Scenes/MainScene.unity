@@ -53268,9 +53268,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1126997338}
-  - component: {fileID: 1126997337}
   - component: {fileID: 1126997336}
   - component: {fileID: 1126997335}
+  - component: {fileID: 1126997337}
   - component: {fileID: 1126997334}
   - component: {fileID: 1126997333}
   - component: {fileID: 1126997332}
@@ -53472,11 +53472,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1126997331}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4eb06dc683c0df4fba15f8c5076dd6c, type: 3}
+  m_Script: {fileID: 11500000, guid: b6a4972aa1f380741ab5569b9de3b297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxInventorySize: 10
   itemList: []
+  equipList: []
 --- !u!1 &1140233548
 GameObject:
   m_ObjectHideFlags: 0

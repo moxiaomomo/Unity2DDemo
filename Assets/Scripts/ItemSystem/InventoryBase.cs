@@ -11,7 +11,12 @@ public class InventoryBase : MonoBehaviour
     public int maxInventorySize = 10;
     public List<InventoryItem> itemList = new List<InventoryItem>();
 
-    private void Start()
+    protected virtual void Awake()
+    {
+
+    }
+
+    protected virtual void Start()
     {
         uiItemSlots = FindObjectsOfType<UI_ItemSlot>();
         if (uiItemSlots != null)
@@ -38,6 +43,12 @@ public class InventoryBase : MonoBehaviour
             itemList.Add(itemToAdd);
         }
 
+        OnInventoryChange?.Invoke();
+    }
+
+    public void RemoveItem(InventoryItem itemToRemove)
+    {
+        itemList.Remove(FindItem(itemToRemove.itemData));
         OnInventoryChange?.Invoke();
     }
 

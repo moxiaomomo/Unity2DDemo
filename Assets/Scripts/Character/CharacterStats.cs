@@ -19,14 +19,14 @@ public class CharacterStats : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        currentHP = maxHP.GetValue();
+        currentHP = (int)maxHP.GetValue();
         //Debug.Log($"currentHP: {currentHP}");
     }
 
 
     public virtual void DoDamage(CharacterStats _targetStats)
     {
-        int totalDamage = strength.GetValue() + damage.GetValue();
+        int totalDamage = (int)strength.GetValue() + (int)damage.GetValue();
         if (_targetStats != null)
         {
             _targetStats.TakeDamage(totalDamage);
@@ -50,13 +50,13 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void Rebirth()
     {
-        currentHP = maxHP.GetValue();
+        currentHP = (int)maxHP.GetValue();
         onHealthChanged?.Invoke();
     }
 
     public virtual void IncreaseMaxHP(int _amount)
     {
-        maxHP.AddModifier(_amount);
+        maxHP.AddModifier(_amount, StatType.MaxHealth.ToString());
         currentHP += _amount;
         onHealthChanged?.Invoke();
     }
