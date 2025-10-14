@@ -55,6 +55,18 @@ public class Entity : MonoBehaviour
         fx.StartCoroutine("FlashFX");
     }
 
+    public virtual void PerformAttack(Collider2D[] targets)
+    {
+        foreach (var hit in targets)
+        {
+            IDamageable targetDamageable = hit.GetComponent<IDamageable>();
+            if (targetDamageable == null || targetDamageable.Tag() == this.poolTag)
+            {
+                continue;
+            }
+            targetDamageable.TakeDamage(stats.offense.damage.GetValue(), transform);
+        }
+    }
 
     public virtual void Die()
     {

@@ -100,6 +100,7 @@ public class Player : Entity
     {
         base.Die();
         stateMachine.ChangeState(deadState);
+        Debug.Log("Player is dead.");
     }
     private void CheckDashInput()
     {

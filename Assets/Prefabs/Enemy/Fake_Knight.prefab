@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5072904159417027326}
-  - component: {fileID: 3890184651177509219}
   - component: {fileID: 3896466517209406241}
   - component: {fileID: 9071945974226868170}
   - component: {fileID: 8166096742163231200}
   - component: {fileID: 5980943623731868836}
+  - component: {fileID: 4948796888978080865}
+  - component: {fileID: 8874138161890548640}
   m_Layer: 8
   m_Name: Maggot
   m_TagString: Untagged
@@ -40,27 +41,6 @@ Transform:
   - {fileID: 2708356979985129571}
   m_Father: {fileID: 162919874858010801}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3890184651177509219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266538909651083368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd56cf716ed15bd4caac883ab2d0886f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength:
-    baseValue: 0
-    modifiers: []
-  damage:
-    baseValue: 0
-    modifiers: []
-  maxHP:
-    baseValue: 100
-    modifiers: []
 --- !u!114 &3896466517209406241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +158,92 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4948796888978080865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266538909651083368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c2ee795fa7c7746b27849711371c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  major:
+    strength:
+      baseValue: 50
+      modifiers: []
+    agility:
+      baseValue: 0
+      modifiers: []
+    intelligence:
+      baseValue: 0
+      modifiers: []
+    vitality:
+      baseValue: 0
+      modifiers: []
+  offense:
+    attackSpeed:
+      baseValue: 0
+      modifiers: []
+    damage:
+      baseValue: 60
+      modifiers: []
+    critPower:
+      baseValue: 0
+      modifiers: []
+    critChance:
+      baseValue: 0
+      modifiers: []
+    armorReduction:
+      baseValue: 0
+      modifiers: []
+    fireDamage:
+      baseValue: 0
+      modifiers: []
+    iceDamage:
+      baseValue: 0
+      modifiers: []
+    lightningDamage:
+      baseValue: 0
+      modifiers: []
+  defense:
+    armor:
+      baseValue: 0
+      modifiers: []
+    evasion:
+      baseValue: 0
+      modifiers: []
+    fireRes:
+      baseValue: 0
+      modifiers: []
+    iceRes:
+      baseValue: 0
+      modifiers: []
+    lightningRes:
+      baseValue: 0
+      modifiers: []
+  resources:
+    maxHP:
+      baseValue: 800
+      modifiers: []
+    healthRegen:
+      baseValue: 0
+      modifiers: []
+--- !u!114 &8874138161890548640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266538909651083368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55effa8b11ca07e4ea2481e109693797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHp: 0
 --- !u!1 &1585724848766717143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,6 +1102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55effa8b11ca07e4ea2481e109693797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentHp: 0
 --- !u!1 &8172335627314003427
 GameObject:
   m_ObjectHideFlags: 0

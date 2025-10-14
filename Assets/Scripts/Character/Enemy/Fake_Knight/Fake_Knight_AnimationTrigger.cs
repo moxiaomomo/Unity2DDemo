@@ -14,15 +14,7 @@ public class Fake_Knight_AnimationTrigger : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(2);
         Collider2D[] colliders = Physics2D.OverlapCircleAll(boss.attackCheck.position, boss.attackCheckRadius);
-        foreach (var hit in colliders)
-        {
-            IDamageable damageable = hit.GetComponent<IDamageable>();
-            if (damageable == null || damageable.Tag() == "Fake_Knight")
-            {
-                continue;
-            }
-            damageable.TakeDamage(boss.stats.offense.damage.GetValue(), boss.transform);
-        }
+        boss.PerformAttack(colliders);
     }
 
     private void OpenCounterWindow() => boss.OpenCounterAttackWindow();

@@ -12,17 +12,8 @@ public class Enemy_NightBone_AnimationTrigger : MonoBehaviour
     }
     private void AttackTrigger()
     {
-
         Collider2D[] colliders = Physics2D.OverlapCircleAll(enemy.attackCheck.position, enemy.attackCheckRadius);
-        foreach (var hit in colliders)
-        {
-            IDamageable damageable = hit.GetComponent<IDamageable>();
-            if (damageable == null || damageable.Tag() == "NightBone")
-            {
-                continue;
-            }
-            damageable.TakeDamage(enemy.stats.offense.damage.GetValue(), enemy.transform);
-        }
+        enemy.PerformAttack(colliders);
     }
 
     private void OpenCounterWindow() => enemy.OpenCounterAttackWindow();

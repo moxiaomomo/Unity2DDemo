@@ -16,16 +16,7 @@ public class PlayerAnimationTriggers : MonoBehaviour
     private void AttackTrigger()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackCheckRadius);
-        foreach (var hit in colliders)
-        {
-            // 计算Player对Enemy造成的伤害
-            IDamageable damageable = hit.GetComponent<IDamageable>();
-            if (damageable == null || damageable.Tag() == "Player")
-            {
-                continue;
-            }
-            damageable.TakeDamage(player.stats.offense.damage.GetValue(), player.transform);
-        }
+        player.PerformAttack(colliders);
     }
 
     private void DieTrigger()

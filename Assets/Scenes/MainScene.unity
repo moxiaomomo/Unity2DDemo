@@ -53163,6 +53163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55effa8b11ca07e4ea2481e109693797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentHp: 0
 --- !u!114 &1116119247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53509,6 +53510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55effa8b11ca07e4ea2481e109693797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentHp: 0
 --- !u!114 &1126997342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53577,7 +53579,7 @@ MonoBehaviour:
       modifiers: []
   resources:
     maxHP:
-      baseValue: 1000
+      baseValue: 10000
       modifiers: []
     healthRegen:
       baseValue: 0

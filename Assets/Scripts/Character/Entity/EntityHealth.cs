@@ -4,12 +4,12 @@ using UnityEngine.UI;
 public class EntityHealth : MonoBehaviour, IDamageable
 {
     private Slider healthBar;
-    // private EntityFX entityFX;
+    private RectTransform rectTransform;
     private Entity entity;
     private EntityStats stats;
 
-    public bool isDead {  get; private set; }
-    protected float _currentHp;
+    [SerializeField] public bool isDead {  get; private set; }
+    [SerializeField] protected float _currentHp;
     protected float currentHP
     {
         get => _currentHp;
@@ -25,12 +25,22 @@ public class EntityHealth : MonoBehaviour, IDamageable
 
     protected virtual void Awake()
     {
-        // entityFX = GetComponent<EntityFX>();
         entity = GetComponent<Entity>();
         stats = GetComponent<EntityStats>();
         healthBar = GetComponentInChildren<Slider>();
-
+        rectTransform = GetComponentInChildren<RectTransform>();
         currentHP = stats.GetMaxHealth();
+
+        if (entity != null)
+        {
+            entity.onFlipped += FlipUI;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (entity != null)
+            entity.onFlipped -= FlipUI;
     }
 
     public virtual string Tag()
@@ -52,9 +62,6 @@ public class EntityHealth : MonoBehaviour, IDamageable
 
     public virtual void IncreaseMaxHP(int _amount)
     {
-        //maxHP.AddModifier(_amount, StatType.MaxHealth.ToString());
-        //currentHP += _amount;
-        //onHealthChanged?.Invoke();
         stats.resources.maxHP.AddModifier(_amount, StatType.MaxHealth.ToString());
         currentHP += _amount;
     }
@@ -72,6 +79,7 @@ public class EntityHealth : MonoBehaviour, IDamageable
     public virtual void Rebirth()
     {
         currentHP = (int)stats.resources.maxHP.GetValue();
+        isDead = false;
     }
 
     protected void ReduceHP(float damage)
@@ -81,19 +89,31 @@ public class EntityHealth : MonoBehaviour, IDamageable
         {
             this.currentHP = 0;
         }
+        if (this.currentHP <= 0)
+        {
+            OnEntityDie();
+        }
+    }
+
+    private void OnEntityDie()
+    {
+        isDead = true;
+        entity.Die();
     }
 
     private void UpdateHealthBar()
     {
         if (healthBar == null)
             return;
-        // healthBar.value = currentHp / stats.GetMaxHealth();
         healthBar.maxValue = stats.resources.maxHP.GetValue();
         healthBar.value = GetCurrentHP();
     }
 
-    private void Die()
+    private void FlipUI()
     {
-        isDead = true;
+        if(rectTransform != null)
+        {
+            rectTransform.Rotate(0f, 180f, 0f);
+        }
     }
 }
