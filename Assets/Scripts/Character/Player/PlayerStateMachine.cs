@@ -20,7 +20,7 @@ public class PlayerStateMachine
         currentState = _newState;
         currentState.Enter();
         // 通知Pet对象Player状态已改变
-        PetOfPlayer.playerStateChanged.Invoke(currentState.stateName);
+        PetOfPlayer.playerStateChanged?.Invoke(currentState.stateName);
     }
 
 }

@@ -21,6 +21,7 @@ public class Entity : MonoBehaviour
 
     public int facingDirection { get; private set; } = 1;
     protected bool facingRight = true;
+    public bool isStunned = false;
 
     #region Components
     public Animator animator { get; private set; }
@@ -49,10 +50,21 @@ public class Entity : MonoBehaviour
     {
     }
 
+    public bool CanMove()
+    {
+        return !isStunned;
+    }
+
     public virtual void DamageEffect()
     {
         if (!gameObject.activeInHierarchy) return;
         fx.StartCoroutine("FlashFX");
+
+        if (stats.defense.repelledForce.IsPositive())
+        {
+            Vector2 knockback = new Vector2(-facingDirection, 1);
+            rb.AddForce(knockback.normalized * stats.defense.repelledForce.GetValue(), ForceMode2D.Impulse);
+        }
     }
 
     public virtual void PerformAttack(Collider2D[] targets)

@@ -22,7 +22,14 @@ public class PlayerMoveState : PlayerGroundState
     public override void Update()
     {
         base.Update();
-        player.SetVelocity(xInput * player.moveSpeed, rb.velocity.y);
+        if(!player.CanMove())
+        {
+            player.SetZeroVelocity();
+        }
+        else
+        {
+            player.SetVelocity(xInput * player.moveSpeed, rb.velocity.y);
+        }
         if (xInput == 0)
         {
             stateMachine.ChangeState(player.idleState);

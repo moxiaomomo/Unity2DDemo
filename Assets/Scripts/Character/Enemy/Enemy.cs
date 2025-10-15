@@ -16,7 +16,6 @@ public class Enemy : Entity,IEnemySavable
     public Vector2 stunDirection;
     protected bool canBeStunned;
     [SerializeField] protected GameObject counterImage;
-    public bool isStunned = false;
 
     [Header("Attack info")]
     public float playerCheckDistance;

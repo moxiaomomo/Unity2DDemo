@@ -16,6 +16,11 @@ public class Stat
         return GetFinalValue();
     }
 
+    public bool IsPositive()
+    {
+        return GetFinalValue()>0;
+    }
+
     private float GetFinalValue()
     {
         float finalValue = baseValue;
@@ -36,7 +41,6 @@ public class Stat
     {
         modifiers.RemoveAll(modifier => modifier.source == source);
     }
-
 }
 
 [Serializable]

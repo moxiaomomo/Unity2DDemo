@@ -889,6 +889,9 @@ MonoBehaviour:
     evasion:
       baseValue: 0
       modifiers: []
+    repelledForce:
+      baseValue: 5
+      modifiers: []
     fireRes:
       baseValue: 0
       modifiers: []
@@ -900,7 +903,7 @@ MonoBehaviour:
       modifiers: []
   resources:
     maxHP:
-      baseValue: 35
+      baseValue: 150
       modifiers: []
     healthRegen:
       baseValue: 0
@@ -917,3 +920,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55effa8b11ca07e4ea2481e109693797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentHp: 0

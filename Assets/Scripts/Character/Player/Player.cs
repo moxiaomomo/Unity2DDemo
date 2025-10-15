@@ -29,7 +29,6 @@ public class Player : Entity
     [Header("Stunned info")]
     [SerializeField] private float force;
     [SerializeField] private float stunDuration = .5f;
-    private bool isStunned = false;
     public bool IsStunned => isStunned;
     private Coroutine stunCoroutine;
     #region States
@@ -136,9 +135,6 @@ public class Player : Entity
     public override void DamageEffect()
     {
         base.DamageEffect();
-        SetZeroVelocity();
-        Vector2 knockback = new Vector2(-facingDirection, 1);
-        rb.AddForce(knockback.normalized * force, ForceMode2D.Impulse);
         StartStun();
     }
 
@@ -160,5 +156,4 @@ public class Player : Entity
         isStunned = false;
         stunCoroutine = null;
     }
-
 }

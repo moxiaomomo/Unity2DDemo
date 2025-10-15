@@ -215,6 +215,9 @@ MonoBehaviour:
     evasion:
       baseValue: 0
       modifiers: []
+    repelledForce:
+      baseValue: 0
+      modifiers: []
     fireRes:
       baseValue: 0
       modifiers: []
@@ -1073,6 +1076,9 @@ MonoBehaviour:
       modifiers: []
     evasion:
       baseValue: 0
+      modifiers: []
+    repelledForce:
+      baseValue: 20
       modifiers: []
     fireRes:
       baseValue: 0
