@@ -7,8 +7,8 @@ using UnityEngine;
 public class StatOffenseGroup
 {
     // Physical damage
-    public Stat attackSpeed;
     public Stat damage;
+    public Stat attackSpeed;
     public Stat critPower;
     public Stat critChance;
     public Stat armorReduction;

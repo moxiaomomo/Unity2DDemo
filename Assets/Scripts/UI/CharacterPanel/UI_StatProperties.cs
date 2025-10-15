@@ -40,14 +40,34 @@ public class UI_StatProperties : MonoBehaviour
 
         if (propKeyText != null)
         {
-            propKeyText.text = "【基础属性】\n最大生命值:\n力量:\n敏捷:\n智力:\n";
+            propKeyText.text = "【 基础属性 】\nmaxHP:\n每秒恢复HP:\n力量:\n敏捷:\n智力:\n" +
+                "【 攻击属性 】\n基础伤害:\n攻速:\n暴击倍率:\n暴击几率:\n破甲:\n火系攻击:\n冰系攻击:\n电系攻击:\n" +
+                "【 防御属性 】\n护甲:\n闪避:\n火系抗性:\n冰系抗性:\n电系抗性:\n"
+                ;
         }
         if (propValueText != null)
         {
-            propValueText.text = $"\n{playerStats.resources.maxHP.GetValue()}\n" +
-                $"{playerStats.major.strength.GetValue()}\n" +
-                $"{playerStats.major.agility.GetValue()}\n" +
-                $"{playerStats.major.intelligence.GetValue()}\n";
+            propValueText.text = $"\n{playerStats.resources.maxHP.GetValue()}\n"
+                + $"{playerStats.resources.healthRegen.GetValue()}\n"
+                + $"{playerStats.major.strength.GetValue()}\n"
+                + $"{playerStats.major.agility.GetValue()}\n"
+                + $"{playerStats.major.intelligence.GetValue()}\n"
+
+                + $"\n{playerStats.offense.damage.GetValue()}\n"
+                + $"{playerStats.offense.attackSpeed.GetValue()}\n"
+                + $"{playerStats.offense.critPower.GetValue()}\n"
+                + $"{playerStats.offense.critChance.GetValue()}\n"
+                + $"{playerStats.offense.armorReduction.GetValue()}\n"
+                + $"{playerStats.offense.fireDamage.GetValue()}\n"
+                + $"{playerStats.offense.iceDamage.GetValue()}\n"
+                + $"{playerStats.offense.lightningDamage.GetValue()}\n"
+
+                + $"\n{playerStats.defense.armor.GetValue()}\n"
+                + $"{playerStats.defense.evasion.GetValue()}\n"
+                + $"{playerStats.defense.fireRes.GetValue()}\n"
+                + $"{playerStats.defense.iceRes.GetValue()}\n"
+                + $"{playerStats.defense.lightningRes.GetValue()}\n"
+                ;
         }
     }
 }
