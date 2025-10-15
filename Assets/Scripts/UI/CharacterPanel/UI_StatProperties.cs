@@ -40,14 +40,14 @@ public class UI_StatProperties : MonoBehaviour
 
         if (propKeyText != null)
         {
-            propKeyText.text = "最大生命值:\n\n力量:\n\n敏捷:\n\n智力:\n\n";
+            propKeyText.text = "【基础属性】\n最大生命值:\n力量:\n敏捷:\n智力:\n";
         }
         if (propValueText != null)
         {
-            propValueText.text = $"{playerStats.resources.maxHP.GetValue()}\n\n" +
-                $"{playerStats.major.strength.GetValue()}\n\n" +
-                $"{playerStats.major.agility.GetValue()}\n\n" +
-                $"{playerStats.major.intelligence.GetValue()}\n\n";
+            propValueText.text = $"\n{playerStats.resources.maxHP.GetValue()}\n" +
+                $"{playerStats.major.strength.GetValue()}\n" +
+                $"{playerStats.major.agility.GetValue()}\n" +
+                $"{playerStats.major.intelligence.GetValue()}\n";
         }
     }
 }
