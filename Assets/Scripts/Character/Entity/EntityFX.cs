@@ -19,11 +19,15 @@ public class EntityFX : MonoBehaviour
 
     private IEnumerator FlashFX()
     {
-        sr.material = hitMaterial;
+        if (sr!=null)
+        {
+            sr.material = hitMaterial;
+        }
         yield return new WaitForSeconds(flashDuration);
-        sr.material = originMaterial;
-
-
+        if (sr != null)
+        {
+            sr.material = originMaterial;
+        }
     }
 
     private void RedColorBlink()

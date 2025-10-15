@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ObjectActiveController : MonoBehaviour
@@ -11,6 +12,8 @@ public class ObjectActiveController : MonoBehaviour
     }
 
     [SerializeField] private ActiveUIKeys[] activeUIKeys;
+
+    public event Action<int> OnCanvasAlphaChanged;
 
     private void Awake()
     {
@@ -43,6 +46,11 @@ public class ObjectActiveController : MonoBehaviour
             canvasGroup.alpha = 1; // 完全不透明
             canvasGroup.interactable = true; // 可交互
             canvasGroup.blocksRaycasts = true; // 可以阻挡射线
+
+            GlobalEventSystem.Instance.TriggerEvent(
+                "showPlayerStatPanel",
+                true
+            );
         }
     }
 
@@ -54,6 +62,11 @@ public class ObjectActiveController : MonoBehaviour
             canvasGroup.alpha = 0; // 完全透明
             canvasGroup.interactable = false; // 不可交互
             canvasGroup.blocksRaycasts = false; // 不阻挡射线
+
+            GlobalEventSystem.Instance.TriggerEvent(
+                "showPlayerStatPanel",
+                false
+            );
         }
     }
 
