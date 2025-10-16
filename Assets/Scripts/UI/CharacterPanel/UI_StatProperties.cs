@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_StatProperties : MonoBehaviour
+public class UI_StatProperties : MonoBehaviour,IPointerDownHandler
 {
     [SerializeField] public TextMeshProUGUI propKeyText;
     [SerializeField] public TextMeshProUGUI propValueText;
@@ -68,6 +69,35 @@ public class UI_StatProperties : MonoBehaviour
                 + $"{playerStats.defense.iceRes.GetValue()}\n"
                 + $"{playerStats.defense.lightningRes.GetValue()}\n"
                 ;
+        }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        GameObject menuObj = GameObject.FindWithTag("PlayerDataPanel");
+        CanvasGroup canvasGroup = menuObj.GetComponent<CanvasGroup>();
+        hideUI(canvasGroup);
+    }
+
+    public static void showUI(CanvasGroup canvasGroup)
+    {
+        // 显示UI
+        if (canvasGroup != null)
+        {
+            canvasGroup.alpha = 1; // 完全不透明
+            canvasGroup.interactable = true; // 可交互
+            canvasGroup.blocksRaycasts = true; // 可以阻挡射线
+        }
+    }
+
+    public static void hideUI(CanvasGroup canvasGroup)
+    {
+        // 隐藏UI
+        if (canvasGroup != null)
+        {
+            canvasGroup.alpha = 0; // 完全透明
+            canvasGroup.interactable = false; // 不可交互
+            canvasGroup.blocksRaycasts = false; // 不阻挡射线
         }
     }
 }

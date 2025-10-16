@@ -6,15 +6,9 @@ using UnityEngine;
 public class InventoryBase : MonoBehaviour
 {
     public event Action OnInventoryChange;
-    private UI_ItemSlot[] uiItemSlots;
-
     public int maxInventorySize = 10;
+    public UI_ItemSlot[] uiItemSlots;
     public List<InventoryItem> itemList = new List<InventoryItem>();
-
-    protected virtual void Awake()
-    {
-
-    }
 
     protected virtual void Start()
     {

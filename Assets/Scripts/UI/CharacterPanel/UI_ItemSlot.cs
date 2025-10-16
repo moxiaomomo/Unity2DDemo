@@ -1,3 +1,4 @@
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -6,7 +7,13 @@ using UnityEngine.UI;
 
 public class UI_ItemSlot : ItemSlotBase
 {
-    [SerializeField] protected TextMeshProUGUI itemStackSize;
+    [SerializeField] public TextMeshProUGUI itemStackSize;
+    [SerializeField] public GameObject menuObj;
+
+    private void Awake()
+    {
+        menuObj = GameObject.FindWithTag("PlayerDataPanel");
+    }
 
     public override void updateSlot(InventoryItem item)
     {
@@ -31,12 +38,42 @@ public class UI_ItemSlot : ItemSlotBase
         // 判断是否为鼠标右键点击
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            Debug.Log("检测到鼠标右击");
+            GlobalEventSystem.Instance.TriggerEvent(
+                "itemSlotSelected",
+                itemInSlot
+            );
+            ShowCustomMenu();
+        } 
+        else if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            CloseMenu();
+        }
+    }
 
-            GenericMenu menu = new GenericMenu();
-            menu.AddItem(new GUIContent("选项 1"), false, () => Debug.Log("选项 1 被点击"));
-            menu.AddItem(new GUIContent("选项 2"), false, () => Debug.Log("选项 2 被点击"));
-            menu.ShowAsContext();
+    private void ShowCustomMenu()
+    {
+        // 关闭已存在的菜单
+        CloseMenu();
+        // 实例化新菜单
+        if (menuObj != null)
+        {
+            CanvasGroup canvasGroup = menuObj.GetComponent<CanvasGroup>();
+            if (canvasGroup != null)
+            {
+                Vector2 mousePos = Input.mousePosition;
+                menuObj.transform.position = mousePos;
+                UI_StatProperties.showUI(canvasGroup);
+            }
+        }
+    }
+
+    // 关闭菜单
+    public void CloseMenu()
+    {
+        CanvasGroup canvasGroup = menuObj?.GetComponent<CanvasGroup>();
+        if (canvasGroup != null)
+        {
+            UI_StatProperties.hideUI(canvasGroup);
         }
     }
 }

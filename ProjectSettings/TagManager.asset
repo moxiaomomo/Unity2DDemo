@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - FakeKnight
+  - PlayerDataPanel
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - Background
   - NoClimbGround
   - PlayerPickups
+  - SecondTopObject
   - TopObject
-  - 
   - 
   - 
   - 

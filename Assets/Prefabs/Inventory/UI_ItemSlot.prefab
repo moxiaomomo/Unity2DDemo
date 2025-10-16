@@ -263,6 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 1965746031040417980}
   itemStackSize: {fileID: 2970857376946909691}
+  menuPrefab: {fileID: 1352797259766790139, guid: 5e12b1a478dbcb241a21fa86f306b323, type: 3}
 --- !u!61 &4130415932370679160
 BoxCollider2D:
   m_ObjectHideFlags: 0
