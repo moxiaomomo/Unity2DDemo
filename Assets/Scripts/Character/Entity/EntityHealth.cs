@@ -39,7 +39,7 @@ public class EntityHealth : MonoBehaviour, IDamageable
 
     private void OnDisable()
     {
-        if (entity != null)
+        if (entity != null && entity.health.isDead)
             entity.onFlipped -= FlipUI;
     }
 
@@ -69,6 +69,10 @@ public class EntityHealth : MonoBehaviour, IDamageable
     public void SetCurrentHP(float currentHp)
     {
         this.currentHP = currentHp;
+        if (currentHP <= 0)
+        {
+            isDead = true;
+        }
     }
 
     public float GetCurrentHP()
@@ -111,7 +115,7 @@ public class EntityHealth : MonoBehaviour, IDamageable
 
     private void FlipUI()
     {
-        if(rectTransform != null)
+        if (rectTransform != null)
         {
             rectTransform.Rotate(0f, 180f, 0f);
         }

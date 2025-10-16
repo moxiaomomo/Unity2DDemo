@@ -5,24 +5,42 @@ using UnityEngine.UI;
 
 public class UI_InGame : MonoBehaviour
 {
+    [SerializeField] private Transform _inGameTransform;
     [SerializeField] private Image dashImage;
     [SerializeField] private Image counterAttackImage;
     private Player player;
+
     // Start is called before the first frame update
     void Start()
     {
         player = PlayerManager.instance.player;
+        _inGameTransform = GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if (player==null || player.health.isDead)
+        {
+            if (_inGameTransform!=null && _inGameTransform.gameObject.activeSelf)
+            {
+                _inGameTransform.gameObject.SetActive(false);
+            }
+            return;
+        } 
+        else
+        {
+            if (_inGameTransform != null && !_inGameTransform.gameObject.activeSelf)
+            {
+                _inGameTransform.gameObject.SetActive(true);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             SetCoolDown(dashImage);
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             SetCoolDown(counterAttackImage);
         }

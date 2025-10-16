@@ -2,14 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_EquipSlot : MonoBehaviour
+public class UI_EquipSlot : ItemSlotBase
 {
-    public InventoryItem itemInSlot { get; private set; }
-
-    [Header("UI Slot Setup")]
-    [SerializeField] private Image itemIcon;
-
-    public void updateSlot(InventoryItem item)
+    public override void updateSlot(InventoryItem item)
     {
         itemInSlot = item;
         if (itemInSlot == null)
