@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Enemy
   - FakeKnight
-  - PlayerDataPanel
+  - ItemPopupMenu
+  - EquipPopupMenu
   layers:
   - Default
   - TransparentFX

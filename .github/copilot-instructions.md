@@ -2,7 +2,7 @@
 - Project name: Unity2DDemo
 - Unity version: Unity 2022.3.62f1c1
 - Active game object:
-  - Name: UI_Character
+  - Name: Pickup - BowAndArrow
   - Tag: Untagged
-  - Layer: UI
+  - Layer: PlayerPickups
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

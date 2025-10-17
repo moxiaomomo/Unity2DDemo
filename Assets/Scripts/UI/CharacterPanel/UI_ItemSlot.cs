@@ -12,7 +12,7 @@ public class UI_ItemSlot : ItemSlotBase
 
     private void Awake()
     {
-        menuObj = GameObject.FindWithTag("PlayerDataPanel");
+        menuObj = GameObject.FindWithTag("ItemPopupMenu");
     }
 
     public override void updateSlot(InventoryItem item)
@@ -40,6 +40,7 @@ public class UI_ItemSlot : ItemSlotBase
         {
             GlobalEventSystem.Instance.TriggerEvent(
                 "itemSlotSelected",
+                "ITEM",
                 itemInSlot
             );
             ShowCustomMenu();

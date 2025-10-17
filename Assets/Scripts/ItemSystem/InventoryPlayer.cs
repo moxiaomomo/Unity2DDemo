@@ -1,7 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
+using System.Linq;
 using UnityEngine;
 
 public class InventoryPlayer : InventoryBase, IEquippable
@@ -20,78 +19,114 @@ public class InventoryPlayer : InventoryBase, IEquippable
     {
         // var inventoryItem = FindItem(item.itemData);
         var matchingEquips = equipList.FindAll(equip => equip.itemData.itemType == item.itemData.itemType);
-        if (matchingEquips!=null && matchingEquips.Count>0)
+        if (matchingEquips != null && matchingEquips.Count > 0)
         {
+            UI_MessageBox.Instance.ShowMessage("已戴上同类装备, 不支持重复添加。");
             return false;
         }
 
-        EquipmentDataSO equipDataSO = new EquipmentDataSO();
-        foreach (PropertyInfo item1 in typeof(ItemDataSO).GetProperties())
+        InventoryEquipment equip;
+        if (item is InventoryEquipment)
         {
-            item1.SetValue(equipDataSO, item1.GetValue(item.itemData));
+            equip = (InventoryEquipment)item;
         }
-
-        InventoryEquipment equip = new InventoryEquipment(equipDataSO);
-        foreach (PropertyInfo item1 in typeof(InventoryItem).GetProperties())
+        else
         {
-            item1.SetValue(equip, item1.GetValue(item));
+            equip = new InventoryEquipment(item.itemData);
         }
 
         equipList.Add(equip);
         return true;
     }
 
+    public bool TryUnloadEquipItem(InventoryItem item)
+    {
+        var matchingEquips = equipList.FindAll(equip => equip.itemData.itemType == item.itemData.itemType);
+        if (matchingEquips == null || matchingEquips.Count <= 0)
+        {
+            return false;
+        }
+        equipList.RemoveAll(item1 => item.itemData.itemType == item1.itemData.itemType);
+        return true;
+    }
+
     // 某个格子物品被选中
     public void onItemSlotSelected(object[] parameters)
     {
-        InventoryItem itemInSlot = (InventoryItem)parameters[0];
+        string slotType = (string)parameters[0];
+        InventoryItem itemInSlot = (InventoryItem)parameters[1];
         if (itemInSlot != null)
         {
-            foreach (var item in itemList)
+            if(slotType == "EQUIP")
             {
-                if (item.itemData.itemType == itemInSlot.itemData.itemType)
+                equipList.ForEach(item => { item.selected = false; });
+                foreach (var item in equipList.Where(item => item.itemData.itemType == itemInSlot.itemData.itemType))
                 {
                     item.selected = true;
-                    break;
-                }
+                };
+            } 
+            else if (slotType == "ITEM")
+            {
+                itemList.ForEach(item => { item.selected = false; });
+                foreach (var item in itemList.Where(item => item.itemData.itemType == itemInSlot.itemData.itemType))
+                {
+                    item.selected = true;
+                };
             }
         }
     }
 
     public void EquipWeaponFromItemSlot(InventoryItem item)
     {
-
     }
 
     public void EquipWeaponFromItemSlot()
     {
-        InventoryItem itemSelected = null;
-        foreach (var item in itemList)
-        {
-            if (item.selected)
-            {
-                itemSelected = item;
-                break;
-            }
-        }
-
-        int cnt1 = itemList.Count;
+        InventoryItem itemSelected = itemList.FirstOrDefault(item => item.selected && (item.itemData.itemType==ItemType.Weapon || item.itemData.itemType == ItemType.Armor));
         if (itemSelected != null)
         {
             bool suc = TryEquipItem(itemSelected);
             if (suc)
             {
-                itemList.Remove(itemSelected);
+                if (itemSelected.stackSize > 1)
+                {
+                    itemSelected.stackSize--;
+                }
+                else
+                {
+                    itemList.Remove(itemSelected);
+                }
                 OnEquipmentsChange?.Invoke();
             }
         }
+        else
+        {
+            UI_MessageBox.Instance.ShowMessage("该物品不支持穿戴");
+        }
     }
 
-    //private void EquipItem(InventoryItem item, InventoryEquipment slot)
-    //{
-    //    slot.equipedItem = item;
-    //    //slot.equipedItem.AddModifiers();
+    public void UnloadEquipWeapon()
+    {
+        InventoryItem equipSelected = equipList.FirstOrDefault(item => item.selected);
+        if (equipSelected == null)
+        {
+            Debug.Log("No equipment is selected.");
+            return;
+        }
 
-    //    RemoveItem(item);
-    //}
+        bool suc = TryUnloadEquipItem(equipSelected);
+        if (suc)
+        {
+            InventoryItem itemInSlot = itemList.FirstOrDefault(item => item.itemData.itemType == equipSelected.itemData.itemType);
+            if (itemInSlot != null)
+            {
+                itemInSlot.stackSize++;
+            }
+            else
+            {
+                itemList.Add(equipSelected);
+            }
+            OnEquipmentsChange?.Invoke();
+        }
+    }
 }

@@ -40,7 +40,6 @@ public class UI_Inventory : MonoBehaviour
     private void updateEquipmentSlots()
     {
         updateInventorySlots();
-        Debug.Log(inventory.itemList.Count);
 
         List<InventoryEquipment> equipList = inventory.equipList;
         for (int i = 0; i < uiEquipSlots.Length; i++)

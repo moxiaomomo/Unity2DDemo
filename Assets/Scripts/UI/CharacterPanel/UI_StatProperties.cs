@@ -74,9 +74,13 @@ public class UI_StatProperties : MonoBehaviour,IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        GameObject menuObj = GameObject.FindWithTag("PlayerDataPanel");
+        GameObject menuObj = GameObject.FindWithTag("ItemPopupMenu");
         CanvasGroup canvasGroup = menuObj.GetComponent<CanvasGroup>();
         hideUI(canvasGroup);
+
+        GameObject equipMenuObj = GameObject.FindWithTag("EquipPopupMenu");
+        CanvasGroup canvasGroup2 = equipMenuObj.GetComponent<CanvasGroup>();
+        hideUI(canvasGroup2);
     }
 
     public static void showUI(CanvasGroup canvasGroup)
