@@ -7,7 +7,6 @@ using UnityEngine;
 public class InventoryEquipment: InventoryItem
 {
     public ItemModifier[] modifiers { get; private set; }
-    // public InventoryItem equipedItem;
 
     public InventoryEquipment(ItemDataSO itemData): base(itemData)
     {

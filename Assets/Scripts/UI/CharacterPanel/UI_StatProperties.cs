@@ -7,14 +7,20 @@ using UnityEngine.UI;
 
 public class UI_StatProperties : MonoBehaviour,IPointerDownHandler
 {
+    // 玩家中的库存物品
+    public InventoryPlayer inventory { get; private set; }
+
     [SerializeField] public TextMeshProUGUI propKeyText;
     [SerializeField] public TextMeshProUGUI propValueText;
 
     EntityStats playerStats = null;
 
-    private void Start()
+    private void Awake()
     {
         playerStats = PlayerManager.instance.player.stats;
+        inventory = FindFirstObjectByType<InventoryPlayer>();
+        inventory.OnInventoryChange += UpdatePanel;
+        inventory.OnEquipmentsChange += UpdatePanel;
     }
 
     private void OnEnable()

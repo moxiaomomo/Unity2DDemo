@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class EntityStats : MonoBehaviour
 {
+    // 基础属性
     public StatMajorGroup major;
     public StatOffenseGroup offense;
     public StatDefenseGroup defense;
     public StatResouceGroup resources;
+    //// 额外加成属性
+    //public StatMajorGroup extraMajor;
+    //public StatOffenseGroup extraOffense;
+    //public StatDefenseGroup extraDefense;
+    //public StatResouceGroup extraResources;
 
     public float GetMaxHealth()
     {

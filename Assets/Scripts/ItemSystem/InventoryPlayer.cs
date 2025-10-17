@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryPlayer : InventoryBase, IEquippable
@@ -17,36 +18,42 @@ public class InventoryPlayer : InventoryBase, IEquippable
 
     public bool TryEquipItem(InventoryItem item)
     {
-        // var inventoryItem = FindItem(item.itemData);
-        var matchingEquips = equipList.FindAll(equip => equip.itemData.itemType == item.itemData.itemType);
+        if (item is not InventoryEquipment)
+        {
+            UI_MessageBox.Instance.ShowMessage("该物品不支持穿戴~");
+            return false;
+        }
+        var matchingEquips = equipList.FindAll(equip => equip.itemData == item.itemData);
         if (matchingEquips != null && matchingEquips.Count > 0)
         {
             UI_MessageBox.Instance.ShowMessage("已戴上同类装备, 不支持重复添加。");
             return false;
         }
 
-        InventoryEquipment equip;
-        if (item is InventoryEquipment)
-        {
-            equip = (InventoryEquipment)item;
-        }
-        else
-        {
-            equip = new InventoryEquipment(item.itemData);
-        }
-
+        InventoryEquipment equip = (InventoryEquipment)item;
         equipList.Add(equip);
+
+        // 更新Player面板属性
+        updatePlayerPanelData(equip, 1);
+
         return true;
     }
 
     public bool TryUnloadEquipItem(InventoryItem item)
     {
-        var matchingEquips = equipList.FindAll(equip => equip.itemData.itemType == item.itemData.itemType);
+        if (item is not InventoryEquipment)
+        {
+            UI_MessageBox.Instance.ShowMessage("物品不可穿戴，操作失败~");
+            return false;
+        }
+        var matchingEquips = equipList.FindAll(equip => equip.itemData == item.itemData);
         if (matchingEquips == null || matchingEquips.Count <= 0)
         {
             return false;
         }
-        equipList.RemoveAll(item1 => item.itemData.itemType == item1.itemData.itemType);
+        equipList.RemoveAll(item1 => item.itemData == item1.itemData);
+        // 更新Player面板属性
+        updatePlayerPanelData((InventoryEquipment)item, 0);
         return true;
     }
 
@@ -60,17 +67,19 @@ public class InventoryPlayer : InventoryBase, IEquippable
             if(slotType == "EQUIP")
             {
                 equipList.ForEach(item => { item.selected = false; });
-                foreach (var item in equipList.Where(item => item.itemData.itemType == itemInSlot.itemData.itemType))
+                foreach (var item in equipList.Where(item => item.itemData == itemInSlot.itemData))
                 {
                     item.selected = true;
+                    break;
                 };
             } 
             else if (slotType == "ITEM")
             {
                 itemList.ForEach(item => { item.selected = false; });
-                foreach (var item in itemList.Where(item => item.itemData.itemType == itemInSlot.itemData.itemType))
+                foreach (var item in itemList.Where(item => item.itemData == itemInSlot.itemData))
                 {
                     item.selected = true;
+                    break;
                 };
             }
         }
@@ -117,7 +126,7 @@ public class InventoryPlayer : InventoryBase, IEquippable
         bool suc = TryUnloadEquipItem(equipSelected);
         if (suc)
         {
-            InventoryItem itemInSlot = itemList.FirstOrDefault(item => item.itemData.itemType == equipSelected.itemData.itemType);
+            InventoryItem itemInSlot = itemList.FirstOrDefault(item => item.itemData == equipSelected.itemData);
             if (itemInSlot != null)
             {
                 itemInSlot.stackSize++;
@@ -127,6 +136,32 @@ public class InventoryPlayer : InventoryBase, IEquippable
                 itemList.Add(equipSelected);
             }
             OnEquipmentsChange?.Invoke();
+        }
+    }
+
+    private void updatePlayerPanelData(InventoryEquipment equip, int opType)
+    {
+        if (opType==1) // 添加
+        {
+            foreach(ItemModifier modifier in equip.modifiers)
+            {
+                Stat stat = playerStats.GetStatByType(modifier.statType);
+                if (stat != null)
+                {
+                    stat.AddModifier(modifier.value, equip.itemData.itemName);
+                }
+            }
+        }
+        else // 卸下
+        {
+            foreach (ItemModifier modifier in equip.modifiers)
+            {
+                Stat stat = playerStats.GetStatByType(modifier.statType);
+                if (stat != null)
+                {
+                    stat.RemoveModifier(equip.itemData.itemName);
+                }
+            }
         }
     }
 }

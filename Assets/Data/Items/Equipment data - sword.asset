@@ -10,16 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 964488e58f533ff44a93d670796d4515, type: 3}
-  m_Name: Equip data - BowAndArrow
+  m_Name: Equipment data - sword
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: BowAndArrow
-  itemIcon: {fileID: -316142158, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
+  itemName: Sword
+  itemIcon: {fileID: 998750072, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
   maxStackSize: 99
   modifiers:
-  - statType: 0
+  - statType: 2
     value: 50
-  - statType: 3
-    value: 150
-  - statType: 6
-    value: 150
+  - statType: 0
+    value: 100

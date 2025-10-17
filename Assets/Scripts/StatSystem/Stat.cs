@@ -21,6 +21,7 @@ public class Stat
         return GetFinalValue()>0;
     }
 
+    // 属性值加成
     private float GetFinalValue()
     {
         float finalValue = baseValue;
@@ -39,7 +40,11 @@ public class Stat
 
     public void RemoveModifier(string source)
     {
-        modifiers.RemoveAll(modifier => modifier.source == source);
+        int firstIndex = modifiers.FindIndex(modifier => modifier.source == source);
+        if (firstIndex!=-1)
+        {
+            modifiers.RemoveAt(firstIndex);
+        }
     }
 }
 

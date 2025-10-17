@@ -13,7 +13,14 @@ public class ItemPicker : MonoBehaviour
 
     private void Awake()
     {
-        itemToAdd = new InventoryItem(itemData);
+        if (itemData.itemType==ItemType.Weapon)
+        {
+            itemToAdd = new InventoryEquipment(itemData);
+        }
+        else
+        {
+            itemToAdd = new InventoryItem(itemData);
+        }
     }
 
     private void OnValidate()
