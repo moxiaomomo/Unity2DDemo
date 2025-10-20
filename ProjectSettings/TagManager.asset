@@ -57,3 +57,6 @@ TagManager:
   - name: Player
     uniqueID: 141400007
     locked: 0
+  - name: SkyObjects
+    uniqueID: 1744342377
+    locked: 0
