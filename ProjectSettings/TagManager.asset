@@ -8,6 +8,7 @@ TagManager:
   - FakeKnight
   - ItemPopupMenu
   - EquipPopupMenu
+  - SceneLoadingUI
   layers:
   - Default
   - TransparentFX
