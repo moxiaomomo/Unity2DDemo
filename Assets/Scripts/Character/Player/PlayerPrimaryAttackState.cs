@@ -7,7 +7,7 @@ public class PlayerPrimaryAttackState : PlayerState
     private int comboCounter;
     private float lastTimeAttacked;
     private float comboTime = .5f;
-    public PlayerPrimaryAttackState(Player _player, PlayerStateMachine _stateMachine, string _stateName) : base(_player, _stateMachine, _stateName)
+    public PlayerPrimaryAttackState(PlayerBase _player, PlayerStateMachine _stateMachine, string _stateName) : base(_player, _stateMachine, _stateName)
     {
     }
 

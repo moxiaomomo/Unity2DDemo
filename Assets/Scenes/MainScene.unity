@@ -52055,7 +52055,7 @@ MonoBehaviour:
       modifiers: []
   offense:
     damage:
-      baseValue: 500
+      baseValue: 100
       modifiers: []
     attackSpeed:
       baseValue: 0

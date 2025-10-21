@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerGroundState
 {
-    public PlayerMoveState(Player _player, PlayerStateMachine _stateMachine, string _stateName) : base(_player, _stateMachine, _stateName)
+    public PlayerMoveState(PlayerBase _player, PlayerStateMachine _stateMachine, string _stateName) : base(_player, _stateMachine, _stateName)
     {       
     }
 
     public override void Enter()
     {
         base.Enter();
-        AudioManager.instance.PlaySFX(5);
+        // AudioManager.instance.PlaySFX(5);
     }
 
     public override void Exit()

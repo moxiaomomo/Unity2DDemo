@@ -10,17 +10,29 @@ public class PlayerStateMachine
     {
         currentState = _startState;
         currentState.Enter();
-        //// 通知Pet对象Player状态已改变
-        //PetOfPlayer.playerStateChanged.Invoke(currentState.stateName);
     }
 
     public void ChangeState(PlayerState _newState)
     {
+        if (currentState == _newState)
+            return;
         currentState.Exit();
         currentState = _newState;
         currentState.Enter();
-        // 通知Pet对象Player状态已改变
-        PetOfPlayer.playerStateChanged?.Invoke(currentState.stateName);
     }
 
+
+    public void ChangeState(PlayerState _newState, string enterStateName)
+    {
+        if (currentState == _newState && enterStateName==currentState.stateName)
+            return;
+        currentState.Exit();
+        currentState = _newState;
+        currentState.Enter(enterStateName);
+    }
+
+    public bool NeedChangeState(PlayerState _newState, string enterStateName)
+    {
+        return currentState != _newState || enterStateName != currentState.stateName;
+    }
 }

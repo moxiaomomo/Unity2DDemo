@@ -25,11 +25,11 @@ public class PlayerWallJumpState : PlayerState
         base.Update();
         if (player.IsWallDetected())
         {
-            stateMachine.ChangeState(player.wallState);
+            stateMachine.ChangeState(((Player)player).wallState);
         }
         if (rb.velocity.y<0)
         {
-            stateMachine.ChangeState(player.airState);
+            stateMachine.ChangeState(((Player)player).airState);
         }
     }
 }

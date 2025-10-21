@@ -21,3 +21,5 @@ MonoBehaviour:
     value: 50
   - statType: 0
     value: 100
+  - statType: 7
+    value: 100

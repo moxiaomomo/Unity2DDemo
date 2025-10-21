@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDashState : PlayerState
 {
-    public PlayerDashState(Player _player, PlayerStateMachine _stateMachine, string _stateName) : base(_player, _stateMachine, _stateName)
+    public PlayerDashState(PlayerBase _player, PlayerStateMachine _stateMachine, string _stateName) : base(_player, _stateMachine, _stateName)
     {
     }
 
@@ -25,7 +25,7 @@ public class PlayerDashState : PlayerState
         base.Update();
         if(!player.IsGroundDetected()&&player.IsWallDetected())
         {
-            stateMachine.ChangeState(player.wallState);
+            stateMachine.ChangeState(((Player)player).wallState);
         }
 
         player.SetVelocity(player.dashDiretion * (player.moveSpeed + player.dashSpeed), 0);

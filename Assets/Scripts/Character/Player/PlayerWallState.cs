@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerWallState : PlayerState
 {
-    public PlayerWallState(Player _player, PlayerStateMachine _stateMachine, string _stateName) : base(_player, _stateMachine, _stateName)
+    public PlayerWallState(PlayerBase _player, PlayerStateMachine _stateMachine, string _stateName) : base(_player, _stateMachine, _stateName)
     {
     }
 
@@ -24,7 +24,7 @@ public class PlayerWallState : PlayerState
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            stateMachine.ChangeState(player.wallJumpState);
+            stateMachine.ChangeState(((Player)player).wallJumpState);
             return;
         }
 
