@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -14,14 +15,16 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float wallCheckDistance;
     // 地面图层蒙版，可用于player jump时的判断
     [SerializeField] protected LayerMask whatIsGround;
-    public Transform attackCheck;
-    public float attackCheckRadius;
+    [SerializeField] public Transform attackCheck;
+    [SerializeField] public float attackCheckRadius;
+    [SerializeField] public int facingDirection { get; private set; } = 1;
+    [SerializeField] protected bool facingRight = true;
+    [SerializeField] public bool isStunned = false;
+    //// 可用于2.5D场景中模拟重力时使用
+    //[SerializeField] public float zVelocity = 0;
+    //public Vector3 rbInitialPosition {  get; private set; }
 
     public System.Action onFlipped; //用来调整血条UI的方向
-
-    public int facingDirection { get; private set; } = 1;
-    protected bool facingRight = true;
-    public bool isStunned = false;
 
     #region Components
     public Animator animator { get; private set; }
@@ -44,6 +47,11 @@ public class Entity : MonoBehaviour
 
         stats = GetComponent<EntityStats>();
         health = GetComponent<EntityHealth>();
+
+        //if (rb!=null)
+        //{
+        //    rbInitialPosition = rb.transform.position;
+        //}
     }
 
     protected virtual void Start()
@@ -145,10 +153,13 @@ public class Entity : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
     }
 
-    public virtual void SetVelocity(float _xVelocity, float _yVelocity)
+    public virtual void SetVelocity(float _xVelocity, float _yVelocity, bool autoFlipX = true)
     {
         rb.velocity = new Vector2(_xVelocity, _yVelocity);
-        FlipController(_xVelocity);
+        if(autoFlipX)
+        {
+            FlipController(_xVelocity);
+        }
     }
     #endregion
 }

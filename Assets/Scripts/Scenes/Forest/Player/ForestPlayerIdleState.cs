@@ -23,20 +23,9 @@ public class ForestPlayerIdleState : PlayerState
     {
         base.Update();
 
-        if (!player.isBusy)
+        if (!player.isBusy && (yInput!=0||xInput!=0))
         {
-            if (yInput>0)
-            {
-                stateMachine.ChangeState(player.moveState, "MoveBack");
-            } 
-            else if (yInput<0)
-            {
-                stateMachine.ChangeState(player.moveState, "MoveFront");
-            }
-            else if (xInput!=0)
-            {
-                stateMachine.ChangeState(player.moveState, "MoveHorizontal");
-            }
+            stateMachine.ChangeState(player.moveState, "Move");
         }
     }
 }

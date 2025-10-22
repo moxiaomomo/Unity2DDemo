@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ForestPlayerMoveState : PlayerState
 {
+    private float stopX, stopY;
+
     public ForestPlayerMoveState(PlayerBase _player, PlayerStateMachine _stateMachine, string _stateName) : base(_player, _stateMachine, _stateName)
     {
     }
@@ -27,29 +29,22 @@ public class ForestPlayerMoveState : PlayerState
         {
             stateMachine.ChangeState(player.idleState);
         }
-        else if (!player.isBusy)
+        else
         {
-            if (yInput > 0 && stateMachine.NeedChangeState(player.moveState, "MoveBack"))
-            {
-                stateMachine.ChangeState(player.moveState, "MoveBack");
-            }
-            else if (yInput < 0 && stateMachine.NeedChangeState(player.moveState, "MoveFront"))
-            {
-                stateMachine.ChangeState(player.moveState, "MoveFront");
-            }
-            else if (xInput != 0 && stateMachine.NeedChangeState(player.moveState, "MoveHorizontal"))
-            {
-                stateMachine.ChangeState(player.moveState, "MoveHorizontal");
-            }
+            stopX = xInput;
+            stopY = yInput;
         }
 
+        Vector3 vel = (player.transform.right * xInput + player.transform.up * yInput).normalized;
         if (!player.CanMove())
         {
             player.SetZeroVelocity();
         }
         else
         {
-            player.SetVelocity(xInput * player.moveSpeed, yInput * player.moveSpeed);
+            player.SetVelocity(vel.x * player.moveSpeed, vel.y * player.moveSpeed, false);
         }
+        stateMachine.currentState.SetFloatParam("InputX", stopX);
+        stateMachine.currentState.SetFloatParam("InputY", stopY);
     }
 }

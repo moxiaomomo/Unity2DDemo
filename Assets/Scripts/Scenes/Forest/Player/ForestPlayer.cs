@@ -28,5 +28,9 @@ public class ForestPlayer : PlayerBase
     protected override void Update()
     {
         base.Update();
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    rb.AddForce(new Vector2(0, 0.2f) * rb.mass);
+        //}
     }
 }

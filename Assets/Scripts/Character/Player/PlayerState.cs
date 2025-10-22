@@ -21,6 +21,11 @@ public class PlayerState
         this.stateName = _stateName;
     }
 
+    public void SetFloatParam(string param, float value)
+    {
+        player.animator.SetFloat(param, value);
+    }
+
     public virtual void Enter()
     {
         Enter(stateName);
