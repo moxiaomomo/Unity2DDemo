@@ -346,15 +346,17 @@ MonoBehaviour:
     m_Bits: 0
   attackCheck: {fileID: 5292560828425533323}
   attackCheckRadius: 1.35
+  facingRight: 1
+  isStunned: 0
   fx: {fileID: 5860380345251025667}
   enemyID: 
   whatisPlayer:
     serializedVersion: 2
     m_Bits: 128
+  questTargetId: enemy_skeleton
   stunDuration: 0
   stunDirection: {x: 0, y: 0}
   counterImage: {fileID: 0}
-  isStunned: 0
   playerCheckDistance: 1
   attackDistance: 0.5
   attackCooldown: 1
@@ -466,11 +468,11 @@ MonoBehaviour:
       baseValue: 0
       modifiers: []
   offense:
-    attackSpeed:
-      baseValue: 0
-      modifiers: []
     damage:
       baseValue: 30
+      modifiers: []
+    attackSpeed:
+      baseValue: 0
       modifiers: []
     critPower:
       baseValue: 0
@@ -495,6 +497,9 @@ MonoBehaviour:
       baseValue: 0
       modifiers: []
     evasion:
+      baseValue: 0
+      modifiers: []
+    repelledForce:
       baseValue: 0
       modifiers: []
     fireRes:

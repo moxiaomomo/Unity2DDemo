@@ -6,10 +6,12 @@ public class Enemy : Entity,IEnemySavable
 {
     public EnemyStateMachine stateMachine { get; private set; }
     public string lastStateName { get; private set; }
-
     public string enemyID;
 
     [SerializeField] protected LayerMask whatisPlayer;
+
+    [Header("Quest Info")]
+    public string questTargetId;
 
     [Header("Stunned info")]
     public float stunDuration;
