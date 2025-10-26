@@ -21,7 +21,7 @@ TagManager:
   - Enemy
   - Background
   - NoClimbGround
-  - PlayerPickups
+  - PlayerInteractable
   - SecondTopObject
   - TopObject
   - 

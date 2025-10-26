@@ -13,13 +13,16 @@ public class InventoryBase : MonoBehaviour
     protected virtual void Start()
     {
         uiItemSlots = FindObjectsOfType<UI_ItemSlot>();
-        if (uiItemSlots != null)
+        if (uiItemSlots != null )
         {
             maxInventorySize = uiItemSlots.Length;
         }
     }
 
-    public bool CanAddItem() => itemList.Count < maxInventorySize;
+    public bool CanAddItem()
+    {
+        return itemList.Count < maxInventorySize;
+    }
 
     public void AddItem(InventoryItem itemToAdd)
     {
